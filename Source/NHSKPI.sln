@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHSKPIDataService", "NHSKPIDataService\NHSKPIDataService.csproj", "{6766AB72-E15B-4456-8893-36EDC867DDCB}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NHSKPIWeb", "NHSKPIWeb\", "{4997B2C8-93AE-494B-BE6F-28E643D10A97}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{6766AB72-E15B-4456-8893-36EDC867DDCB}|NHSKPIDataService.dll;{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}|NHSKPIBusinessControllers.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/NHSKPIWeb"
+		Debug.AspNetCompiler.PhysicalPath = "NHSKPIWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\NHSKPIWeb\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/NHSKPIWeb"
+		Release.AspNetCompiler.PhysicalPath = "NHSKPIWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\NHSKPIWeb\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "35828"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHSKPIBusinessControllers", "NHSKPIBusinessControllers\NHSKPIBusinessControllers.csproj", "{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|.NET = Release|.NET
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Release|.NET.ActiveCfg = Release|Any CPU
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6766AB72-E15B-4456-8893-36EDC867DDCB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Release|.NET.ActiveCfg = Debug|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4997B2C8-93AE-494B-BE6F-28E643D10A97}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Release|.NET.ActiveCfg = Release|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E7F8A143-2C0D-4107-A97A-7F96B3570DC1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

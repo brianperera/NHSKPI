@@ -1,0 +1,302 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Views_Shared_MasterPage" %>
+
+<!DOCTYPE html>
+<!--[if IE 7]> <html lang="en" class="ie7 no-js"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>NHS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="../../assets/images/favicon.ico" type="image/x-icon" rel="icon" />
+    <link href="../../assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+     <!-- <link href="../../assets/css/redmond/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"
+        type="text/css" />  -->
+        <link href="../../assets/css/cupertino/jquery-ui-1.10.4.custom.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="../../assets/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../assets/plugins/font-awesome/css/font-awesome.min.css" />
+    <link href="../../assets/css/modern-menu.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 7]>
+<link rel="stylesheet" href="../../assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+<![endif]-->
+    <script src="../../assets/scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="../../assets/scripts/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="../../assets/scripts/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+    <script src="../../assets/plugins/top_menu/jquery.modern-menu.min.js" type="text/javascript"></script>
+    <!-- HTML5 shim and Respond.js IE8/7 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+<script src="assets/plugins/html5shiv.js"></script>
+<script src="assets/plugins/respond.min.js"></script>
+<![endif]-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <header>
+<div class="header container_24">
+
+<div class="nav_bar">
+<div class="float-left">
+<img alt="" src="../../assets/images/logo_s.png" />
+<span>KPI Data Entry Portal</span>
+</div>
+<div class="client_name">
+<img class="NHS_logo"  alt="" src="../../assets/images/NHSlogo.gif" />
+<asp:Label class="hosName" ID="lblHospitalName" runat="server" Text=""></asp:Label>
+<asp:Label class="NHS_name" ID="lblHospitalType" runat="server" Text=""></asp:Label>
+</div>
+</div>
+<nav>
+<div class="top_nav">
+<ul class="modern-menu theme2">
+<li><a id="hrefDashboard" runat="server"><span>Home</span></a></li>
+
+
+
+<li id="lnkKPITarget" runat="server" visible="false"><a href="#"><span>KPI Target</span></a>
+<ul>
+<li id="lnkWardLevelTarget" runat="server" visible="false"><a href="#"><span>Ward Level</span></a>
+<ul>
+<li><a href="#"><span>Individual</span></a>
+    <ul>
+<li><a href="../KPI/WardLevelTarget.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/WardLevelTargetUpdate.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+<li><a href="#"><span>Bulk Ward</span></a>
+    <ul>
+<li><a href="../KPI/WardLevelTargetBulk.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/WardLevelTargetBulkUpdate.aspx"><span>Update</span></a></li>
+
+</ul>
+</li>
+<li><a href="#"><span>Bulk KPI</span></a>
+    <ul>
+<li><a href="../KPI/WardLevelTargetBulkKPI.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/WardLevelTargetBulkKPIUpdate.aspx"><span>Update</span></a></li>
+
+</ul>
+</li>
+<li style="display:none"><a href="#"><span>YTD</span></a>
+    <ul>
+<li><a href="../KPI/HospitalYTDTarget.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/HospitalYTDTargetUpdate.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="lnkSpecialtyLevelTarget" runat="server" visible="false"><a href="#"><span>Specialty Level</span></a>
+<ul>
+<li><a href="#"><span>Individual</span></a>
+    <ul>
+<li><a href="../KPI/SpecialtyLevelTarget.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/SpecialtyLevelTargetUpdate.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+<li><a href="#"><span>Bulk Specialty</span></a>
+    <ul>
+<li><a href="../KPI/SpecialtyLevelTargetBulk.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/SpecialtyLevelTargetBulkUpdate.aspx"><span>Update</span></a></li>
+
+</ul>
+</li>
+<li><a href="#"><span>Bulk KPI</span></a>
+    <ul>
+<li><a href="../KPI/SpecialtyLevelTargetBulkKPI.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/SpecialtyLevelTargetBulkKPIUpdate.aspx"><span>Update</span></a></li>
+
+</ul>
+</li>
+<li style="display:none"><a href="#"><span>YTD</span></a>
+    <ul>
+<li><a href="../KPI/HospitalYTDTarget.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/HospitalYTDTargetUpdate.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li id="lnkManualData" runat="server" visible="false"><a href="#"><span>Manual Data</span></a>
+<ul>
+<li id="lnkWardLevelData" runat="server" visible="false"><a href="#"><span>Ward Level</span></a>
+<ul>
+<li><a href="#"><span>Individual</span></a>
+    <ul>
+<li><a href="../KPI/WardLevelTargetData.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/WardLevelTargetUpdate.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+<li><a href="#"><span>Bulk Ward</span></a>
+    <ul>
+<li><a href="../KPI/WardLevelDataBulk.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/WardLevelTargetBulkUpdate.aspx"><span>Update</span></a></li>
+
+</ul>
+</li>
+<li><a href="#"><span>Bulk KPI</span></a>
+    <ul>
+<li><a href="../KPI/WardLevelDataBulkKPI.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/WardLevelTargetBulkKPIUpdate.aspx"><span>Update</span></a></li>
+
+</ul>
+</li>
+<li><a  href="../KPI/WardCSVUpload.aspx"><span>CSV Upload</span></a></li>
+<li style="display:none"><a href="#"><span>YTD</span></a>
+    <ul>
+<li><a href="../KPI/HospitalYTDTargetData.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/HospitalYTDTargetUpdate.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="lnkSpecialtyLevelData" runat="server" visible="false"><a href="#"><span>Specialty Level</span></a>
+<ul>
+<li><a href="#"><span>Individual</span></a>
+    <ul>
+<li><a href="../KPI/SpecialtyLevelTargetData.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/SpecialtyLevelTargetUpdate.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+<li><a href="#"><span>Bulk specialty</span></a>
+    <ul>
+<li><a href="../KPI/SpecialtyLevelDataBulk.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/SpecialtyLevelTargetBulkUpdate.aspx"><span>Update</span></a></li>
+
+</ul>
+</li>
+<li><a  href="#"><span>Bulk KPI</span></a>
+    <ul>
+<li><a href="../KPI/SpecialtyLevelDataBulkKPI.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/SpecialtyLevelTargetBulkKPIUpdate.aspx"><span>Update</span></a></li>
+
+</ul>
+</li>
+<li><a  href="../KPI/SpecialtyCSVUpload.aspx"><span>CSV Upload</span></a></li>
+<li style="display:none"><a href="#"><span>YTD</span></a>
+    <ul>
+<li><a href="../KPI/HospitalYTDTargetData.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/HospitalYTDTargetUpdate.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li id="lnkReports" runat="server" visible="false" ><a class="disabled"  href="#"><span >Reports</span></a>
+<ul>
+<li id="lnkBenchMarkReports" runat="server" visible="false"><a class="disabled"  href="../KPI/BenchMarkReport.aspx"><span>BenchMark Report</span></a></li>
+<li id="lnkBenchMarkDataUpload" runat="server" visible="false"><a class="disabled"  href="../KPI/BenchMarkDataUpload.aspx"><span>Data Upload</span></a></li>
+
+</ul>
+</li>
+<li id="lnkAdmin" runat="server" visible="false"><a href="#"><span>Admin</span></a>
+<ul>
+<li id="lnkConfiguration" runat="server" visible="false"><a href="../SystemAdministration/Configuration.aspx"><span>Configuration</span></a>
+</li>
+<li id="lnkHospital" runat="server" visible="false"><a href="#"><span>Hospital</span></a>
+<ul>
+<li><a href="../Hospital/HospitalUpdate.aspx"><span>Add</span></a></li>
+<li><a href="../Hospital/HospitalSearch.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+<li id="lnkWard" runat="server" visible="false"><a href="#"><span>Ward</span></a>
+<ul>
+<li><a href="../Ward/WardUpdate.aspx"><span>Add</span></a></li>
+<li><a href="../Ward/WardSearch.aspx"><span>Update</span></a></li>
+<li><a href="#"><span>Group</span></a>
+<ul>
+<li><a href="../Ward/WardGroupUpdate.aspx"><span>Add</span></a></li>
+<li><a href="../Ward/WardGroupSearch.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="lnkManageKPI" runat="server" visible="false"><a href="#"><span>Manage KPI</span></a>
+<ul>
+<li><a href="#"><span>KPI</span></a>
+<ul>
+<li><a href="../KPI/KPIUpdate.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/KPISearch.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+<li><a href="#"><span>KPI GROUP</span></a>
+<ul>
+<li><a href="../KPI/KPIGroupUpdate.aspx"><span>Add</span></a></li>
+<li><a href="../KPI/KPIGroupSearch.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="lnkSpecialty" runat="server" visible="false"><a  href="#"><span>Specialty</span></a>
+<ul>
+<li><a href="../Specialty/SpecialtyUpdate.aspx"><span>Add</span></a></li>
+<li><a href="../Specialty/SpecialtySearch.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+<li><a href="#"><span>User</span></a>
+<ul>
+<li><a href="../User/UserUpdate.aspx"><span>Add</span></a></li>
+<li><a href="../User/UserSearch.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="login_panel modern-menu theme2">
+<li><a href="#"><asp:Label ID="lblNHSUser" runat="server" Text="Angel Shrestha"></asp:Label></a>
+<ul>
+<li><a href="../User/PasswordChange.aspx"><span>Change Password</span></a></li>
+<li><a id="linkLogout"  runat="server" onserverclick ="btnLogOut_Click" ><span ><i class="icon-off"></i>Logout</span> </a></li>
+</ul>
+</li>
+
+</ul>
+
+</div>
+</nav>
+
+<script type="text/javascript">    $(".modern-menu").modernMenu();</script>
+</div>
+</header>
+    <div class="Hgap10">
+    </div>
+    <div class="clear">
+    </div>
+    <div class="container_96 Contentbody">
+        <div class="container_24">
+            <asp:ContentPlaceHolder ID="Contentbody" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+    <footer>
+<div class="footer hidden container_96">
+
+                     <img alt="logo" src="../../assets/images/NHSlogo.gif">
+                   <span> Copyright &copy; 2013 by NHS Foundation Trust. All rights reserved. 
+                     
+                     
+                     
+                     </span>
+                 
+</div>
+</footer>
+    </form>
+    <!-- END FOOTER -->
+    <!-- BEGIN CORE PLUGINS -->
+</body>
+</html>
