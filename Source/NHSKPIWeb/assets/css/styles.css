@@ -475,6 +475,26 @@ input[type=text], input[type=password], textarea
     border:1px solid #dddddd
 }
 
+select
+{
+    color: #000;
+    width: 96%;
+    display: inline-block;
+    margin: 5px 0;
+    padding: 2px 5px;
+    border:1px solid #dddddd
+}
+
+#ddlHospitalName option:first-child {
+    color:#b8b8b8;
+}
+
+#ddlHospitalName { 
+    color: #b8b8b8;
+}
+
+#ddlHospitalName option { color: black; }
+
 input[type=text]:hover, input[type=password]:hover, textarea:hover
 {
      border:1px solid #26a0da
@@ -1521,12 +1541,20 @@ table.accessHide { position: absolute; left: -999999px; }
 .trial_info {padding-left:20px}
 .trial ul {margin-left:0;padding-left:30px}
  .trial ul li {padding: 0 0 0 10px;list-style-image:url(../images/trial_tick.png); font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:300;font-size:18px;line-height:32px}
- .trial_details h3 {font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:700;margin:10px 0 15px 0;font-size:20px;color:#0568b4}
+ .trial_details h3 {font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:700;margin:10px 0 5px 0;font-size:20px;color:#0568b4}
  .trial_details_wrap {padding:10px;text-align:center}
  
 .trial input[type=text], .trial input[type=password], .trial textarea
 {
     height:24px;
+    border:1px solid #b8b8b8;
+    font-size:14px;
+    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+}
+
+.trial select
+{
+    height:28px;
     border:1px solid #b8b8b8;
     font-size:14px;
     font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
@@ -1538,9 +1566,8 @@ table.accessHide { position: absolute; left: -999999px; }
      border:1px solid #26a0da
 }
 
-input.btnTry {width:97%;background:#f95c12;font-size:24px;font-family: "Open Sans",Arial,Helvetica,Sans-Serif;border:0;border-radius: 3px;font-weight: 400;padding: 8px 0;}
-input.btnTry:hover {background:#DF926D;}
-.trial_details h4 {text-align:left;margin:25px 0 20px 3px;color:#474747}
+input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,Sans-Serif;border:0;border-radius: 3px;font-weight: 400;padding: 8px 0;}
+.trial_details h4 {text-align:left;margin:10px 0 20px 3px;color:#474747}
  .trial .trial_details ul {padding-left:19px}
  .trial .trial_details ul li {text-align:left;color:#474747;list-style-image:url(../images/listBlt.png); font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-size:12px;line-height:18px;padding:0}
  h4.inqu {margin-bottom:10px}

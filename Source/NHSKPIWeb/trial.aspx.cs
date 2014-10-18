@@ -8,6 +8,7 @@ using NHSKPIDataService.Models;
 using NHSKPIBusinessControllers;
 using System.Configuration;
 using System.Net.Mail;
+using System.Data;
 
 
 public partial class login : System.Web.UI.Page
@@ -88,6 +89,14 @@ public partial class login : System.Web.UI.Page
         }
     }
 
+    public DataView AllHospitals
+    {
+        get
+        {
+            return HospitalController.GetAllHospitals();
+        }
+    }
+
     #endregion
 
     #region Page Load
@@ -95,7 +104,7 @@ public partial class login : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-
+            this.PopulateHospitalList();
         }
     }
     #endregion
@@ -109,6 +118,15 @@ public partial class login : System.Web.UI.Page
         Hospital.HospitalType = "NHS Trust";
         Hospital.Address = string.Empty;
         Hospital.IsActive = true;
+    }
+
+    private void PopulateHospitalList()
+    {
+        ddlHospitalName.DataSource = AllHospitals;
+
+        ddlHospitalName.DataValueField = "Name";
+        ddlHospitalName.DataTextField = "Name";
+        ddlHospitalName.DataBind();
     }
     #endregion
 

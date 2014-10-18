@@ -108,6 +108,37 @@ namespace NHSKPIBusinessControllers
             }
 
         }
+
+        public DataView GetAllHospitals()
+        {
+            try
+            {
+                DataSet dsHospitals = null;
+                DataView dvHospitals = null;
+                dsHospitals = NHSService.ViewAllHospital();
+
+                if (dsHospitals != null)
+                {
+                    dvHospitals = new DataView(dsHospitals.Tables[0]);
+                }
+   
+                return dvHospitals;
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException == null)
+                {
+                    throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex);
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
+
+        }
+
         #endregion
     }
 }

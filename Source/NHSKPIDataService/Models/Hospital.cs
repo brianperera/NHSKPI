@@ -211,7 +211,8 @@ namespace NHSKPIDataService.Models
         {
             try
             {
-                return null;
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Hospital_ViewAll);
+                return db.ExecuteDataSet(dbCommand, transaction); 
             }
 
             catch (Exception ex)

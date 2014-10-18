@@ -170,18 +170,19 @@ namespace NHSKPIDataService
         {
             try
             {
+                DataSet hospitalList = new DataSet();
                 Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
                 connection = db.CreateConnection();
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
                 Hospital hospital = new Hospital();
-                
-                hospital.ViewAllHospital(db, transaction);
+
+                hospitalList = hospital.ViewAllHospital(db, transaction);
 
                 transaction.Commit();
-                return null;
 
+                return hospitalList;
             }
             catch (Exception ex)
             {

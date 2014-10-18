@@ -25,6 +25,7 @@ namespace NHSKPIDataService.Util
         public static readonly string SP_Hospital_Insert            = "uspHospitalInsert";
         public static readonly string SP_Hospital_Update            = "uspHospitalUpdate";
         public static readonly string SP_Hospital_Search            = "uspHospitalSearch";
+        public static readonly string SP_Hospital_ViewAll           = "uspHospitalViewAll";
         public static readonly string SP_Hospital_View              = "uspHopitalView";
         public static readonly string SP_WardGroup_Insert           = "uspWardGroupInsert";
         public static readonly string SP_WardGroup_Update           = "uspWardGroupUpdate";

@@ -41,7 +41,7 @@
         <div class="clear Hgap15">
         </div>
         <div class="grid_19 trial_wrap">
-            <div class="grid_11 trial_info">
+            <div class="grid_11 trial_info page-header">
                 <h1>
                     Make dashboards incredibly easy to produce</h1>
                 <h2>
@@ -71,6 +71,9 @@
                 <asp:TextBox ID="txtName" placeholder="Name" runat="server"></asp:TextBox><asp:RequiredFieldValidator
                     ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName"
                     Display="Dynamic"></asp:RequiredFieldValidator>
+                <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True">
+                    <asp:ListItem Selected="True" Text="Select Hospital" Value ="-1"></asp:ListItem>
+                </asp:DropDownList>
                 <asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox><asp:RequiredFieldValidator
                     ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtCompanyName"
                     Display="Dynamic"></asp:RequiredFieldValidator>
@@ -95,7 +98,7 @@
                     Display="Dynamic"></asp:RequiredFieldValidator><asp:CompareValidator ID="CompareValidator1"
                         runat="server" ErrorMessage="Invalid" ControlToCompare="txtPassword" ControlToValidate="txtRetypePassword"
                         Display="Dynamic"></asp:CompareValidator>
-                <asp:Button CssClass="btnTry" ID="btnTrial" runat="server" Text="Start Trial" OnClick="btnTrial_Click" />
+                <asp:Button CssClass="btnTry" ID="btnTrial" runat="server" Text="Proceed" OnClick="btnTrial_Click" />
                 <h4>
                     By clicking “Start Trial” I agree that:</h4>
                 <ul>
