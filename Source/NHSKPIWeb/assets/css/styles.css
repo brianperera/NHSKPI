@@ -485,12 +485,12 @@ select
     border:1px solid #dddddd
 }
 
-#ddlHospitalName option:first-child {
-    color:#b8b8b8;
+#ddlHospitalName option:first-child, #ddlHospitalName option:last-child {
+    color:#AAA9A9;
 }
 
 #ddlHospitalName { 
-    color: #b8b8b8;
+    color: #AAA9A9;
 }
 
 #ddlHospitalName option { color: black; }
@@ -499,7 +499,6 @@ input[type=text]:hover, input[type=password]:hover, textarea:hover
 {
      border:1px solid #26a0da
 }
-
 
 input[type=text], input[type=password]
 {
@@ -1593,3 +1592,8 @@ input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,
  .trial_details p {text-align:left;}
  .trial_details a {color:Blue;text-decoration:none;text-align:left;padding-left:20px}
   .trial_details a:hover {text-decoration:underline}
+
+
+.tncText {
+    font-size: 12px;
+}

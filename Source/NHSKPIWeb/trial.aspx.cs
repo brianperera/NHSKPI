@@ -123,10 +123,12 @@ public partial class login : System.Web.UI.Page
     private void PopulateHospitalList()
     {
         ddlHospitalName.DataSource = AllHospitals;
-
         ddlHospitalName.DataValueField = "Code";
         ddlHospitalName.DataTextField = "Name";
         ddlHospitalName.DataBind();
+
+        //Append the Other value to the datasource, this will allow the user to manualy key-in the hospital name
+        ddlHospitalName.Items.Insert(ddlHospitalName.Items.Count, new ListItem("Other"));
     }
     #endregion
 

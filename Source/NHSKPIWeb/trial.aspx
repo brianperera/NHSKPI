@@ -73,12 +73,11 @@
                     ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName"
                     Display="Dynamic"></asp:RequiredFieldValidator>
                 <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True">
-                    <asp:ListItem Selected="True" Text="Select Hospital" Value ="-2"></asp:ListItem>
-                    <asp:ListItem Text="Other" Value ="-1"></asp:ListItem>
+                    <asp:ListItem Selected="True" Text="Select Hospital" Value ="-1"></asp:ListItem>
                 </asp:DropDownList>
-                <asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox><asp:RequiredFieldValidator
+                <asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox><%--<asp:RequiredFieldValidator
                     ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtCompanyName"
-                    Display="Dynamic"></asp:RequiredFieldValidator>
+                    Display="Dynamic"></asp:RequiredFieldValidator>--%>
                 <asp:TextBox ID="txtPhoneName" placeholder="Phone Number" runat="server"></asp:TextBox><asp:RequiredFieldValidator
                     ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="txtPhoneName"
                     Display="Dynamic"></asp:RequiredFieldValidator>
@@ -101,15 +100,16 @@
                         runat="server" ErrorMessage="Invalid" ControlToCompare="txtPassword" ControlToValidate="txtRetypePassword"
                         Display="Dynamic"></asp:CompareValidator>
                 <asp:Button CssClass="btnTry" ID="btnTrial" runat="server" Text="Proceed" OnClick="btnTrial_Click" />
-                <h4>
-                    By clicking “Start Trial” I agree that:</h4>
-                <ul>
-                    <li>I hereby grant my consent to receive emails, communications, announcements and invitations
-                        from KPI Data Entry Portal. You can withdraw your consent at any time.</li></ul>
-                <h4 class="inqu">
-                    Inquiries</h4>
-                <p>
-                    <a href="#">inquiries@nhskpi.net</a></p>
+                <%--<h4>
+                    By clicking “Start Trial” I agree that:</h4>--%>
+                <div class="clear ui-tabs"></div>
+                <div> 
+                    <p class="tncText"><asp:CheckBox ID="cbTCAgreement" runat="server"/> I hereby grant my consent to receive emails, communications, announcements and invitations from KPI Data Entry Portal. You can withdraw your consent at any time.</p>
+                </div>
+                <div class="clear ui-tabs"></div>
+                <p><strong>Inquiries</strong>: <a href="#">inquiries@nhskpi.net</a></p>
+                
+                    
             </div>
             </form>
         </div>
