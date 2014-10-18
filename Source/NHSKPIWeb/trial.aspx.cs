@@ -124,7 +124,7 @@ public partial class login : System.Web.UI.Page
     {
         ddlHospitalName.DataSource = AllHospitals;
 
-        ddlHospitalName.DataValueField = "Name";
+        ddlHospitalName.DataValueField = "Code";
         ddlHospitalName.DataTextField = "Name";
         ddlHospitalName.DataBind();
     }

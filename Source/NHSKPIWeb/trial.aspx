@@ -73,7 +73,8 @@
                     ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName"
                     Display="Dynamic"></asp:RequiredFieldValidator>
                 <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True">
-                    <asp:ListItem Selected="True" Text="Select Hospital" Value ="-1"></asp:ListItem>
+                    <asp:ListItem Selected="True" Text="Select Hospital" Value ="-2"></asp:ListItem>
+                    <asp:ListItem Text="Other" Value ="-1"></asp:ListItem>
                 </asp:DropDownList>
                 <asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox><asp:RequiredFieldValidator
                     ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtCompanyName"
@@ -122,6 +123,7 @@
     <script type="text/javascript" src="assets/scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="assets/scripts/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="assets/scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="scripts/GeneralUtility.js"></script>
     <!-- HTML5 shim and Respond.js IE8/7 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="assets/plugins/html5shiv.js"></script>

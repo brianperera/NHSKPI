@@ -1569,6 +1569,10 @@ table.accessHide { position: absolute; left: -999999px; }
     position:fixed;
 }
 
+#txtCompanyName 
+{
+    display:none;
+}
 
 .trial input[type=text]:hover, .trial input[type=password]:hover, .trial textarea:hover
 {
