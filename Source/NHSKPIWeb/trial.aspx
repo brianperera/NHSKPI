@@ -120,11 +120,13 @@
                     <p class="tncText"><asp:CheckBox ID="cbTCAgreement" runat="server"/> I hereby grant my consent to receive emails, communications, announcements and invitations from KPI Data Entry Portal. You can withdraw your consent at any time.</p>
                 </div>
                 <div class="clear ui-tabs"></div>
-                <p><strong>Inquiries</strong>: <a href="#">inquiries@nhskpi.net</a></p>
-                
+                <p><strong>Inquiries</strong>: <a href="#">inquiries@nhskpi.net</a></p>               
                     
             </div>
             </form>
+            <div class="trial_details_wrap">
+                <input type="button" class="btnTry" value="Sign in" onClick="window.location.href = 'login.aspx'">
+            </div>
         </div>
         </div>
     </div>
