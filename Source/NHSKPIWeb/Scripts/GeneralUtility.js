@@ -32,3 +32,18 @@ function ChangeHopitalDropDownPlaceHolderColor()
         $("#ddlHospitalName").css('color', 'black');
     }
 }
+
+function ShowPopup(message) {
+    $(function () {
+        $("#dialog").html(message);
+        $("#dialog").dialog({
+            title: "Error",
+            buttons: {
+                Close: function () {
+                    $(this).dialog('close');
+                }
+            },
+            modal: true
+        });
+    });
+}

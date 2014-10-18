@@ -9,6 +9,7 @@ using NHSKPIBusinessControllers;
 using System.Configuration;
 using System.Net.Mail;
 using System.Data;
+using System.Text;
 
 
 public partial class login : System.Web.UI.Page
@@ -112,8 +113,17 @@ public partial class login : System.Web.UI.Page
     #region Set Hospital
     private void SetHospital()
     {
-        Hospital.HospitalName = txtCompanyName.Text;
-        Hospital.HospitalCode = string.Empty;
+        if (ddlHospitalName.SelectedValue != "Other")
+        {
+            Hospital.HospitalName = ddlHospitalName.SelectedItem.Text;
+            Hospital.HospitalCode = ddlHospitalName.SelectedItem.Value;
+        }
+        else
+        {
+            Hospital.HospitalName = txtCompanyName.Text;
+            Hospital.HospitalCode = string.Empty;
+        }
+
         Hospital.PhoneNumber = txtPhoneName.Text;
         Hospital.HospitalType = "NHS Trust";
         Hospital.Address = string.Empty;
@@ -183,15 +193,23 @@ public partial class login : System.Web.UI.Page
     {
         SetHospital();
         int id = HospitalController.AddHospital(Hospital);
+
+        if (id == -1)
+        {
+            string msg = Constant.MSG_Hospital_Name_Exist.Replace("HOSPITAL_NAME", Hospital.HospitalName);
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + msg + "');", true);
+            return;
+        }
+
         Hospital.Id = id;
         Hospital.HospitalCode = id.ToString("0000");
         HospitalController.UpdateHospital(Hospital);
 
         SetUser(id);
         if (UserController.AddUser(NHSUser) < 0)
-        {
-            lblAddMessage.Text = Constant.MSG_User_Exist;
-            lblAddMessage.CssClass = "alert-danger";
+        {          
+            string msg = Constant.MSG_User_Exist;
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + msg + "');", true);
         }
         else
         {

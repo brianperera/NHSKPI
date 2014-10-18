@@ -15,6 +15,18 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
+    <!-- END FOOTER -->
+    <!-- BEGIN CORE PLUGINS -->
+    <script type="text/javascript" src="assets/scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="assets/scripts/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="scripts/GeneralUtility.js"></script>
+    <!-- HTML5 shim and Respond.js IE8/7 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/plugins/html5shiv.js"></script>
+      <script src="assets/plugins/respond.min.js"></script>
+    <![endif]-->
+
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/redmond/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"
         type="text/css" />
@@ -63,8 +75,7 @@
             </div>
         <div class="grid_5 trial_details">
             <form id="Form1" runat="server">
-            <div class="grid_24 error_msg">
-                <asp:Label ID="lblAddMessage" runat="server" Text=""></asp:Label>
+            <div id="dialog" style="display: none">
             </div>
             <div class="trial_details_wrap">
                 <h3>
@@ -75,6 +86,8 @@
                 <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True">
                     <asp:ListItem Selected="True" Text="Select Hospital" Value ="-1"></asp:ListItem>
                 </asp:DropDownList>
+                <asp:CompareValidator ID="cmpHospitalName" runat="server" ControlToValidate="ddlHospitalName"
+                Display="Dynamic" ErrorMessage="*" Operator="NotEqual" ValueToCompare="-1"></asp:CompareValidator>
                 <asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox><%--<asp:RequiredFieldValidator
                     ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtCompanyName"
                     Display="Dynamic"></asp:RequiredFieldValidator>--%>
@@ -118,16 +131,6 @@
     <div class="container_24" id="divMessage" runat="server" visible="false">
     <asp:Label ID="lblMessage" CssClass="alert-success" runat="server" Text="Your Trail Version Request Successfully Submitted. Administrator will review your request and confirm by email."></asp:Label>
     </div>
-    <!-- END FOOTER -->
-    <!-- BEGIN CORE PLUGINS -->
-    <script type="text/javascript" src="assets/scripts/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="assets/scripts/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="assets/scripts/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="scripts/GeneralUtility.js"></script>
-    <!-- HTML5 shim and Respond.js IE8/7 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/plugins/html5shiv.js"></script>
-      <script src="assets/plugins/respond.min.js"></script>
-    <![endif]-->
+    
 </body>
 </html>
