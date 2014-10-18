@@ -38,10 +38,11 @@
         </div>
     </div>
     <div class="container_24" id="divBody" runat="server">
-        <div class="clear Hgap15">
+        <div class="Hgap15">
         </div>
-        <div class="grid_19 trial_wrap">
-            <div class="grid_11 trial_info page-header">
+        <div class="full-page-background">
+<div class="grid_19 trial_wrap page-background_wrap">
+            <div class="trial_info">
                 <h1>
                     Make dashboards incredibly easy to produce</h1>
                 <h2>
@@ -56,12 +57,12 @@
                     <li>Decentralised data collection</li>
                 </ul>
             </div>
-            <div class="grid_11 img_wrap">
-                <img alt="" src="assets/images/trial.png" />
+            <div class="img_wrap page-background">
+                <img alt="" src="assets/images/trial.png" height:"200px" />
             </div>
-        </div>
+            </div>
         <div class="grid_5 trial_details">
-            <form runat="server">
+            <form id="Form1" runat="server">
             <div class="grid_24 error_msg">
                 <asp:Label ID="lblAddMessage" runat="server" Text=""></asp:Label>
             </div>
@@ -110,6 +111,7 @@
                     <a href="#">inquiries@nhskpi.net</a></p>
             </div>
             </form>
+        </div>
         </div>
     </div>
     <div class="container_24" id="divMessage" runat="server" visible="false">

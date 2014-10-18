@@ -1533,12 +1533,16 @@ table.accessHide { position: absolute; left: -999999px; }
 .trial .container_24 .grid_19 .grid_11 { width: 48.5% ;}
 .trial_wrap {background-color:#f7f7f7;min-height:580px;height:100%;}  
 .trial_details {background-color:#dee5f3;min-height:580px;height:100%} 
-.trial_wrap {position:relative}
+.trial_wrap 
+{
+    position:relative
+}
 .img_wrap {position:absolute;right:0;bottom:0;margin:0}
-.img_wrap img {width:100%; min-width:300px}
+.img_wrap img {width:100%;}
 .trial_wrap h1 {    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:500;margin:45px 0 35px 0;font-size:36px;line-height:33px} 
 .trial_wrap h2 {    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:500;margin:0px 0 35px 0;font-size:20px;}
-.trial_info {padding-left:20px}
+.trial_info {padding-left:20px; }
+.trial_info h1 {color: #2679B5;}
 .trial ul {margin-left:0;padding-left:30px}
  .trial ul li {padding: 0 0 0 10px;list-style-image:url(../images/trial_tick.png); font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:300;font-size:18px;line-height:32px}
  .trial_details h3 {font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:700;margin:10px 0 5px 0;font-size:20px;color:#0568b4}
@@ -1560,10 +1564,21 @@ table.accessHide { position: absolute; left: -999999px; }
     font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
 }
 
+.trial .full-page-background 
+{
+    position:fixed;
+}
+
 
 .trial input[type=text]:hover, .trial input[type=password]:hover, .trial textarea:hover
 {
      border:1px solid #26a0da
+}
+
+.trial .page-background 
+{
+    width:47%;
+    margin-right:3%;
 }
 
 input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,Sans-Serif;border:0;border-radius: 3px;font-weight: 400;padding: 8px 0;}
