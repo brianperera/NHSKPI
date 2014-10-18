@@ -191,6 +191,13 @@ public partial class login : System.Web.UI.Page
 
     protected void btnTrial_Click(object sender, EventArgs e)
     {
+        if (!cbTCAgreement.Checked)
+        {
+            string msg = "TODO : Replace msg";
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + msg + "');", true);
+            return;
+        }
+
         SetHospital();
         int id = HospitalController.AddHospital(Hospital);
 
