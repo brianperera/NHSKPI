@@ -37,7 +37,7 @@ function ShowPopup(message) {
     $(function () {
         $("#dialog").html(message);
         $("#dialog").dialog({
-            title: "Error",
+            title: "Information",
             buttons: {
                 Close: function () {
                     $(this).dialog('close');

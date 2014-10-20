@@ -1379,8 +1379,8 @@ ul.inline > li, ol.inline > li {
 }
 
 .ui-widget-header {
-    background:none;
-    border:none;    
+    /*background:none;
+    border:none;*/    
 }
 
 .ui-tabs {    
@@ -1597,3 +1597,69 @@ input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,
 .tncText {
     font-size: 12px;
 }
+
+/*Wizard Control Styles - Start*/
+
+.wizard-container {
+    margin:0px 125px;
+    width:80%;
+    height:800px;
+    
+}
+
+.wizard-header-placeholder {
+    background-color:blue;
+}
+
+.wizard-navigation-placeholder {
+    display:inline-block;
+    margin:50px 0px;
+}
+
+.wizard-sidebar-placeholder {
+    
+}
+
+.wizard-steps-placeholder {
+    width:500px;
+    float:left;
+    display:inline-block;
+}
+
+.round-button-circle {
+        margin-right:40px !important;
+        width:80px;
+        height:80px;
+        border: 1px solid #563d7c !important;
+        border-radius: 5px !important;
+        color: black !important;
+        background: url(../images/btn_round_dotted.png) no-repeat !important;
+        border:none !important;
+        background-color: transparent !important;
+    }
+
+.round-button-circle-selected {
+        margin-right:40px !important;
+        width:80px;
+        height:80px;
+        border: 1px solid #563d7c !important;
+        border-radius: 5px !important;
+        color: black !important;
+        background: url(../images/btn_round_full.png) no-repeat !important;
+        border:none !important;
+        background-color: transparent !important;
+    }
+
+.next-button {
+        margin-right:40px !important;
+        width:60px;
+        height:60px;
+        border: 1px solid #563d7c !important;
+        border-radius: 5px !important;
+        color: black !important;
+        background: url(../images/btn_next.png) no-repeat !important;
+        border:none !important;
+        background-color: transparent !important;
+    }
+
+/*Wizard Control Styles - End*/

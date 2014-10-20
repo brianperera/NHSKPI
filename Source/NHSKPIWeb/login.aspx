@@ -10,7 +10,7 @@
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head id="Head1" runat="server">
-    <meta charset="UTF-8"utf-8" />
+    <meta charset="UTF-8" />
     <link  href="assets/images/favicon.ico" type="image/x-icon" rel="icon"/>
       <link  href="assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
     <title>NHS KPI Data Entry Portal</title>
