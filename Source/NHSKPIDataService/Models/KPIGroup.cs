@@ -17,6 +17,7 @@ namespace NHSKPIDataService.Models
         private int id;
         private string kpiGroupName;
         private bool isActive;
+        private int hospitalID;        
 
         #endregion
 
@@ -36,6 +37,12 @@ namespace NHSKPIDataService.Models
             get { return isActive; }
             set { isActive = value; }
         }
+        public int HospitalID
+        {
+            get { return hospitalID; }
+            set { hospitalID = value; }
+        }
+
         #endregion
 
         #region Add
@@ -53,7 +60,7 @@ namespace NHSKPIDataService.Models
 
                 db.AddInParameter(dbCommand, "@KPIGroupName", DbType.String, this.KpiGroupName);               
                 db.AddInParameter(dbCommand, "@IsActive", DbType.Boolean, this.IsActive);
-
+                db.AddInParameter(dbCommand, "@HospitalID", DbType.Int32, this.HospitalID);
                 db.AddOutParameter(dbCommand, "@Id", DbType.Int32, 10);
                 db.ExecuteNonQuery(dbCommand, transaction);
 

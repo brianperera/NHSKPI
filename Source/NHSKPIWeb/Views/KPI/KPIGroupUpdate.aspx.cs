@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using NHSKPIBusinessControllers;
 using NHSKPIDataService;
 using NHSKPIDataService.Util;
+using NHSKPIDataService.Models;
 
 public partial class Views_KPI_KPIGroupUpdate : System.Web.UI.Page
 {
@@ -102,6 +103,14 @@ public partial class Views_KPI_KPIGroupUpdate : System.Web.UI.Page
         KpiGroup.Id = KpiGroupId;
         KpiGroup.KpiGroupName = txtKPIGroupName.Text;
         KpiGroup.IsActive = chkIsActive.Checked;
+
+        if (Session["NHSUser"] != null)
+        {
+            User currentUser = Session["NHSUser"] as User;
+
+            if (currentUser != null)
+                KpiGroup.HospitalID = currentUser.HospitalId;
+        }
     }
     #endregion  
 
