@@ -90,19 +90,68 @@
                                 The upload file has to be csv or xls. The fields that are highlighted in 
                                 <strong style="color:red">Red</strong> are mandatory fields.
                             </p>
-                            <asp:TextBox ID="txtName" placeholder="Name" runat="server"></asp:TextBox>
-                            <asp:Button ID="btnTrial" runat="server" Text="Brows" />
+                            <asp:FileUpload ID="FileUpload1" runat="server" />
                             <p>
                                 You can upload this details at later stage too, 
                                 but you must do it before start using the tool to 
                                 capture the data at ward level.
                             </p>
+
+                            <h1>Specialty Setup</h1>
+                            <p>
+                                If the Trust is going to use NHS KPI tool to capture specialty level data, 
+                                you will have to configure the specialty table as per the given <u>template</u>. 
+                                Please click <u>template</u> text to download the correct <u>template</u> for you to upload. 
+                                NHS KPI will be using the NHS data dictionary defined Treatment Functions. 
+                                In order to get the maximum benefit from the tool you may populate the extra 
+                                fields in the <u>template</u>. The upload file has to be csv or xls. 
+                                The fields that are highlighted in <strong style="color:red">Red</strong> are mandatory fields.
+                            </p>
+                            <asp:FileUpload ID="FileUpload2" runat="server" />
+                            <p>
+                                You do not have to upload this data as this is not a mandatory upload. 
+                                However it will be more beneficial for the staff to break down the 
+                                specialties into divisions (in some hospitals these divisions 
+                                are called care groups, sectors etc...) so the data entry process 
+                                or the reporting process can be more simplified.
+                            </p> 
                         </asp:WizardStep>
                         <asp:WizardStep ID="WizardStep2" runat="server" Title="Step 2">
-                            Step 2 Content.
+                            <h1>Setup KPIs</h1>
+                            KPI Groups:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="Button1" runat="server" Text="Button" />
+                            <p>
+                                These KPI groups will help you do categorise the KPIs into separate 
+                                focus groups such as Patient Experience, 
+                                Human Resources, Governance, Infection control etc... 
+                                Each hospital has their own focus groups so you can create your own 
+                                based on your Trust's requirements.
+                            </p>
+                            <p>
+                                Note: If you are not sure what focus groups to be setup, 
+                                the system will allow you to create them when you 
+                                setting up KPIs in the "Manage KPI".
+                            </p>
+                            <div>
+                                <div>Governance</div>
+                                <div>Patient Experience</div>
+                                <div>HR</div>
+                                <div>Infection Control</div>
+                            </div>
+                            <h1>Setup KPIs</h1>
+                            <p>
+                                NHS KPI control the list of KPIs in the tool in order to keep the 
+                                consistency and to avoid duplication. If you want to see the list 
+                                of KPIs please click <u>here</u>. We have add all the possible KPIs that 
+                                many hospitals have been using at the moment. However If you are 
+                                required to add new KPIs to the system, please <u>contact us</u> and 
+                                follow the instructions in the pop up box. If the new KPI is 
+                                approved by the NHS KPI team they will be added to the list 
+                                within 24 hours and you will be notified accordingly.
+
+                            </p>                                   
                         </asp:WizardStep>
                         <asp:WizardStep ID="WizardStep3" runat="server" Title="Step 2">
-                            Step 3 Content.
+                                               
                         </asp:WizardStep>
                         <asp:WizardStep ID="WizardStep4" runat="server" Title="Step 2">
                             Step 4 Content.

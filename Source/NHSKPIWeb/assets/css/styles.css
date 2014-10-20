@@ -1613,7 +1613,6 @@ input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,
 
 .wizard-navigation-placeholder {
     display:inline-block;
-    margin:50px 0px;
 }
 
 .wizard-sidebar-placeholder {
@@ -1621,45 +1620,39 @@ input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,
 }
 
 .wizard-steps-placeholder {
-    width:500px;
-    float:left;
-    display:inline-block;
+    width:80%;
+    height:50%;
+    background: #eee;
+    display: block;
+    border-radius: 5px;
+    padding:20px;
+    margin:10px 0px;
 }
 
 .round-button-circle {
         margin-right:40px !important;
-        width:80px;
-        height:80px;
+        width:120px;
+        height:40px;
+        color:black !important;
         border: 1px solid #563d7c !important;
-        border-radius: 5px !important;
-        color: black !important;
-        background: url(../images/btn_round_dotted.png) no-repeat !important;
-        border:none !important;
-        background-color: transparent !important;
+        background:#eee !important;
     }
 
 .round-button-circle-selected {
         margin-right:40px !important;
-        width:80px;
-        height:80px;
+        width:120px;
+        height:40px;
         border: 1px solid #563d7c !important;
-        border-radius: 5px !important;
-        color: black !important;
-        background: url(../images/btn_round_full.png) no-repeat !important;
-        border:none !important;
-        background-color: transparent !important;
+        background:#2184be !important;
     }
 
 .next-button {
-        margin-right:40px !important;
-        width:60px;
-        height:60px;
+       margin-right:40px !important;
+        width:120px;
+        height:40px;
+        color:black !important;
         border: 1px solid #563d7c !important;
-        border-radius: 5px !important;
-        color: black !important;
-        background: url(../images/btn_next.png) no-repeat !important;
-        border:none !important;
-        background-color: transparent !important;
+        background:#eee !important; 
     }
 
 /*Wizard Control Styles - End*/
