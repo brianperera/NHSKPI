@@ -201,21 +201,14 @@ public partial class login : System.Web.UI.Page
         SetHospital();
         int id = HospitalController.AddHospital(Hospital);
 
-        if (id == -1)
-        {
-            string msg = Constant.MSG_Hospital_Name_Exist.Replace("HOSPITAL_NAME", Hospital.HospitalName);
-            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + msg + "');", true);
-            return;
-        }
-
         Hospital.Id = id;
         Hospital.HospitalCode = id.ToString("0000");
         HospitalController.UpdateHospital(Hospital);
 
         SetUser(id);
         if (UserController.AddUser(NHSUser) < 0)
-        {          
-            string msg = Constant.MSG_User_Exist;
+        {
+            string msg = Constant.MSG_Hospital_Name_Exist.Replace("HOSPITAL_NAME", Hospital.HospitalName);
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + msg + "');", true);
         }
         else
