@@ -1602,6 +1602,7 @@ input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,
 
 .wizard-container {
     margin:0px 125px;
+    padding:10px 0px;
     width:80%;
     height:800px;
     

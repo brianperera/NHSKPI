@@ -21,4 +21,8 @@ public partial class QuickStart : System.Web.UI.Page
     }
 
     #endregion
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Label1.Text = DateTime.Now.ToShortTimeString();
+    }
 }
