@@ -5,6 +5,9 @@ using NHSKPIDataService.Models;
 using System.Data;
 using System.Web;
 using NHSKPIDataService.Services;
+using System.Net.Mail;
+using System.Configuration;
+
 
 namespace NHSKPIBusinessControllers
 {
@@ -89,6 +92,42 @@ namespace NHSKPIBusinessControllers
             }
 
         }
+        #endregion
+
+        #region Send Email Notification
+
+        public void SendEmailNotification(Email email)
+        {
+            // Command line argument must the the SMTP host.
+
+            EmailConfigurations emailConfigurations = new EmailConfigurations
+            {
+                Port = int.Parse(ConfigurationManager.AppSettings["Port"].ToString()),
+                Host = ConfigurationManager.AppSettings["Host"].ToString(),
+                NetworkCredentialUserName = ConfigurationManager.AppSettings["NetworkCredentialUserName"].ToString(),
+                NetworkCredentialPassword = ConfigurationManager.AppSettings["NetworkCredentialPassword"].ToString(),
+                EmailFrom = ConfigurationManager.AppSettings["EmailFrom"].ToString()
+            };
+
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
+            client.Port = emailConfigurations.Port;
+            client.Host = emailConfigurations.Host;
+            client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential(
+                emailConfigurations.NetworkCredentialUserName, emailConfigurations.NetworkCredentialPassword);
+
+            MailMessage mailMessage = new MailMessage(emailConfigurations.EmailFrom, email.EmailTo, email.Subject, email.Body);
+            mailMessage.IsBodyHtml = true;
+
+            mailMessage.BodyEncoding = System.Text.UTF8Encoding.UTF8;
+            mailMessage.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+
+            client.Send(mailMessage);
+        }
+
         #endregion
     }
 }

@@ -56,7 +56,7 @@
 {
     position: relative;
     display: block;
-    width: 100%;
+    
 }
 
 .wizard.vertical > .steps
@@ -74,7 +74,7 @@
 
 .wizard > .steps > ul > li
 {
-    width: 25%;
+    width: 24%;
 }
 
 .wizard > .steps > ul > li,
@@ -86,7 +86,7 @@
 .wizard.vertical > .steps > ul > li
 {
     float: none;
-    width: 100%;
+    width: 96%;
 }
 
 .wizard > .steps a,
@@ -99,9 +99,9 @@
     padding: 1em 1em;
     text-decoration: none;
 
-    -webkit-border-radius: 5px;
+    /*-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px;
+    border-radius: 5px;*/
 }
 
 .wizard > .steps .disabled a,
@@ -144,14 +144,14 @@
     border: 1px #ccc solid;
     display: block;
     margin: 0.5em;
-    min-height: 450px;
+    height: 500px;
     overflow: hidden;
     position: relative;
-    width: auto;
+    width: 95%;
 
-    -webkit-border-radius: 5px;
+    /*-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px;
+    border-radius: 5px;*/
 
 }
 
@@ -225,7 +225,7 @@
     position: relative;
     display: block;
     text-align: right;
-    width: 100%;
+    width: 96%;
 }
 
 .wizard.vertical > .actions
@@ -233,7 +233,7 @@
     display: inline;
     float: right;
     margin: 0 2.5%;
-    width: 95%;
+    width: 96%;
 }
 
 .wizard > .actions > ul
@@ -392,4 +392,29 @@
     padding-left:40% !important;
     font-size: 1em;
     font-weight: 600;
+}
+
+.wizard-content-left {
+    height:100%;
+    width:45%;
+    margin-right:40px;
+
+    position: relative;
+    overflow: hidden;
+    display: block;
+    float: left;
+}
+
+.wizard-content-right {
+    height: 100%;
+    width: 45%;
+    margin-right: 40px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    float: left;
+}
+
+ .wizard .last a {
+    margin-right:0px !important;
 }

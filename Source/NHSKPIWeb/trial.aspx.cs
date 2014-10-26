@@ -21,6 +21,7 @@ public partial class login : System.Web.UI.Page
 
     private HospitalController hospitalController = null;
     private NHSKPIDataService.Models.Hospital hospital = null;
+    private UtilController utilController = null;
 
     #endregion
 
@@ -162,33 +163,6 @@ public partial class login : System.Web.UI.Page
     }
     #endregion
 
-    #region Send Email Notification
-
-    private void SendEmailNotification()
-    {
-        // Command line argument must the the SMTP host.
-        System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
-        client.Port = int.Parse(System.Web.Configuration.WebConfigurationManager.AppSettings["Port"].ToString());
-        client.Host = System.Web.Configuration.WebConfigurationManager.AppSettings["Host"].ToString();
-        client.EnableSsl = true;
-        client.Timeout = 10000;
-        client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-        client.UseDefaultCredentials = false;
-        client.Credentials = new System.Net.NetworkCredential(System.Web.Configuration.WebConfigurationManager.AppSettings["NetworkCredentialUserName"].ToString(), System.Web.Configuration.WebConfigurationManager.AppSettings["NetworkCredentialPassword"].ToString());
-
-
-
-        MailMessage mm = new MailMessage(System.Web.Configuration.WebConfigurationManager.AppSettings["EmailFrom"].ToString(), txtEmailAddress.Text, "KPI Portal for FREE Trail has been approved.", "Your KPI Portal free trail has been approved. You can use this trail version for 60 days." + "<br><br>URL:" + System.Web.Configuration.WebConfigurationManager.AppSettings["SiteURL"].ToString() + "<br><br>User Name:" + txtUserName.Text + "<br><br>Password:"+ txtPassword.Text + "<br><br>Note: This is a auto generated message. Please do not reply to this email.");
-        mm.IsBodyHtml = true;
-
-        mm.BodyEncoding = System.Text.UTF8Encoding.UTF8;
-        mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-
-        client.Send(mm);
-    }
-
-    #endregion
-
     protected void btnTrial_Click(object sender, EventArgs e)
     {
         if (!cbTCAgreement.Checked)
@@ -213,8 +187,18 @@ public partial class login : System.Web.UI.Page
         }
         else
         {
-            SendEmailNotification();
-            Response.Redirect("login.aspx",false);
+            utilController = new UtilController();
+
+            Email emailMessage = new NHSKPIDataService.Models.Email
+            {
+                EmailTo = txtEmailAddress.Text,
+                Subject = "KPI Portal for FREE Trail has been approved.",
+                Body = "Your KPI Portal free trail has been approved. You can use this trail version for 60 days." + "<br><br>URL:" + ConfigurationManager.AppSettings["SiteURL"].ToString() + "<br><br>User Name:" + txtUserName.Text + "<br><br>Password:" + txtPassword.Text + "<br><br>Note: This is a auto generated message. Please do not reply to this email."
+            };
+
+            utilController.SendEmailNotification(emailMessage);
+
+            Response.Redirect("QuickStart.aspx", false);
         }
     }
 }

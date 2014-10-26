@@ -1352,11 +1352,23 @@ ul.inline > li, ol.inline > li {
     margin-bottom:10px
 }
 
+.magin_0 
+{
+    margin:0 !important;
+}
+
 .magin_right0 
 {
     margin-right:0;
 }
 
+.paragraph-break {
+    margin: 1em 0 0 0 !important;
+}
+
+.paragraph-break-small {
+    margin: 0.2em 0 0 0 !important;
+}
 
 .ie7 .container_24 .grid_2
 {
@@ -1655,5 +1667,128 @@ input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,
         border: 1px solid #563d7c !important;
         background:#eee !important; 
     }
+
+.file-uploader {
+    margin-right:180px;
+    margin-bottom:10px;
+}
+
+.file-uploaded-button {
+    margin:0px !important;
+    padding:5px 10px !important;
+}
+
+.medium-seperator {
+    margin-top:40px;
+}
+
+.field-title {
+    float:left;
+    margin-right:10px;
+    color:gray;
+    margin-top:3px;
+    width:100px;    
+}
+
+.field-title-long {
+    float:left;
+    margin-right:10px;
+    color:gray;
+    margin-top:3px;
+    width:250px;  
+}
+
+.field-control-middle {
+    float:left;
+    margin-right:10px;
+}
+
+.field-control-last {
+}
+
+.page-center-highlight {
+    margin:10% auto;
+    width:60%;
+    height:400px;
+    vertical-align:middle;
+    text-align:center;
+}
+
+.page-center-button-group {
+    margin:0 auto;
+    width:40%;
+    vertical-align:middle;
+    text-align:center;
+}
+
+.page-center-highlight h1 {
+    margin: auto;
+    line-height: 51px;
+    vertical-align: middle;
+}
+
+.page-center-highlight input {
+    display:inline !important;
+}
+
+.page-center-button-left {
+    float:left;
+    
+}
+
+.page-center-button-right input{
+    display:inline !important;
+    
+}
+
+.wizard h1 {
+    font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 40px;
+}
+
+.wizard h2 {
+    font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.wizard p {
+/*font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;*/
+font-weight: lighter;
+font-style: normal;
+color: gray;
+font-size: 10pt;
+line-height: 18pt;
+letter-spacing: 0.02em;
+}
+
+.wizard span {
+    margin: 0px !important;
+}
+
+.wizard select {
+    color:gray;
+}
+
+.second-column-sub-header {
+    margin-top:40px;
+}
+
+.notice {
+    /*font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;*/
+    min-width: 200px;
+    height: auto;
+    position: relative;
+    background-color: #4390df;
+    padding: 20px;
+    margin:10px 0px;
+}
+
+.fg-white {
+    color:white;
+}
 
 /*Wizard Control Styles - End*/

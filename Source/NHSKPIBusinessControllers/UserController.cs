@@ -12,6 +12,8 @@ namespace NHSKPIBusinessControllers
         #region Private Variable
 
         NHSKPIDataService.KPIDataService _NHSService = null;
+        DepartmentHead _DepartmentHeadService = null;
+        private UtilController utilController = null;
 
         #endregion
 
@@ -33,6 +35,22 @@ namespace NHSKPIBusinessControllers
             }
         }
 
+        public DepartmentHead DepartmentHeadService
+        {
+            get
+            {
+                if (_DepartmentHeadService == null)
+                {
+                    _DepartmentHeadService = new DepartmentHead();
+                }
+                return _DepartmentHeadService;
+            }
+            set
+            {
+                _DepartmentHeadService = value;
+            }
+        }
+
         #endregion
 
         #region Add User
@@ -40,6 +58,27 @@ namespace NHSKPIBusinessControllers
         public int AddUser(User user)
         {
             return NHSService.AddUser(user);
+        }
+
+        public int AddUser(User user, bool sendNotification)
+        {
+            int status = NHSService.AddUser(user);
+
+            if (status > 0)
+            { 
+                //Send Email
+                utilController = new UtilController();
+                Email emailMessage = new NHSKPIDataService.Models.Email
+                {
+                    EmailTo = user.Email,
+                    Subject = "Added to KPI Portal",
+                    Body = "Your KPI Portal free trail has been approved. You can use this trail version for 60 days." + "<br><br>URL:" + System.Configuration.ConfigurationManager.AppSettings["SiteURL"].ToString() + "<br><br>User Name:" + user.UserName + "<br><br>Password:" + user.Password + "<br><br>Note: This is a auto generated message. Please do not reply to this email."
+                };
+
+                utilController.SendEmailNotification(emailMessage);
+            }
+
+            return status;
         }
 
         #endregion 
@@ -126,5 +165,37 @@ namespace NHSKPIBusinessControllers
 
         #endregion
 
+        #region Add Department Heads
+
+        public bool InsertUpdateDepartmentHead(DepartmentHead departmentHead)
+        {
+            try
+            {
+                int targetId = 0;
+
+                targetId = DepartmentHeadService.InsertUpdateDepartmentHead(departmentHead);
+
+                if (targetId > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException == null)
+                {
+                    throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex);
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
+
+        }
+
+        #endregion
     }
 }

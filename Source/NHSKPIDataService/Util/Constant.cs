@@ -121,6 +121,9 @@ namespace NHSKPIDataService.Util
         public static readonly string SP_Specialty_Level_BulkKPI_Search = "uspSpecialtyLevelBulkKPISearch";
         public static readonly string SP_Get_Dash_Board_Data = "uspDashBoardView";
         public static readonly string SP_Get_Dash_Board_Specialty_Data = "uspDashBoardSpecialtyView";
+
+        public static readonly string SP_Set_Update_Department_Head = "uspDepartmentHeadInsertUpdate";
+        
         #endregion
 
         #region Messages related Constant
@@ -154,6 +157,7 @@ namespace NHSKPIDataService.Util
          public static readonly string MSG_Hospital_Exist                   = "Hospital Name is already in use";
          public static readonly string MSG_KPI_Exist                        = "KPI No is already in use";
          public static readonly string MSG_KPIGroup_Exist                   = "KPI Group Name is already in use";
+         public static readonly string MSG_KPIGroup_Empty                   = "KPI Group Name is empty";
          public static readonly string MSG_Specialty_Exist                  = "Specialty Name is already in use";
          public static readonly string MSG_Ward_Exist                       = "Ward Code is already in use";
          public static readonly string MSG_WardGroup_Exist                  = "Ward Group Name is already in use";
