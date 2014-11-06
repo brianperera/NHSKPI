@@ -1744,15 +1744,13 @@ input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,
 .wizard h1 {
     font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
     font-weight: 300;
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 22px;
 }
 
 .wizard h2 {
     font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
     font-weight: 300;
-    font-size: 20px;
-    line-height: 40px;
+    font-size: 18px;
 }
 
 .wizard p {
@@ -1760,8 +1758,7 @@ input.btnTry {width:97%;font-size:24px;font-family: "Open Sans",Arial,Helvetica,
 font-weight: lighter;
 font-style: normal;
 color: gray;
-font-size: 10pt;
-line-height: 18pt;
+line-height: 15pt;
 letter-spacing: 0.02em;
 }
 
@@ -1774,7 +1771,7 @@ letter-spacing: 0.02em;
 }
 
 .second-column-sub-header {
-    margin-top:40px;
+    margin-top:20px;
 }
 
 .notice {

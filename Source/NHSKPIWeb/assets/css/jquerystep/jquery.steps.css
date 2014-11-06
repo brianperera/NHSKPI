@@ -96,7 +96,7 @@
     display: block;
     width: auto;
     margin: 0 0.5em 0.5em;
-    padding: 1em 1em;
+    padding: 1.3em 1em;
     text-decoration: none;
 
     /*-webkit-border-radius: 5px;
@@ -108,7 +108,8 @@
 .wizard > .steps .disabled a:hover,
 .wizard > .steps .disabled a:active
 {
-    background: #eee;
+    background:#fff url(../../images/btn_round_dotted.png) no-repeat left;
+    background-position: center; 
     color: #aaa;
     cursor: default;
 }
@@ -117,9 +118,12 @@
 .wizard > .steps .current a:hover,
 .wizard > .steps .current a:active
 {
-    background: #2184be;
+    /*background: #2184be;*/
     color: #fff;
     cursor: default;
+    background:#fff url(../../images/btn_round_full.png) no-repeat left;
+    background-position: center; 
+    
 }
 
 .wizard > .steps .done a,
@@ -127,6 +131,8 @@
 .wizard > .steps .done a:active
 {
     background: #9dc8e2;
+    background:#fff url(../../images/btn_round_complete.png) no-repeat left;
+    background-position: center; 
     color: #fff;
 }
 
@@ -144,7 +150,7 @@
     border: 1px #ccc solid;
     display: block;
     margin: 0.5em;
-    height: 500px;
+    height: 450px;
     overflow: hidden;
     position: relative;
     width: 95%;
@@ -389,9 +395,13 @@
 }
 
 .steps a {
-    padding-left:40% !important;
+    padding-left:46% !important;
     font-size: 1em;
     font-weight: 600;
+}
+
+.steps .last a {
+    padding-left:47% !important;
 }
 
 .wizard-content-left {
