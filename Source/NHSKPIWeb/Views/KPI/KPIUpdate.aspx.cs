@@ -99,6 +99,12 @@ public partial class Views_KPI_KPIUpdate : System.Web.UI.Page
     #region Page Load
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (NHSUser.RoleId == 1)
+        {
+            txtKPINo.Enabled = true;
+            txtKPIDescription.Enabled = true;
+        }
+
         if (!IsPostBack)
         {
             FillKPIGroupList();

@@ -1840,4 +1840,19 @@ letter-spacing: 0.02em;
     visibility:collapse;
 }
 
+.center-control {
+    
+}
+
+.center-control input{
+    
+    vertical-align:middle; 
+}
+
+.center-control a{
+    
+    display:inline-block;    
+    vertical-align:middle;
+}
+
 /*Wizard Control Styles - End*/

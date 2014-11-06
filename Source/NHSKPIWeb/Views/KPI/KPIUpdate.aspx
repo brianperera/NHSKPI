@@ -21,7 +21,7 @@
             <asp:Label ID="lblKPINo" runat="server" Text="KPI No :"></asp:Label>
         </div>
         <div class="grid_8">
-            <asp:TextBox ID="txtKPINo" runat="server" MaxLength="50"></asp:TextBox>
+            <asp:TextBox ID="txtKPINo" Enabled="false" runat="server" MaxLength="50"></asp:TextBox>
             <div class="clear">
             </div>
             <asp:RequiredFieldValidator ID="rfvtxtKPINo" runat="server" ErrorMessage="KPI No is required"
@@ -35,7 +35,7 @@
             <asp:Label ID="lblKPIDescription" runat="server" Text="KPI Description :"></asp:Label>
         </div>
         <div class="grid_8">
-            <asp:TextBox ID="txtKPIDescription" runat="server" MaxLength="100"></asp:TextBox>
+            <asp:TextBox ID="txtKPIDescription" Enabled="false" runat="server" MaxLength="100"></asp:TextBox>
             <div class="clear">
             </div>
             <asp:RequiredFieldValidator ID="rfvKPIDescription" runat="server" ControlToValidate="txtKPIDescription"
@@ -175,80 +175,110 @@
         <div class="grid_11">
             <asp:Label ID="lblStaticTarget" runat="server" Text="Static Target :"></asp:Label>
         </div>
-        <div class="grid_10">
+        <div class="grid_11 center-control">
             <asp:CheckBox ID="chkStaticTarget" runat="server" Checked="True" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear">
         </div>
         <div class="grid_11">
             <asp:Label ID="lblNumeratorOnlyFlag" runat="server" Text="Numerator Only Flag :"></asp:Label>
         </div>
-        <div class="grid_11">
+        <div class="grid_11 center-control">
             <asp:CheckBox ID="chkNumeratorOnlyFlag" runat="server" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear">
         </div>
         <div class="grid_11">
             <asp:Label ID="lblRangeTarget" runat="server" Text="Range Target :"></asp:Label>
         </div>
-        <div class="grid_11">
+        <div class="grid_11 center-control">
             <asp:CheckBox ID="chkRangeTarget" runat="server" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear">
         </div>
         <div class="grid_11">
             <asp:Label ID="LBLHigherTheBetterFlag" runat="server" Text="Higher The Better Flag :"></asp:Label>
         </div>
-        <div class="grid_10">
+        <div class="grid_10 center-control">
             <asp:CheckBox ID="chkHigherTheBetterFlag" runat="server" Checked="True" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear">
         </div>
         <div class="grid_11">
             <asp:Label ID="lblSeparateYTDFigure" runat="server" Text="Separate YTD Figure :"></asp:Label>
         </div>
-        <div class="grid_11">
+        <div class="grid_11 center-control">
             <asp:CheckBox ID="chkSeparateYTDFigure" runat="server" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear">
         </div>
         <div class="grid_11">
             <asp:Label ID="lblAverageYTDFigure" runat="server" Text="Average YTD Figure :"></asp:Label>
         </div>
-        <div class="grid_11">
+        <div class="grid_11 center-control">
             <asp:CheckBox ID="chkAverageYTDFigure" runat="server" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear">
         </div>
         <div class="grid_11">
             <asp:Label ID="lblCanSummariesFlag" runat="server" Text="Summarise :"></asp:Label>
         </div>
-        <div class="grid_11">
+        <div class="grid_11 center-control">
             <asp:CheckBox ID="chkCanSummariesFlag" runat="server" Checked="True" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear">
         </div>
         <div class="grid_11">
             <asp:Label ID="lblManuallyEntered" runat="server" Text="Manually Entered :"></asp:Label>
         </div>
-        <div class="grid_11">
+        <div class="grid_11 center-control">
             <asp:CheckBox ID="chkManuallyEntered" runat="server" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear">
         </div>
         <div class="grid_11">
             <asp:Label ID="lblVisibility" runat="server" Text="Visibility :"></asp:Label>
         </div>
-        <div class="grid_11">
+        <div class="grid_11 center-control">
             <asp:CheckBox ID="chkVisibility" runat="server" Checked="True" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear">
         </div>
         <div class="grid_11">
             <asp:Label ID="lblIsActive" runat="server" Text="Is Active :"></asp:Label>
         </div>
-        <div class="grid_11">
+        <div class="grid_11 center-control">
             <asp:CheckBox ID="chkIsActive" runat="server" Checked="True" />
+            <a href="#">
+                <img src="../../assets/images/info.png" width="30" title="TODO: Sampath please provide the text" alt="TODO: Sampath please provide the text" style="border:0">
+            </a>
         </div>
         <div class="clear Hgap20">
         </div>
