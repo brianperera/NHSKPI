@@ -109,8 +109,8 @@ Author:		Sampath
 CREATE PROCEDURE [dbo].[uspKPIHospitalNewsSearch]
 
 	@Id			int,
-	@HospitalId int
-		
+	@HospitalId int,
+	@IsActive   bit	
 AS
 BEGIN
 	
@@ -122,7 +122,8 @@ IF(@Id < 0)
 		  ,[CreatedDate]
 		  ,[IsActive]
 	  FROM [dbo].[tblKPIHospitalNews]
-	  WHERE [HospitalId] = @HospitalId
+	  WHERE [HospitalId] = @HospitalId AND
+			(@IsActive IS NULL OR [IsActive] = @IsActive)
 ELSE
 	SELECT [Id]
 		  ,[Title]
@@ -130,7 +131,8 @@ ELSE
 		  ,[CreatedDate]
 		  ,[IsActive]
 	  FROM [dbo].[tblKPIHospitalNews]
-	  WHERE [Id] = @Id AND [HospitalId] = @HospitalId
+	  WHERE [Id] = @Id AND [HospitalId] = @HospitalId AND
+			(@IsActive IS NULL OR [IsActive] = @IsActive)
 END
 
 GO
@@ -189,8 +191,8 @@ Author:		Sampath
 
 CREATE PROCEDURE [dbo].[uspKPINewsSearch]
 
-	@Id			int
-		
+	@Id			int,
+	@IsActive   bit	
 AS
 BEGIN
 	
@@ -202,6 +204,7 @@ IF(@Id < 0)
 		  ,[CreatedDate]
 		  ,[IsActive]
 	  FROM [dbo].[tblKPINews]
+	  WHERE (@IsActive IS NULL OR [IsActive] = @IsActive)
 ELSE
 	SELECT [Id]
 		  ,[Title]
@@ -209,7 +212,8 @@ ELSE
 		  ,[CreatedDate]
 		  ,[IsActive]
 	  FROM [dbo].[tblKPINews]
-	  WHERE [Id] = @Id
+	  WHERE [Id] = @Id  AND
+			(@IsActive IS NULL OR [IsActive] = @IsActive)
 END
 
 GO
