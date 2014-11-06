@@ -244,6 +244,15 @@
 <ul>
 <li><a href="../Specialty/SpecialtyUpdate.aspx"><span>Add</span></a></li>
 <li><a href="../Specialty/SpecialtySearch.aspx"><span>Update</span></a></li>
+
+    <li><a href="#"><span>Group</span></a>
+<ul>
+<li><a href="../Specialty/SpecialtyGroupUpdate.aspx"><span>Add</span></a></li>
+<li><a href="../Specialty/SpecialtyGroupSearch.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+
+
 </ul>
 </li>
 <li><a href="#"><span>User</span></a>

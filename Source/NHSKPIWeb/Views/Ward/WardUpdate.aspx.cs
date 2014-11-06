@@ -73,7 +73,6 @@ public partial class Views_Ward_WardUpdate : System.Web.UI.Page
     #region Page Load
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (!IsPostBack)
         {
             LoadWardInitialData();
@@ -82,13 +81,17 @@ public partial class Views_Ward_WardUpdate : System.Web.UI.Page
                 this.ward = WardController.ViewWards(int.Parse(Request.QueryString["Id"]));
                 GetWard();
                 btnUpdate.Visible = true;
-                
+
             }
             else
             {
                 btnSave.Visible = true;
-                
+
             }
+        }
+        else
+        {
+            ClientScript.RegisterHiddenField("isPostBack", "1");
         }
 
     }

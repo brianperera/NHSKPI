@@ -40,7 +40,13 @@ namespace NHSKPIBusinessControllers
        public int AddSpecialty(Specialty specialty)
        {
            return NHSService.AddSpecialty(specialty);
-       } 
+       }
+
+       public bool BulkAddUpdateSpecialty(DataTable dtWardData)
+       {
+           return NHSService.BulkUploadSpecialty(dtWardData);
+       }
+
        #endregion
 
        #region Update Specialty

@@ -158,7 +158,11 @@ public partial class Views_Specialty_Specialty : System.Web.UI.Page
             else
             {
                 btnSave.Visible = true;
-            } 
+            }
+        }
+        else
+        {
+            ClientScript.RegisterHiddenField("isPostBack", "1");
         }
     }
     #endregion 

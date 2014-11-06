@@ -17,6 +17,9 @@ public partial class QuickStart : System.Web.UI.Page
 
     private KPIController kPIController = null;
     private UserController userController = null;
+    private WardController wardController = null;
+    private SpecialtyController specialtyController = null;
+    private string errorMessage = string.Empty;
 
     #endregion
 
@@ -50,6 +53,7 @@ public partial class QuickStart : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        LoadUserInitialData();
         UpdateKPIGroupResult();
         UpdateUserList();
 
@@ -59,21 +63,35 @@ public partial class QuickStart : System.Web.UI.Page
         }
     }
 
+    protected void UserListGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        DataRowView drv = (DataRowView)e.Row.DataItem;
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            string role = e.Row.Cells[3].Text;
+
+            //TODO Hard coded switch statement needs to be removed
+            switch (role)
+            {
+                case "1": role = "Super User";
+                    break;
+                case "2": role = "Admin";
+                    break;
+                case "3": role = "Data Entry Operator";
+                    break;
+                case "4": role = "View User";
+                    break;
+                default:
+                    break;
+            }
+
+            e.Row.Cells[3].Text = role;
+        } 
+    }
+
     #endregion
 
     #region Events
-
-    //Wizard 1st step
-    protected void btnUploadWardFile_Click(object sender, EventArgs e)
-    {
-        UploadCSV();
-    }
-
-    //Wizard 1st step
-    protected void btnSpecialtyDataUpload_Click(object sender, EventArgs e)
-    {
-        //TODO
-    }
 
     //Wizard 2nd step
     protected void btnAddKpiGroup_Click(object sender, EventArgs e)
@@ -138,8 +156,26 @@ public partial class QuickStart : System.Web.UI.Page
     {
         userController = new UserController();
 
+        // Get hospitals user count
+        DataSet currentUsers = userController.SearchUser(string.Empty, string.Empty, 0, NHSUser.HospitalId, true);
+
+        if (currentUsers.Tables[0].Rows.Count > 4)
+        {
+            lbAddUserMessage.Text = "Hospital can only have 4 users";
+            lbAddUserMessage.CssClass = "alert-danger";
+            return;
+        }
+
         int defaultUserRoleId = 4;
-        int.TryParse(ConfigurationManager.AppSettings["DefaultUserRole"].ToString(), out defaultUserRoleId);
+
+        int.TryParse(ddlRoleName.SelectedItem.Value, out defaultUserRoleId);
+
+        if (defaultUserRoleId == 0)
+        {
+            lbAddUserMessage.Text = "User Roole not selected";
+            lbAddUserMessage.CssClass = "alert-danger";
+            return;
+        }
 
         User user = new NHSKPIDataService.Models.User
         {
@@ -182,220 +218,6 @@ public partial class QuickStart : System.Web.UI.Page
         UserListGridView.DataBind();
     }
 
-    private void UploadCSV()
-    {
-        DataTable dt = new DataTable();
-        dt.TableName = "CSVWardData";
-        DataColumn dc;
-        DataRow dr;
-
-        dc = new DataColumn();
-        dc.DataType = System.Type.GetType("System.String");
-        dc.ColumnName = "WardCode";
-        dc.Unique = false;
-        dt.Columns.Add(dc);
-
-        dc = new DataColumn();
-        dc.DataType = System.Type.GetType("System.String");
-        dc.ColumnName = "KPINo";
-        dc.Unique = false;
-        dt.Columns.Add(dc);
-
-        dc = new DataColumn();
-        dc.DataType = System.Type.GetType("System.Int32");
-        dc.ColumnName = "HospitalId";
-        dc.Unique = false;
-        dt.Columns.Add(dc);
-
-        dc = new DataColumn();
-        dc.DataType = System.Type.GetType("System.DateTime");
-        dc.ColumnName = "TargetMonth";
-        dc.Unique = false;
-        dt.Columns.Add(dc);
-
-        dc = new DataColumn();
-        dc.DataType = System.Type.GetType("System.Decimal");
-        dc.ColumnName = "Numerator";
-        dc.Unique = false;
-        dt.Columns.Add(dc);
-
-        dc = new DataColumn();
-        dc.DataType = System.Type.GetType("System.Decimal");
-        dc.ColumnName = "Denominator";
-        dc.Unique = false;
-        dt.Columns.Add(dc);
-
-        dc = new DataColumn();
-        dc.DataType = System.Type.GetType("System.Decimal");
-        dc.ColumnName = "YTDValue";
-        dc.Unique = false;
-        dt.Columns.Add(dc);
-
-        try
-        {
-            using (CsvReader csv = new CsvReader(
-                       new StreamReader(fuWardDataUpload.PostedFile.InputStream), true))
-            {
-                int row = 0;
-                try
-                {
-                    kPIController = new KPIController();
-                    DataSet dsInitialData = kPIController.GetCSVUploadInitialData();
-
-                    while (csv.ReadNextRecord())
-                    {
-                        row++;
-                        if (csv[0].Trim() == "@!!@")
-                        {
-                            break;
-                        }
-                        dr = dt.NewRow();
-
-                        #region Read csv coulmn and add to row
-                        //Ward code
-                        try
-                        {
-                            dr["WardCode"] = csv[0].Trim() != string.Empty ? csv[0].Trim() : string.Empty;
-                            if (dsInitialData.Tables[0].Select("WardCode = '" + dr["WardCode"].ToString() + "'").Length == 0)
-                            {
-                                dr["WardCode"] = string.Empty;
-                            }
-
-                        }
-                        catch (Exception e)
-                        {
-                            dr["WardCode"] = string.Empty;
-
-                        }
-                        //KPI No
-                        try
-                        {
-                            dr["KPINo"] = csv[1].Trim() != string.Empty ? csv[1].Trim() : string.Empty;
-                            if (dsInitialData.Tables[1].Select("KPINo ='" + dr["KPINo"].ToString() + "'").Length == 0)
-                            {
-                                dr["KPINo"] = string.Empty;
-                            }
-
-                        }
-                        catch (Exception e)
-                        {
-                            dr["KPINo"] = string.Empty;
-
-                        }
-                        //Hospital Id
-                        try
-                        {
-                            dr["HospitalId"] = NHSUser.HospitalId.ToString();
-                        }
-                        catch (Exception e)
-                        {
-                            dr["HospitalId"] = DBNull.Value;
-
-                        }
-                        //Target Month
-                        try
-                        {
-                            string[] datesParts = csv[2].Trim().ToString().Split('/');
-                            dr["TargetMonth"] = new DateTime(int.Parse(datesParts[2].ToString()), int.Parse(datesParts[1].ToString()), int.Parse(datesParts[0].ToString()));
-                        }
-                        catch (Exception e)
-                        {
-                            dr["TargetMonth"] = DBNull.Value;
-
-                        }
-                        //Numerator
-                        try
-                        {
-                            dr["Numerator"] = csv[3].Trim();
-                        }
-                        catch (Exception e)
-                        {
-                            dr["Numerator"] = DBNull.Value;
-
-                        }
-                        //Denominator
-                        try
-                        {
-                            dr["Denominator"] = csv[4].Trim();
-                        }
-                        catch (Exception e)
-                        {
-                            dr["Denominator"] = DBNull.Value;
-
-                        }
-                        //YTD Value
-                        try
-                        {
-                            dr["YTDValue"] = csv[5].Trim();
-                        }
-                        catch (Exception e)
-                        {
-                            dr["YTDValue"] = DBNull.Value;
-
-                        }
-                        #endregion
-
-                        dt.Rows.Add(dr);
-
-                    }
-
-                    DataRow[] wcRows = dt.Select("WardCode = ''");
-                    DataRow[] knRows = dt.Select("KPINo = ''");
-                    DataRow[] tmRows = dt.Select("TargetMonth IS NULL");
-                    DataRow[] nuRows = dt.Select("Numerator IS NULL");
-
-                    if (wcRows.Length > 0 || knRows.Length > 0 || tmRows.Length > 0)
-                    {
-                        if (wcRows.Length > 0)
-                        {
-                            lblAddWardDataMessage.Text = "WardCode is missing or not exist at row " + (dt.Rows.IndexOf(wcRows[0]) + 1).ToString();
-                            lblAddWardDataMessage.CssClass = "alert-danger";
-
-                        }
-                        else if (knRows.Length > 0)
-                        {
-                            lblAddWardDataMessage.Text = "KPINo is missing or not exist at row " + (dt.Rows.IndexOf(knRows[0]) + 1).ToString();
-                            lblAddWardDataMessage.CssClass = "alert-danger";
-                        }
-                        else if (tmRows.Length > 0)
-                        {
-                            lblAddWardDataMessage.Text = "TargetDate is missing or invalid format at row " + (dt.Rows.IndexOf(tmRows[0]) + 1).ToString();
-                            lblAddWardDataMessage.CssClass = "alert-danger";
-                        }
-                        else if (nuRows.Length > 0)
-                        {
-                            lblAddWardDataMessage.Text = "Numerator is missing or invalid format at row " + (dt.Rows.IndexOf(nuRows[0]) + 1).ToString();
-                            lblAddWardDataMessage.CssClass = "alert-danger";
-                        }
-                    }
-                    else
-                    {
-                        if (kPIController.UpdateCSVWardData(dt))
-                        {
-                            lblAddWardDataMessage.Text = "CSV File successfully uploaded";
-                            lblAddWardDataMessage.CssClass = "alert-success";
-                        }
-                        else
-                        {
-                            lblAddWardDataMessage.Text = "CSV File Upload Error occured";
-                            lblAddWardDataMessage.CssClass = "alert-danger";
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    lblAddWardDataMessage.Text = "CSV File Upload Error occured";
-                    lblAddWardDataMessage.CssClass = "alert-danger";
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            lblAddWardDataMessage.Text = "CSV File Upload Error occured";
-            lblAddWardDataMessage.CssClass = "alert-danger";
-        }
-    }
-
     private void UpdateKPIGroupResult()
     {
         KPIController kpiController = new KPIController();
@@ -404,5 +226,21 @@ public partial class QuickStart : System.Web.UI.Page
         lbKpiGroups.DataBind();
     }
 
+    private void LoadUserInitialData()
+    {
+        userController = new UserController();
+        DataSet dsUserInitialData = userController.LoadUserInitialData(NHSUser.RoleId, NHSUser.HospitalId);
+        
+        ddlRoleName.DataSource = dsUserInitialData.Tables[0];
+        ddlRoleName.DataTextField = "RoleName";
+        ddlRoleName.DataValueField = "Id";
+        ddlRoleName.DataBind();
+
+        ListItem li = new ListItem("--Select User Role--", string.Empty);
+        ddlRoleName.Items.Insert(0, li);
+
+    }
+
     #endregion
+    
 }

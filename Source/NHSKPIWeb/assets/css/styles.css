@@ -1779,16 +1779,68 @@ letter-spacing: 0.02em;
 
 .notice {
     /*font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;*/
-    min-width: 200px;
+    
     height: auto;
     position: relative;
     background-color: #4390df;
-    padding: 20px;
+    padding: 10px;
     margin:10px 0px;
 }
 
 .fg-white {
     color:white;
+}
+
+.ward-bulk-upload {
+    margin-top:25px;
+    margin-left:5px;
+}
+
+.ward-bulk-upload .field-title-long {
+    float:none;
+    width:0px;    
+}
+
+.wizard th, td{
+    padding-right:10px;
+}
+
+.wizard .error_msg {
+    margin:5px 0px 5px 0px;
+}
+
+
+.small-column-left-1 {
+    width: 70%;
+    float:left;
+    margin-right:5px;
+    display: table-cell;
+}
+
+.small-column-right-1 {
+    
+        height: 100%;
+    width: 20%;
+    position: relative;
+    display: table-cell;
+    float: left;
+    overflow: hidden;
+}
+
+.small-column-left-1 .notice {
+    margin-top:0px;
+}
+
+.wizard .user-grid {
+    margin-top:5px
+}
+
+.wizard select {
+    width:212px;
+}
+
+.wizard-user-list-pagging {
+    visibility:collapse;
 }
 
 /*Wizard Control Styles - End*/

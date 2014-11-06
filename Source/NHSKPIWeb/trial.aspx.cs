@@ -167,7 +167,7 @@ public partial class login : System.Web.UI.Page
     {
         if (!cbTCAgreement.Checked)
         {
-            string msg = "TODO : Replace msg";
+            string msg = "Please agree to the terms and conditions";
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + msg + "');", true);
             return;
         }

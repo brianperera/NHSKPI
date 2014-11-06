@@ -169,7 +169,7 @@
     position: absolute;
     width: 95%;
     height: 95%;
-    padding: 2.5%;
+    padding: 20px;
 }
 
 .wizard > .content > .body ul
@@ -407,8 +407,7 @@
 
 .wizard-content-right {
     height: 100%;
-    width: 45%;
-    margin-right: 40px;
+    width: 50%;
     position: relative;
     overflow: hidden;
     display: block;

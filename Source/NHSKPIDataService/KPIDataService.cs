@@ -353,8 +353,121 @@ namespace NHSKPIDataService
 
         #region Ward Service
 
-        #region Add Ward
-        /// <summary>
+         #region Bulk Upload ward
+
+         public bool BulkUploadWardAndWardGroup(DataTable dtWardData)
+         {
+             try
+             {
+                 Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                 connection = db.CreateConnection();
+                 connection.Open();
+
+                 DbCommand dbCommand = null;
+                 DataSet ds = null;
+
+                 transaction = connection.BeginTransaction();
+
+                 //Add ward group
+                 dbCommand = db.GetStoredProcCommand("uspAddUpdateWardData");
+                 db.AddInParameter(dbCommand, "@Id", DbType.Int32, "Id", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, "HospitalId", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@WardCode", DbType.String, "WardCode", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@WardName", DbType.String, "WardName", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@WardGroupId", DbType.Int32, "WardGroupId", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@WardGroupName", DbType.String, "WardGroupName", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@Description", DbType.String, "Description", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@IsActive", DbType.Boolean, "IsActive", DataRowVersion.Current);
+
+                 ds = new DataSet();
+                 ds.Tables.Add(dtWardData);
+
+                 int status = 0;
+                 status = db.UpdateDataSet(ds, dtWardData.TableName, dbCommand, null, null, transaction);
+
+                 transaction.Commit();
+
+                 return status > 0 ? true : false;
+             }
+             catch (Exception ex)
+             {
+                 transaction.Rollback();
+                 if (ex.InnerException == null)
+                 { throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex); }
+                 else
+                 { throw ex; }
+             }
+             finally
+             {
+                 if (connection != null && connection.State == ConnectionState.Open)
+                 {
+                     connection.Close();
+                     connection.Dispose();
+                 }
+             }
+         }
+       
+         #endregion
+
+         #region Bulk Upload Specialty
+
+         public bool BulkUploadSpecialty(DataTable dtSpecialtyData)
+         {
+             try
+             {
+                 Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                 connection = db.CreateConnection();
+                 connection.Open();
+
+                 DbCommand dbCommand = null;
+                 DataSet ds = null;
+
+                 transaction = connection.BeginTransaction();
+
+                 //Add ward group
+                 dbCommand = db.GetStoredProcCommand("uspAddUpdateSpecialtyData");
+                 db.AddInParameter(dbCommand, "@Id", DbType.Int32, "Id", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, "HospitalId", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@SpecialtyCode", DbType.String, "SpecialtyCode", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@Specialty", DbType.String, "Specialty", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@GroupId", DbType.String, "GroupId", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@NationalSpecialty", DbType.String, "NationalSpecialty", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@NationalCode", DbType.String, "NationalCode", DataRowVersion.Current);
+                 db.AddInParameter(dbCommand, "@IsActive", DbType.Boolean, "IsActive", DataRowVersion.Current);
+
+                 ds = new DataSet();
+                 ds.Tables.Add(dtSpecialtyData);
+
+                 int status = 0;
+                 status = db.UpdateDataSet(ds, dtSpecialtyData.TableName, dbCommand, null, null, transaction);
+
+                 transaction.Commit();
+
+                 return status > 0 ? true : false;
+             }
+             catch (Exception ex)
+             {
+                 transaction.Rollback();
+                 if (ex.InnerException == null)
+                 { throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex); }
+                 else
+                 { throw ex; }
+             }
+             finally
+             {
+                 if (connection != null && connection.State == ConnectionState.Open)
+                 {
+                     connection.Close();
+                     connection.Dispose();
+                 }
+             }
+         }
+
+         #endregion
+
+
+         #region Add Ward
+         /// <summary>
         /// Add Ward
         /// </summary>
         /// <param name="ward"></param>

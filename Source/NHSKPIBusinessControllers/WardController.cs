@@ -57,7 +57,12 @@ namespace NHSKPIBusinessControllers
         public int AddWard(Ward ward)
         {
             return NHSService.AddWard(ward);
-        } 
+        }
+
+        public bool BulkUploadWardAndWardGroup(DataTable dtWardData)
+        {
+            return NHSService.BulkUploadWardAndWardGroup(dtWardData);
+        }
         #endregion
 
         #region Update Ward

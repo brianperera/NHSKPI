@@ -1,5 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="QuickStart.aspx.cs" Inherits="QuickStart" %>
 
+<%@ Register Src="Views/Shared/SpecialtyBulkUploader.ascx" TagName="SpecialtyBulkUploader" TagPrefix="uc1" %>
+
+<%@ Register Src="Views/Shared/WardBulkUploader.ascx" TagName="WardBulkUploader" TagPrefix="uc2" %>
+
 <!DOCTYPE html>
 
 <!--[if IE 7]> <html lang="en" class="ie7 login no-js"> <![endif]-->
@@ -75,27 +79,17 @@
                                 <h1>Ward Setup</h1>
                                 <p>
                                     If the Trust is going to use NHS KPI tool to capture ward level data, 
-                                you will have to configure the ward table as per the given <a href="./assets/doc/Ward.csv">template</a>. 
-                                Please click <a href="./assets/doc/Ward.csv">template</a> text to download the correct <a href="./assets/doc/Ward.csv">template</a> for you to upload. 
-                                The upload file has to be csv or xls. The fields that are highlighted in 
+                                you will have to configure the ward table as per the given <a href="./assets/doc/Ward_Upload_Template.csv">template</a>. 
+                                Please click <a href="./assets/doc/Ward_Upload_Template.csv">template</a> text to download the correct <a href="./assets/doc/Ward_Upload_Template.csv">template</a> for you to upload. 
+                                The upload file has to be a csv. The fields that are highlighted in 
                                 <strong style="color: red">Red</strong> are mandatory fields.
                                 </p>
                                 <asp:UpdatePanel runat="server" ID="fuWardDataUploadUpdatePanel">
                                     <Triggers>
-                                        <asp:PostBackTrigger ControlID="btnUploadWardFile" />
+                                        <asp:PostBackTrigger ControlID="WardBulkUploader1" />
                                     </Triggers>
                                     <ContentTemplate>
-                                        <div class="field-title-long">
-                                            <asp:FileUpload ID="fuWardDataUpload" runat="server" CssClass="" />
-                                            <asp:RegularExpressionValidator ID="fuWardDataUploadRegularExpressionValidator" ControlToValidate="fuWardDataUpload"
-                                                runat="server" ErrorMessage="Only CSV file is allowed" ValidationExpression="(.*?)\.(csv|CSV|xls|XLS|xlsx|XLSX)$"></asp:RegularExpressionValidator>
-                                        </div>
-                                        <div class="grid_24 error_msg">
-                                            <asp:Label ID="lblAddWardDataMessage" runat="server" Text=""></asp:Label>
-                                        </div>
-                                        <div class="field-control-last">
-                                            <asp:Button ID="btnUploadWardFile" CssClass="file-uploaded-button" runat="server" Text="Upload" OnClick="btnUploadWardFile_Click" />
-                                        </div>
+                                        <uc2:WardBulkUploader ID="WardBulkUploader1" runat="server" />
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                                 <div class="clear"></div>
@@ -109,30 +103,20 @@
                                 <h1>Specialty Setup</h1>
                                 <p>
                                     If the Trust is going to use NHS KPI tool to capture specialty level data, 
-                                you will have to configure the specialty table as per the given <a href="./assets/doc/Ward.csv">template</a>. 
-                                Please click <a href="./assets/doc/Ward.csv">template</a> text to download the correct <a href="./assets/doc/Ward.csv">template</a> for you to upload. 
+                                you will have to configure the specialty table as per the given <a href="./assets/doc/Specialty_Upload_Template.csv">template</a>. 
+                                Please click <a href="./assets/doc/Specialty_Upload_Template.csv">template</a> text to download the correct <a href="./assets/doc/Specialty_Upload_Template.csv">template</a> for you to upload. 
                                 NHS KPI will be using the NHS data dictionary defined Treatment Functions. 
                                 In order to get the maximum benefit from the tool you may populate the extra 
-                                fields in the <a href="./assets/doc/Ward.csv">template</a>. The upload file has to be csv or xls. 
+                                fields in the <a href="./assets/doc/Specialty_Upload_Template.csv">template</a>. The upload file has to be a csv. 
                                 The fields that are highlighted in <strong style="color: red">Red</strong> are mandatory fields.
                                 </p>
 
                                 <asp:UpdatePanel runat="server" ID="fuSpecialtyDataUploadUpdatePanel">
                                     <Triggers>
-                                        <asp:PostBackTrigger ControlID="btnSpecialtyDataUpload" />
+                                        <asp:PostBackTrigger ControlID="SpecialtyBulkUploader1" />
                                     </Triggers>
                                     <ContentTemplate>
-                                        <div class="field-title-long">
-                                            <asp:FileUpload ID="fuSpecialtyDataUpload" runat="server" CssClass="" />
-                                            <asp:RegularExpressionValidator ID="fuSpecialtyDataUploadRegularExpressionValidator" ControlToValidate="fuSpecialtyDataUpload"
-                                                runat="server" ErrorMessage="Only CSV file is allowed" ValidationExpression="(.*?)\.(csv|CSV|xls|XLS|xlsx|XLSX)$"></asp:RegularExpressionValidator>
-                                        </div>
-                                        <div class="grid_24 error_msg">
-                                            <asp:Label ID="AddSpecialtyDataMessage" runat="server" Text=""></asp:Label>
-                                        </div>
-                                        <div class="field-control-last">
-                                            <asp:Button ID="btnSpecialtyDataUpload" CssClass="file-uploaded-button" runat="server" Text="Upload" OnClick="btnSpecialtyDataUpload_Click" />
-                                        </div>
+                                        <uc1:SpecialtyBulkUploader ID="SpecialtyBulkUploader1" runat="server" />
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                                 <div class="clear"></div>
@@ -241,12 +225,12 @@
                                         <div class="field-control-last">
                                             <asp:TextBox ID="txbManagerEmail" Width="200" placeholder="Email" runat="server"></asp:TextBox>
                                         </div>
-                                        <div class="grid_24 error_msg">
-                                            <asp:Label ID="lbAddUpdateManagerDetailsMessage" runat="server" Text=""></asp:Label>
-                                        </div>
                                         <div class="field-title">&nbsp;</div>
                                         <div class="field-control-last">
                                             <asp:Button ID="btnAddUpdateManagerDetails" CssClass="file-uploaded-button" runat="server" Text="Add" OnClick="btnAddUpdateManagerDetails_Click" />
+                                        </div>
+                                        <div class="grid_24 error_msg">
+                                            <asp:Label ID="lbAddUpdateManagerDetailsMessage" runat="server" Text=""></asp:Label>
                                         </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
@@ -256,39 +240,75 @@
                                     <ContentTemplate>
                                         <h2>Setup users</h2>
                                         <p>(As you are using the free trail the system will allow to create only 4 users)</p>
-
-                                        <div class="field-title">Username</div>
-                                        <div class="field-control-last">
-                                            <asp:TextBox ID="txbUsername" Width="200" placeholder="Username" runat="server"></asp:TextBox>
+                                        <div class="small-column-left-1">
+                                            <div class="field-title">Username</div>
+                                            <div class="field-control-last">
+                                                <asp:TextBox ID="txbUsername" Width="200" placeholder="Username" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
+                                                    ControlToValidate="txbUsername" Display="Dynamic" ValidationGroup="AddUsers"></asp:RequiredFieldValidator>
+                                            </div>
+                                            <div class="field-title">First Name</div>
+                                            <div class="field-control-last">
+                                                <asp:TextBox ID="txbFirstName" Width="200" placeholder="First Name" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"
+                                                    ControlToValidate="txbFirstName" Display="Dynamic" ValidationGroup="AddUsers"></asp:RequiredFieldValidator>
+                                            </div>
+                                            <div class="field-title">Last Name</div>
+                                            <div class="field-control-last">
+                                                <asp:TextBox ID="txbLastName" Width="200" placeholder="Last Name" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*"
+                                                    ControlToValidate="txbLastName" Display="Dynamic" ValidationGroup="AddUsers"></asp:RequiredFieldValidator>
+                                            </div>
+                                            <div class="field-title">Email</div>
+                                            <div class="field-control-last">
+                                                <asp:TextBox ID="txbEmail" Width="200" placeholder="Email" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*"
+                                                    ControlToValidate="txbEmail" Display="Dynamic" ValidationGroup="AddUsers"></asp:RequiredFieldValidator>
+                                            </div>
+                                            <div class="field-title">Tel</div>
+                                            <div class="field-control-last">
+                                                <asp:TextBox ID="txbMobile" Width="200" placeholder="Tel" runat="server"></asp:TextBox>
+                                            </div>
+                                            <div class="field-title">Role</div>
+                                            <div class="field-control-last">
+                                                <asp:DropDownList ID="ddlRoleName" runat="server">
+                                                </asp:DropDownList>
+                                                <asp:RequiredFieldValidator ID="rfvRoleName" runat="server" ErrorMessage="Role Name is required"
+                                                    ControlToValidate="ddlRoleName" Display="Dynamic" ValidationGroup="AddUsers"></asp:RequiredFieldValidator>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="field-title">&nbsp;</div>
+                                            <div class="field-control-last">
+                                                <asp:Button ID="btnAddUsers" CssClass="file-uploaded-button" runat="server" Text="Add" OnClick="btnAddUsers_Click" />
+                                            </div>
+                                            <div class="grid_24 error_msg">
+                                                <asp:Label ID="lbAddUserMessage" runat="server" Text=""></asp:Label>
+                                            </div>
                                         </div>
-                                        <div class="field-title">First Name</div>
-                                        <div class="field-control-last">
-                                            <asp:TextBox ID="txbFirstName" Width="200" placeholder="First Name" runat="server"></asp:TextBox>
+                                        <div class="small-column-left-2">
+                                            <div class="">
+                                                <strong>Note: </strong>The usernames must be the trust email address of each user as the system will be sending an email to each user with a link and their login credentials. 
+                                            </div>
                                         </div>
-                                        <div class="field-title">Last Name</div>
-                                        <div class="field-control-last">
-                                            <asp:TextBox ID="txbLastName" Width="200" placeholder="Last Name" runat="server"></asp:TextBox>
-                                        </div>
-                                        <div class="field-title">Email</div>
-                                        <div class="field-control-last">
-                                            <asp:TextBox ID="txbEmail" Width="200" placeholder="Email" runat="server"></asp:TextBox>
-                                        </div>
-                                        <div class="field-title">Mobile</div>
-                                        <div class="field-control-last">
-                                            <asp:TextBox ID="txbMobile" Width="200" placeholder="Mobile" runat="server"></asp:TextBox>
-                                        </div>
-                                        <div class="field-title">&nbsp;</div>
-                                        <div class="field-control-last">
-                                            <asp:Button ID="btnAddUsers" CssClass="file-uploaded-button" runat="server" Text="Add" OnClick="btnAddUsers_Click" />
-                                        </div>
-                                        <div class="grid_24 error_msg">
-                                            <asp:Label ID="lbAddUserMessage" runat="server" Text=""></asp:Label>
-                                        </div>
-                                        <div>
-                                            <asp:GridView ID="UserListGridView" runat="server"></asp:GridView>
-                                        </div>
-                                        <div class="notice fg-white">
-                                            <strong>Note: </strong>The usernames must be the trust email address of each user as the system will be sending an email to each user with a link and their login credentials. 
+                                        <div class="small-column-right-2">
+                                            <asp:GridView ID="UserListGridView" runat="server" AutoGenerateColumns="False" AllowPaging="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowDataBound="UserListGridView_RowDataBound" PageSize="4">
+                                                <Columns>
+                                                    <asp:BoundField DataField="UserName" HeaderText="Username" />
+                                                    <asp:BoundField DataField="FirstName" HeaderText="First Name" />
+                                                    <asp:BoundField DataField="LastName" HeaderText="Last Name" />
+                                                    <asp:BoundField DataField="RoleId" HeaderText="Role" />
+                                                </Columns>
+                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                                                <PagerSettings PageButtonCount="4" />
+                                                <PagerStyle CssClass="wizard-user-list-pagging" BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                                                <RowStyle ForeColor="#000066" />
+                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                            </asp:GridView>
                                         </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
