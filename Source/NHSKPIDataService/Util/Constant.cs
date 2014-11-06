@@ -123,7 +123,11 @@ namespace NHSKPIDataService.Util
         public static readonly string SP_Get_Dash_Board_Specialty_Data = "uspDashBoardSpecialtyView";
 
         public static readonly string SP_Set_Update_Department_Head = "uspDepartmentHeadInsertUpdate";
-        
+
+        public static readonly string SP_Insert_KPINews = "uspKPINewsInsert";
+        public static readonly string SP_Insert_KPIHospitalNews = "uspKPIHospitalNewsInsert";
+        public static readonly string SP_Search_KPINews = "uspKPINewsSearch";
+        public static readonly string SP_Search_KPIHospitalNews = "uspKPIHospitalNewsSearch";
         #endregion
 
         #region Messages related Constant
