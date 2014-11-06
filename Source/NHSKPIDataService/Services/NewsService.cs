@@ -47,7 +47,7 @@ namespace NHSKPIDataService.Services
             }
         }
 
-        public List<KPINews> SearchKPINews(KPINews news, int newsId)
+        public List<KPINews> SearchKPINews(KPINews news, int newsId, bool isActive)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace NHSKPIDataService.Services
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
-                List<KPINews> list = news.Search(db, transaction, newsId);
+                List<KPINews> list = news.Search(db, transaction, newsId,isActive);
 
                 transaction.Commit();
 
@@ -104,7 +104,7 @@ namespace NHSKPIDataService.Services
             }
         }
 
-        public List<KPIHospitalNews> SearchKPIHospitalNews(KPIHospitalNews news, int newsId, int hospitalId)
+        public List<KPIHospitalNews> SearchKPIHospitalNews(KPIHospitalNews news, int newsId, int hospitalId,bool isActive)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace NHSKPIDataService.Services
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
-                List<KPIHospitalNews> list = news.Search(db, transaction, newsId, hospitalId);
+                List<KPIHospitalNews> list = news.Search(db, transaction, newsId, hospitalId,isActive);
 
                 transaction.Commit();
 

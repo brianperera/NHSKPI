@@ -17,7 +17,7 @@ namespace NHSKPIDataService.Models
         public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }
 
-        public void Add(Database db, DbTransaction transaction)
+        public virtual void Add(Database db, DbTransaction transaction)
         {
             try
             {
@@ -35,11 +35,12 @@ namespace NHSKPIDataService.Models
             }
         }
 
-        public List<KPINews> Search(Database db, DbTransaction transaction, int newsId)
+        public List<KPINews> Search(Database db, DbTransaction transaction, int newsId,bool isActive)
         {
             DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Search_KPINews);
 
             db.AddInParameter(dbCommand, "@Id", DbType.Int32, newsId);
+            db.AddInParameter(dbCommand, "@IsActive", DbType.Boolean, isActive);
 
             var results = db.ExecuteReader(dbCommand);
 
@@ -79,7 +80,7 @@ namespace NHSKPIDataService.Models
     {
         public int HospitalId { get; set; }
 
-        public void Add(Database db, DbTransaction transaction)
+        public override void Add(Database db, DbTransaction transaction)
         {
             try
             {
@@ -98,12 +99,13 @@ namespace NHSKPIDataService.Models
             }
         }
 
-        public List<KPIHospitalNews> Search(Database db, DbTransaction transaction, int newsId, int hospitalId)
+        public List<KPIHospitalNews> Search(Database db, DbTransaction transaction, int newsId, int hospitalId, bool isActive)
         {
             DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Search_KPINews);
 
             db.AddInParameter(dbCommand, "@Id", DbType.Int32, newsId);
             db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
+            db.AddInParameter(dbCommand, "@IsActive", DbType.Boolean, isActive);
 
             var results = db.ExecuteReader(dbCommand);
 
