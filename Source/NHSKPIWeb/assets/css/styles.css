@@ -1855,4 +1855,28 @@ letter-spacing: 0.02em;
     vertical-align:middle;
 }
 
+.grid_small_left {
+    width:120px;
+    float:left;
+    margin-right:5px;
+    display: table-cell;
+}
+
+.grid_small_left span {
+    vertical-align:middle;
+}
+
+.grid_small_right input {
+    vertical-align:middle;
+    margin:0px;
+}
+
+
+.grid_small_right {
+    width:200px;
+    position: relative;
+    display: table-cell;
+    overflow: hidden;
+}
+
 /*Wizard Control Styles - End*/

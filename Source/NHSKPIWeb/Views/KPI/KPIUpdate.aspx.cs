@@ -316,5 +316,35 @@ public partial class Views_KPI_KPIUpdate : System.Web.UI.Page
     }
     #endregion  
 
+
     
+     protected void BtnAddKpiGroup_Click(object sender, EventArgs e)
+     {
+         KPIController kpiController = new KPIController();
+         KPIGroup kpiGroup = new KPIGroup
+         {
+             HospitalID = NHSUser.HospitalId,
+             IsActive = chbIsActive.Checked,
+             KpiGroupName = txtKPIGroupName.Text
+         };
+
+         if (NHSUser.HospitalId > 0 && !string.IsNullOrEmpty(kpiGroup.KpiGroupName))
+         {
+             if (kpiController.AddKPIGroup(kpiGroup) < 0)
+             {
+                 lblAddKpiGroupMessage.Text = Constant.MSG_KPIGroup_Exist;
+                 lblAddKpiGroupMessage.CssClass = "alert-danger";
+             }
+             else
+             {
+                 FillKPIGroupList();
+                 txtKPIGroupName.Text = string.Empty;
+             }
+         }
+         else
+         {
+             lblAddKpiGroupMessage.Text = Constant.MSG_KPIGroup_Empty;
+             lblAddKpiGroupMessage.CssClass = "alert-danger";
+         }
+     }
 }
