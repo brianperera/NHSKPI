@@ -77,7 +77,7 @@ namespace NHSKPIDataService.Services
             }
         }
 
-        public void InserKPIHospitalNews(KPIHospitalNews news,int newsId,int hospitalId)
+        public void InserKPIHospitalNews(KPIHospitalNews news)
         {
             try
             {
