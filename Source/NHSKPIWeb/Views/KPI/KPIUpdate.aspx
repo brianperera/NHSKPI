@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="NHS KPI Data Entry Portal" Language="C#" MasterPageFile="~/Views/Shared/MasterPage.master"
     AutoEventWireup="true" CodeFile="KPIUpdate.aspx.cs" Inherits="Views_KPI_KPIUpdate" %>
 
-<%@ Register src="../Shared/AddKPIGroup.ascx" tagname="AddKPIGroup" tagprefix="uc1" %>
+<%@ Register Src="../Shared/AddKPIGroup.ascx" TagName="AddKPIGroup" TagPrefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -10,12 +10,12 @@
 
         function AddWardGroupPopup() {
             $(function () {
-               var dlg = $("#add-ward-popup").dialog({
+                var dlg = $("#add-ward-popup").dialog({
                     resizable: false,
                     modal: false
 
-               });
-               dlg.parent().appendTo(jQuery("form:first"));
+                });
+                dlg.parent().appendTo(jQuery("form:first"));
             });
         }
 
@@ -76,53 +76,53 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <asp:DropDownList ID="ddlKPIGroupName" runat="server">
-            </asp:DropDownList>
-            <div class="clear">
-            </div>
-            <asp:RequiredFieldValidator ID="rfvKPIGroupName" ValidationGroup="KPIDetails" runat="server" ErrorMessage="KPI Group Name is required"
-                ControlToValidate="ddlKPIGroupName" Display="Dynamic"></asp:RequiredFieldValidator>
-                
-                <div style="display:none">
-                    
-                            <div id="add-ward-popup" title="Add Ward Group">
-        <div class="grid_12">
-            <div class="grid_small_left">
-                <asp:Label ID="Label4" runat="server" Text="KPI Group Name :"></asp:Label>
-            </div>
-            <div class="grid_small_right">
-                <asp:TextBox ID="txtKPIGroupName" runat="server" MaxLength="100"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                    ErrorMessage="*" ControlToValidate="txtKPIGroupName" ValidationGroup="KPIGroup"></asp:RequiredFieldValidator>
-            </div>
-            <div class="clear">
-            </div>
-            <div class="grid_small_left">
-                <asp:Label ID="Label5" runat="server" Text="Is Active :"></asp:Label>
-            </div>
-            <div class="grid_small_right">
-                <asp:CheckBox ID="chbIsActive" runat="server" Checked="True" />
-            </div>
-            <div class="grid_24 error_msg">
-                <asp:Label ID="lblAddKpiGroupMessage" runat="server"></asp:Label>
-            </div>
-            <div class="clear">
-            </div>
-            <div class="">
-                <asp:Button ID="BtnAddKpiGroup" runat="server" Text="Add" Visible="true" OnClick="BtnAddKpiGroup_Click" />
-                <input id="BtnCancel" type="button" value="Cancel" onclick="CloseAddWardPopup()" />
-            </div>
-        </div>
+                    </asp:DropDownList>
+                    <div class="clear">
+                    </div>
+                    <asp:RequiredFieldValidator ID="rfvKPIGroupName" ValidationGroup="KPIDetails" runat="server" ErrorMessage="KPI Group Name is required"
+                        ControlToValidate="ddlKPIGroupName" Display="Dynamic"></asp:RequiredFieldValidator>
 
-    </div>
+                    <div style="display: none">
 
-                </div>
-                
+                        <div id="add-ward-popup" title="Add Ward Group">
+                            <div class="grid_12">
+                                <div class="grid_small_left">
+                                    <asp:Label ID="Label4" runat="server" Text="KPI Group Name :"></asp:Label>
+                                </div>
+                                <div class="grid_small_right">
+                                    <asp:TextBox ID="txtKPIGroupName" runat="server" MaxLength="100"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                        ErrorMessage="*" ControlToValidate="txtKPIGroupName" ValidationGroup="KPIGroup"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="clear">
+                                </div>
+                                <div class="grid_small_left">
+                                    <asp:Label ID="Label5" runat="server" Text="Is Active :"></asp:Label>
+                                </div>
+                                <div class="grid_small_right">
+                                    <asp:CheckBox ID="chbIsActive" runat="server" Checked="True" />
+                                </div>
+                                <div class="grid_24 error_msg">
+                                    <asp:Label ID="lblAddKpiGroupMessage" runat="server"></asp:Label>
+                                </div>
+                                <div class="clear">
+                                </div>
+                                <div class="">
+                                    <asp:Button ID="BtnAddKpiGroup" runat="server" Text="Add" Visible="true" OnClick="BtnAddKpiGroup_Click" />
+                                    <input id="BtnCancel" type="button" value="Cancel" onclick="CloseAddWardPopup()" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </ContentTemplate>
 
-                    
+
 
             </asp:UpdatePanel>
-            
+
 
 
 

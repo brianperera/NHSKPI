@@ -14,22 +14,41 @@ public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         if (!IsPostBack)
         {
-            PopulateHospitalList();
+            if (Request.QueryString["Id"] != null)
+            {
+                btnUpdate.Visible = true;
+            }
+            else
+            {
+                btnSave.Visible = true;
+            }
+        }
+
+        if (NHSUser.RoleId == (int)Structures.Role.SuperUser)
+        {
+            ddlNewsType.Items.Add("KPI News");
+            ddlNewsType.Items.Add("Hospital News");
+        }
+        else
+        {
+            ddlNewsType.Items.Add("KPI News");
         }
     }
+
     protected void btnSave_Click(object sender, EventArgs e)
     {
         NewsService newsService = new NewsService();
 
-        if (NHSUser.RoleId == (int)Structures.Role.SuperUser && ddlHospital.SelectedValue == "*")
+        if (NHSUser.RoleId == (int)Structures.Role.SuperUser && ddlNewsType.SelectedValue == "KPI News")
         {
             KPINews news = new KPINews();
             news.Title = txtKPINewsTitle.Text;
             news.Description = txtDescription.Text;
             news.CreatedDate = DateTime.Today;
-            news.IsActive = true;
+            news.IsActive = chkIsActive.Checked;
 
             newsService.InserKPINews(news);
         }
@@ -37,10 +56,7 @@ public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
         {
             KPIHospitalNews news = new KPIHospitalNews();
 
-            int hospitalID;
-            int.TryParse(ddlHospital.SelectedValue, out hospitalID);
-
-            news.HospitalId = hospitalID;
+            news.HospitalId = NHSUser.HospitalId;
             news.Title = txtKPINewsTitle.Text;
             news.Description = txtDescription.Text;
             news.CreatedDate = DateTime.Today;
@@ -70,14 +86,6 @@ public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
         }
     }
 
-    public DataView AllHospitals
-    {
-        get
-        {
-            return HospitalController.GetAllHospitals();
-        }
-    }
-
     public User NHSUser
     {
         get
@@ -99,20 +107,8 @@ public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
         }
     }
 
-    private void PopulateHospitalList()
+    protected void btnUpdate_Click(object sender, EventArgs e)
     {
-        if (NHSUser.RoleId == (int)Structures.Role.SuperUser)
-        {
-            ddlHospital.DataSource = AllHospitals;
-            ddlHospital.DataValueField = "Code";
-            ddlHospital.DataTextField = "Name";
-            ddlHospital.DataBind();
 
-            ddlHospital.Items.Insert(0, new ListItem("All", "*"));
-        }
-        else
-        {
-            ddlHospital.Items.Insert(0, new ListItem(NHSUser.HospitalName, NHSUser.HospitalId.ToString()));
-        }
     }
 }

@@ -7,6 +7,7 @@ using NHSKPIDataService.Util;
 using NHSKPIDataService.Models;
 using NHSKPIBusinessControllers;
 using System.Configuration;
+using NHSKPIDataService.Services;
 
 public partial class login : System.Web.UI.Page
 {
@@ -60,7 +61,15 @@ public partial class login : System.Web.UI.Page
         if (!IsPostBack)
         {
             lblMessage.Visible = false;
+            LoadNews();
         }
+    }
+
+    private void LoadNews()
+    {
+        NewsService newsService = new NewsService();
+        LstVwKPINews.DataSource = newsService.SearchKPINews(new KPINews(), -1, true);
+        LstVwKPINews.DataBind();
     }
 
     #endregion

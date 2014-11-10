@@ -255,6 +255,14 @@
 
 </ul>
 </li>
+
+<li id="lnkNews" runat="server" visible="false"><a href="#"><span>News</span></a>
+<ul>
+<li><a href="../News/KPINewsUpdate.aspx"><span>Add</span></a></li>
+<li><a href="../User/KPINewsSearch.aspx"><span>Update</span></a></li>
+</ul>
+</li>
+
 <li><a href="#"><span>User</span></a>
 <ul>
 <li><a href="../User/UserUpdate.aspx"><span>Add</span></a></li>

@@ -1880,3 +1880,15 @@ letter-spacing: 0.02em;
 }
 
 /*Wizard Control Styles - End*/
+
+/*News Articles - Start*/
+
+.News-Article {
+    margin-top:20px;
+}
+
+.News-Article h3{
+    color:white;
+}
+
+/*News Articles - End*/

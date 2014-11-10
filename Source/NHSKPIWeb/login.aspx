@@ -81,13 +81,20 @@
        
         
         <div class="grid_12 prefix_1 lgn_messages">
-            <div class="grid_11"><h2>New Features</h2><p>1. Bulk target and update facility has been implemented. </p>
-            <p>2. Facility to enter comments against each KPI.</p>
-            
+            <div class="grid_11">
+                <h2>NHS KPI News</h2>
+                <asp:ListView ID="LstVwKPINews" runat="server">
+                    <ItemTemplate>
+                        <div class="News-Article">
+                            <h3><%#Eval("Title")%></h3>
+                            <p><%#Eval("Description")%></p>
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>            
             </div>
-            <div class="grid_11 prefix_1"><h2>Deadlines</h2>
-            <p>1. All the data entry has to be completed 15th working day of the month.</p>
-            
+            <div class="grid_11 prefix_1">
+                <h2>Hospital News</h2>
+                <p>1. All the data entry has to be completed 15th working day of the month.</p>
             </div>
             
         </div>

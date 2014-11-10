@@ -16,10 +16,11 @@
         <div class="clear">
         </div>
         <div class="grid_8">
-            <asp:Label ID="LblHospital" runat="server" Text="Hospital :"></asp:Label>
+            <asp:Label ID="LblNewsType" runat="server" Text="News Type :"></asp:Label>
         </div>
         <div class="grid_16">
-            <asp:DropDownList ID="ddlHospital" runat="server"/>
+            <asp:DropDownList ID="ddlNewsType" runat="server">
+            </asp:DropDownList>
             <div class="clear">
             </div>
         </div>
@@ -38,15 +39,22 @@
         <div class="clear">
         </div>
         <div class="grid_8">
-            <asp:Label ID="lblIsActive" runat="server" Text="Description :"></asp:Label>
+            <asp:Label ID="lblDescription" runat="server" Text="Description :"></asp:Label>
         </div>
         <div class="grid_16">
             <asp:TextBox id="txtDescription" TextMode="multiline" runat="server" />
         </div>
+
+        <div class="grid_8">
+            <asp:Label ID="lblIsActive" runat="server" Text="Is Active :"></asp:Label>
+        </div>
+        <div class="grid_16">
+            <asp:CheckBox ID="chkIsActive" runat="server" Checked="True" />
+        </div>
+
         <div class="grid_16 prefix_8">
-            <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" Visible="False" />
-            <%--<asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click"
-                Visible="False" />--%>
+            <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" Visible="False"/>
+            <asp:Button ID="btnUpdate" runat="server" Text="Update" Visible="False" OnClick="btnUpdate_Click" />
         </div>
         <div class="clear">
         </div>

@@ -55,4 +55,15 @@
         <div class="clear Hgap10 ">
         </div>
     </div>
+    <div class="KPI-Hospital-News">
+        <h2><asp:Label ID="lbHospitalNews" runat="server"></asp:Label></h2>
+        <asp:ListView ID="LstVwKPIHospitalNews" runat="server">
+            <ItemTemplate>
+                <div class="News-Article">
+                    <h3><%#Eval("Title")%></h3>
+                    <p><%#Eval("Description")%></p>
+                </div>
+            </ItemTemplate>
+        </asp:ListView>
+    </div>
 </asp:Content>

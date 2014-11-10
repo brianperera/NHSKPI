@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using NHSKPIBusinessControllers;
 using NHSKPIDataService.Models;
+using NHSKPIDataService.Services;
 
 public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
 {
@@ -42,7 +43,17 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
             LoadWardGroup();
             GeneratDashBoardDetail();
             SetTab();
+            LoadKPIHospitalNews();
         }
+    }
+
+    private void LoadKPIHospitalNews()
+    {
+        lbHospitalNews.Text = string.Format("{0} News", Master.NHSUser.HospitalName);
+
+        NewsService newsService = new NewsService();
+        LstVwKPIHospitalNews.DataSource = newsService.SearchKPIHospitalNews(new KPIHospitalNews(), -1, Master.NHSUser.HospitalId, true); 
+        LstVwKPIHospitalNews.DataBind();
     }
 
     #endregion

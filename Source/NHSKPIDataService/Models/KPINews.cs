@@ -21,7 +21,7 @@ namespace NHSKPIDataService.Models
         {
             try
             {
-                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Insert_KPIHospitalNews);
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Insert_KPINews);
 
                 db.AddInParameter(dbCommand, "@Title", DbType.String, Title);
                 db.AddInParameter(dbCommand, "@Description", DbType.String, Description);
@@ -60,7 +60,7 @@ namespace NHSKPIDataService.Models
                         item.Id = intVal;
 
                     item.Title = results["Title"].ToString();
-                    item.Title = results["Description"].ToString();
+                    item.Description = results["Description"].ToString();
 
                     if (bool.TryParse(results["IsActive"].ToString(), out boolVal))
                         item.IsActive = boolVal;
@@ -101,7 +101,7 @@ namespace NHSKPIDataService.Models
 
         public List<KPIHospitalNews> Search(Database db, DbTransaction transaction, int newsId, int hospitalId, bool isActive)
         {
-            DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Search_KPINews);
+            DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Search_KPIHospitalNews);
 
             db.AddInParameter(dbCommand, "@Id", DbType.Int32, newsId);
             db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
@@ -125,7 +125,7 @@ namespace NHSKPIDataService.Models
                         item.Id = intVal;
 
                     item.Title = results["Title"].ToString();
-                    item.Title = results["Description"].ToString();
+                    item.Description = results["Description"].ToString();
 
                     if (bool.TryParse(results["IsActive"].ToString(), out boolVal))
                         item.IsActive = boolVal;
