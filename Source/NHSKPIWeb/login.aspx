@@ -13,7 +13,7 @@
     <meta charset="UTF-8" />
     <link  href="assets/images/favicon.ico" type="image/x-icon" rel="icon"/>
       <link  href="assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
-    <title>NHS KPI Data Entry Portal</title>
+    <title>Login</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -91,10 +91,6 @@
                         </div>
                     </ItemTemplate>
                 </asp:ListView>            
-            </div>
-            <div class="grid_11 prefix_1">
-                <h2>Hospital News</h2>
-                <p>1. All the data entry has to be completed 15th working day of the month.</p>
             </div>
             
         </div>

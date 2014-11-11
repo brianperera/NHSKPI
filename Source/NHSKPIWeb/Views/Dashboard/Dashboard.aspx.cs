@@ -18,6 +18,14 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
 
     #region Properties
 
+    public string KPINewsHeader
+    {
+        get
+        {
+            return string.Format("{0} News", Master.NHSUser.HospitalName);
+        }
+    }
+
     public Configuration NHSConfiguration
     {
         get
@@ -39,7 +47,6 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            
             LoadWardGroup();
             GeneratDashBoardDetail();
             SetTab();
@@ -49,10 +56,13 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
 
     private void LoadKPIHospitalNews()
     {
-        lbHospitalNews.Text = string.Format("{0} News", Master.NHSUser.HospitalName);
+        if (Request.UrlReferrer != null && Request.UrlReferrer.ToString().Contains("login"))
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "tmp", "<script type='text/javascript'>ShowHospitalNewsPopup();</script>", false);   
+        }
 
         NewsService newsService = new NewsService();
-        LstVwKPIHospitalNews.DataSource = newsService.SearchKPIHospitalNews(new KPIHospitalNews(), -1, Master.NHSUser.HospitalId, true); 
+        LstVwKPIHospitalNews.DataSource = newsService.SearchKPIHospitalNews(new KPIHospitalNews(), -1, Master.NHSUser.HospitalId, true);
         LstVwKPIHospitalNews.DataBind();
     }
 
@@ -63,160 +73,160 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
     private void GeneratDashBoardDetail()
     {
 
-        
+
         System.Text.StringBuilder strDashBoardHeader = new System.Text.StringBuilder();
-        strDashBoardHeader.Append("<table cellspacing='0' border='1' style='border-collapse: collapse;' class='grid'>"+
-            "<tr>"+
+        strDashBoardHeader.Append("<table cellspacing='0' border='1' style='border-collapse: collapse;' class='grid'>" +
+            "<tr>" +
                 "<td class='border_less' colspan='2'>" +
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Apr"+
-                    "</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "May</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Jun</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Jul</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Aug</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Sep</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Oct</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Nov</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Dec</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Jan</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Feb</label>"+
-                "</td>"+
-                "<td class='hdr_bg' colspan='2'>"+
-                    "<label>"+
-                        "Mar</label>"+
-                "</td>"+
-            "</tr>"+            
-            "<tr>"+
-                "<td class='border_less' colspan='2'>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-               "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
-                "<td class='alert-success'>"+
-                    "<i class='icon-ok'></i>"+
-                "</td>"+
-                "<td class='alert-danger'>"+
-                    "<i class='icon-remove'></i>"+
-                "</td>"+
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Apr" +
+                    "</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "May</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Jun</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Jul</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Aug</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Sep</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Oct</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Nov</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Dec</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Jan</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Feb</label>" +
+                "</td>" +
+                "<td class='hdr_bg' colspan='2'>" +
+                    "<label>" +
+                        "Mar</label>" +
+                "</td>" +
+            "</tr>" +
+            "<tr>" +
+                "<td class='border_less' colspan='2'>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+               "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
+                "<td class='alert-success'>" +
+                    "<i class='icon-ok'></i>" +
+                "</td>" +
+                "<td class='alert-danger'>" +
+                    "<i class='icon-remove'></i>" +
+                "</td>" +
             "</tr>");
         DataSet dsWard = new NHSKPIDataService.Services.UtilService().GetDashBoardData(Master.NHSUser.HospitalId, int.Parse(ddlWardGroup.SelectedValue));
         DataSet dsKPI = new NHSKPIDataService.Services.UtilService().GetDashBoardData(Master.NHSUser.HospitalId, int.Parse(ddlWardGroup.SelectedValue));
         DataSet dsData = new NHSKPIDataService.Services.UtilService().GetDashBoardData(Master.NHSUser.HospitalId, int.Parse(ddlWardGroup.SelectedValue));
-        
-        
+
+
         int newRow = 0;
         System.Text.StringBuilder strDashBoardItem = new System.Text.StringBuilder();
         foreach (DataRow rowWard in dsWard.Tables[0].Rows)
         {
             DateTime targetMonthFrom = new DateTime(((DateTime.Now.Month >= 4 ? DateTime.Now.Year + 1 : DateTime.Now.Year) - 1), 4, 1);
             DateTime targetMonthTo = targetMonthFrom.AddYears(1).AddDays(-1);
-            
+
 
             for (DateTime targetMonth = targetMonthFrom; targetMonth < targetMonthTo; targetMonth = targetMonth.AddMonths(1))
-            {               
+            {
                 int com = 0;
                 int incom = 0;
 
                 foreach (DataRow rowKPI in dsKPI.Tables[1].Rows)
                 {
                     DataRow[] rowData = dsData.Tables[2].Select("WardName = '" + rowWard["WardName"].ToString() + "' AND TargetMonth = '" + targetMonth.Date.ToString("yyyy-MM-dd") + "' AND KPIId = " + Convert.ToInt32(rowKPI["Id"]));
-                    
+
 
                     if (rowData.Length > 0)
                     {
@@ -227,12 +237,12 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
                                 incom++;
 
                             }
-                            
+
                             else
                             {
                                 com++;
                             }
-                            
+
                         }
                     }
                     else
@@ -242,7 +252,7 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
                         incom++;
                     }
 
-                    
+
                 }
 
                 if (newRow == 0)
@@ -280,8 +290,8 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
                     newRow = 0;
                 }
             }
-                            
-            
+
+
         }
         strDashBoardHeader.Append(strDashBoardItem.ToString());
         strDashBoardHeader.Append("</table>");
@@ -295,13 +305,13 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
     private void LoadWardGroup()
     {
 
-       DataSet ds = new WardGroupController().SearchWardGroup(string.Empty, 0, true);
-       ddlWardGroup.DataSource = ds.Tables[0];
-       ddlWardGroup.DataTextField = "WardGroupName";
-       ddlWardGroup.DataValueField = "Id";
-       ddlWardGroup.DataBind();
-       ListItem li = new ListItem("--ALL--", "0");
-       ddlWardGroup.Items.Insert(0, li);
+        DataSet ds = new WardGroupController().SearchWardGroup(string.Empty, 0, true);
+        ddlWardGroup.DataSource = ds.Tables[0];
+        ddlWardGroup.DataTextField = "WardGroupName";
+        ddlWardGroup.DataValueField = "Id";
+        ddlWardGroup.DataBind();
+        ListItem li = new ListItem("--ALL--", "0");
+        ddlWardGroup.Items.Insert(0, li);
 
     }
 

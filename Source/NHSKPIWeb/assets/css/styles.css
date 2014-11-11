@@ -1883,12 +1883,20 @@ letter-spacing: 0.02em;
 
 /*News Articles - Start*/
 
-.News-Article {
+.News-Article, .Hospital-News-Article{
     margin-top:20px;
 }
 
 .News-Article h3{
     color:white;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.Hospital-News-Article h4{
+    color:black;
+    margin-top:10px;
+    margin-bottom:10px;
 }
 
 /*News Articles - End*/

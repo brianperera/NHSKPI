@@ -55,15 +55,31 @@
         <div class="clear Hgap10 ">
         </div>
     </div>
-    <div class="KPI-Hospital-News">
-        <h2><asp:Label ID="lbHospitalNews" runat="server"></asp:Label></h2>
+    <script>
+        function ShowHospitalNewsPopup() {
+            $(function () {
+                var dlg = $("#KPI-Hospital-News").dialog({
+                    resizable: false,
+                    modal: false
+
+                });
+                dlg.parent().appendTo(jQuery("form:first"));
+            });
+        }
+        function CloseHospitalNewsPopup() {
+            $("#KPI-Hospital-News").dialog("close");
+        }
+    </script>
+    <div style="display:none">
+        <div id="KPI-Hospital-News" class="KPI-Hospital-News" title="<%= this.KPINewsHeader %>">
         <asp:ListView ID="LstVwKPIHospitalNews" runat="server">
             <ItemTemplate>
-                <div class="News-Article">
-                    <h3><%#Eval("Title")%></h3>
+                <div class="Hospital-News-Article">
+                    <h4><%#Eval("Title")%></h4>
                     <p><%#Eval("Description")%></p>
                 </div>
             </ItemTemplate>
         </asp:ListView>
+    </div>
     </div>
 </asp:Content>
