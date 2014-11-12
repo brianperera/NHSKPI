@@ -12,13 +12,56 @@ using System.Web.UI.WebControls;
 
 public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
+    public string KPINews = "KPI News";
+    public string HospitalNews = "Hospital News";
 
-        if (!IsPostBack)
+    public int NewsArticleId {
+        get
         {
+            int newsArticleId = 0;
+
             if (Request.QueryString["Id"] != null)
             {
+                int.TryParse(Request.QueryString["Id"], out newsArticleId);
+            }
+
+            return newsArticleId;
+        }
+    }
+
+    public string NewsType
+    {
+        get
+        {
+            string newsType = string.Empty;
+
+            if (Request.QueryString["Type"] != null)
+            {
+                newsType = Request.QueryString["Type"];
+            }
+
+            return newsType;
+        }
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            if (NHSUser.RoleId == (int)Structures.Role.SuperUser)
+            {
+                ddlNewsType.Items.Add(KPINews);
+                ddlNewsType.Items.Add(HospitalNews);
+            }
+            else
+            {
+                ddlNewsType.Items.Add(KPINews);
+            }
+
+            if (NewsArticleId > 0 && !string.IsNullOrEmpty(NewsType))
+            {
+                LoadNewsArticle(NewsArticleId, NewsType);
+
                 btnUpdate.Visible = true;
             }
             else
@@ -26,15 +69,32 @@ public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
                 btnSave.Visible = true;
             }
         }
+    }
 
-        if (NHSUser.RoleId == (int)Structures.Role.SuperUser)
-        {
-            ddlNewsType.Items.Add("KPI News");
-            ddlNewsType.Items.Add("Hospital News");
+    private void LoadNewsArticle(int articleId, string type)
+    {
+        KPINews news = new KPINews();
+        NewsService newsService = new NewsService();
+
+        if (type == "KPI")
+        {          
+            news = newsService.SearchKPINews(news, articleId, null).SingleOrDefault();
+
+            txtKPINewsTitle.Text = news.Title;
+            txtDescription.Text = news.Description;
+            chkIsActive.Checked = news.IsActive;
+            ddlNewsType.SelectedValue = KPINews;
+
+            //news = newsService.UpdateKPINews(news, articleId, true);
         }
-        else
+        else if (type == "Hospital")
         {
-            ddlNewsType.Items.Add("KPI News");
+            news = newsService.SearchKPIHospitalNews(new KPIHospitalNews(), articleId, NHSUser.HospitalId, null).SingleOrDefault();
+
+            txtKPINewsTitle.Text = news.Title;
+            txtDescription.Text = news.Description;
+            chkIsActive.Checked = news.IsActive;
+            ddlNewsType.SelectedValue = HospitalNews;
         }
     }
 
@@ -50,7 +110,16 @@ public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
             news.CreatedDate = DateTime.Today;
             news.IsActive = chkIsActive.Checked;
 
-            newsService.InserKPINews(news);
+            if (newsService.InserKPINews(news))
+            {
+                lblAddMessage.Text = "News Not Added";
+                lblAddMessage.CssClass = "alert-danger";
+            }
+            else
+            {
+                lblAddMessage.Text = "News Added";
+                lblAddMessage.CssClass = "alert-success";
+            }
         }
         else
         {
@@ -60,9 +129,18 @@ public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
             news.Title = txtKPINewsTitle.Text;
             news.Description = txtDescription.Text;
             news.CreatedDate = DateTime.Today;
-            news.IsActive = true;
+            news.IsActive = chkIsActive.Checked;
 
-            newsService.InserKPIHospitalNews(news);
+            if (newsService.InserKPIHospitalNews(news))
+            {
+                lblAddMessage.Text = "News Not Added";
+                lblAddMessage.CssClass = "alert-danger";
+            }
+            else
+            {
+                lblAddMessage.Text = "News Added";
+                lblAddMessage.CssClass = "alert-success";
+            }
         }
     }
 
@@ -109,6 +187,49 @@ public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
 
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
+        NewsService newsService = new NewsService();
 
+        if (NHSUser.RoleId == (int)Structures.Role.SuperUser && ddlNewsType.SelectedValue == "KPI News")
+        {
+            KPINews news = new KPINews();
+            news.Title = txtKPINewsTitle.Text;
+            news.Description = txtDescription.Text;
+            news.CreatedDate = DateTime.Today;
+            news.IsActive = chkIsActive.Checked;
+            news.Id = NewsArticleId;
+
+            if (newsService.UpdateKPINews(news))
+            {
+                lblAddMessage.Text = "News Not Updated";
+                lblAddMessage.CssClass = "alert-danger";
+            }
+            else
+            {
+                lblAddMessage.Text = "News Updated";
+                lblAddMessage.CssClass = "alert-success";
+            }
+        }
+        else
+        {
+            KPIHospitalNews news = new KPIHospitalNews();
+
+            news.HospitalId = NHSUser.HospitalId;
+            news.Title = txtKPINewsTitle.Text;
+            news.Description = txtDescription.Text;
+            news.CreatedDate = DateTime.Today;
+            news.IsActive = chkIsActive.Checked;
+            news.Id = NewsArticleId;
+
+            if (newsService.UpdateKPIHospitalNews(news))
+            {
+                lblAddMessage.Text = "News Not Updated";
+                lblAddMessage.CssClass = "alert-danger";
+            }
+            else
+            {
+                lblAddMessage.Text = "News Updated";
+                lblAddMessage.CssClass = "alert-success";
+            }
+        }
     }
 }

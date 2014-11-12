@@ -19,8 +19,10 @@ namespace NHSKPIDataService.Services
 
         #endregion     
 
-        public void InserKPINews(KPINews news)
+        public bool InserKPINews(KPINews news)
         {
+            bool result = false;
+
             try
             {
                 Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
@@ -28,7 +30,7 @@ namespace NHSKPIDataService.Services
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
-                news.Add(db, transaction);
+                result = news.Add(db, transaction);
 
                 transaction.Commit();
             }
@@ -45,9 +47,43 @@ namespace NHSKPIDataService.Services
                     connection.Dispose();
                 }
             }
+
+            return result;
         }
 
-        public List<KPINews> SearchKPINews(KPINews news, int newsId, bool isActive)
+        public bool UpdateKPINews(KPINews news)
+        {
+            bool result = false;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                result = news.Update(db, transaction);
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+
+            return result;
+        }
+
+        public List<KPINews> SearchKPINews(KPINews news, int newsId, bool? isActive)
         {
             try
             {
@@ -77,8 +113,10 @@ namespace NHSKPIDataService.Services
             }
         }
 
-        public void InserKPIHospitalNews(KPIHospitalNews news)
+        public bool InserKPIHospitalNews(KPIHospitalNews news)
         {
+            bool result = false;
+
             try
             {
                 Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
@@ -86,7 +124,7 @@ namespace NHSKPIDataService.Services
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
-                news.Add(db, transaction);
+                result = news.Add(db, transaction);
                 transaction.Commit();
             }
             catch (Exception ex)
@@ -102,9 +140,42 @@ namespace NHSKPIDataService.Services
                     connection.Dispose();
                 }
             }
+
+            return result;
         }
 
-        public List<KPIHospitalNews> SearchKPIHospitalNews(KPIHospitalNews news, int newsId, int hospitalId,bool isActive)
+        public bool UpdateKPIHospitalNews(KPIHospitalNews news)
+        {
+            bool result = false;
+
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                result = news.Update(db, transaction);
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+
+            return result;
+        }
+
+        public List<KPIHospitalNews> SearchKPIHospitalNews(KPIHospitalNews news, int newsId, int hospitalId,bool? isActive)
         {
             try
             {

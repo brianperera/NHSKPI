@@ -125,7 +125,9 @@ namespace NHSKPIDataService.Util
         public static readonly string SP_Set_Update_Department_Head = "uspDepartmentHeadInsertUpdate";
 
         public static readonly string SP_Insert_KPINews = "uspKPINewsInsert";
+        public static readonly string SP_Update_KPINews = "uspKPINewsUpdate";
         public static readonly string SP_Insert_KPIHospitalNews = "uspKPIHospitalNewsInsert";
+        public static readonly string SP_Update_KPIHospitalNews = "uspKPIHospitalNewsUpdate";
         public static readonly string SP_Search_KPINews = "uspKPINewsSearch";
         public static readonly string SP_Search_KPIHospitalNews = "uspKPIHospitalNewsSearch";
         #endregion

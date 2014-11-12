@@ -188,9 +188,12 @@ public partial class Views_Shared_MasterPage : System.Web.UI.MasterPage
             lnkSpecialtyLevelTarget.Visible = true;
             lnkSpecialtyLevelData.Visible = true;
             lnkSpecialty.Visible = true;
-            lnkNews.Visible = true;
         }
 
+        if (NHSUser.RoleId != (int)Structures.Role.SuperUser || NHSUser.RoleId != (int)Structures.Role.Admin)
+        {
+            lnkNews.Visible = true;
+        }
     }
 
     #endregion

@@ -16,26 +16,58 @@ namespace NHSKPIDataService.Models
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }
+        public string NewsType { get; set; }
 
-        public virtual void Add(Database db, DbTransaction transaction)
+        public KPINews()
         {
+            NewsType = "KPI";
+        }
+
+        public virtual bool Add(Database db, DbTransaction transaction)
+        {
+            int result = 0;
+
             try
             {
                 DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Insert_KPINews);
-
+                //db.AddInParameter(dbCommand, "@Id", DbType.Int32, Id);
                 db.AddInParameter(dbCommand, "@Title", DbType.String, Title);
                 db.AddInParameter(dbCommand, "@Description", DbType.String, Description);
                 db.AddInParameter(dbCommand, "@IsActive", DbType.Boolean, IsActive);
 
-                db.ExecuteNonQuery(dbCommand, transaction);
+                result = db.ExecuteNonQuery(dbCommand, transaction);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            return result > 0 ? true : false;
         }
 
-        public List<KPINews> Search(Database db, DbTransaction transaction, int newsId,bool isActive)
+        public virtual bool Update(Database db, DbTransaction transaction)
+        {
+            int result = 0;
+
+            try
+            {
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Update_KPINews);
+                db.AddInParameter(dbCommand, "@Id", DbType.Int32, Id);
+                db.AddInParameter(dbCommand, "@Title", DbType.String, Title);
+                db.AddInParameter(dbCommand, "@Description", DbType.String, Description);
+                db.AddInParameter(dbCommand, "@IsActive", DbType.Boolean, IsActive);
+
+                result = db.ExecuteNonQuery(dbCommand, transaction);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result > 0 ? true : false;
+        }
+
+        public List<KPINews> Search(Database db, DbTransaction transaction, int newsId,bool? isActive)
         {
             DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Search_KPINews);
 
@@ -80,26 +112,58 @@ namespace NHSKPIDataService.Models
     {
         public int HospitalId { get; set; }
 
-        public override void Add(Database db, DbTransaction transaction)
+        public KPIHospitalNews()
         {
+            NewsType = "Hospital";
+        }
+
+        public override bool Add(Database db, DbTransaction transaction)
+        {
+            int result = 0;
+
             try
             {
                 DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Insert_KPIHospitalNews);
-
+                //db.AddInParameter(dbCommand, "@Id", DbType.Int32, Id);
                 db.AddInParameter(dbCommand, "@Title", DbType.String, Title);
                 db.AddInParameter(dbCommand, "@Description", DbType.String, Description);
                 db.AddInParameter(dbCommand, "@IsActive", DbType.Boolean, IsActive);
                 db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, HospitalId);
 
-                db.ExecuteNonQuery(dbCommand, transaction);
+                result = db.ExecuteNonQuery(dbCommand, transaction);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            return result > 0 ? true : false;
         }
 
-        public List<KPIHospitalNews> Search(Database db, DbTransaction transaction, int newsId, int hospitalId, bool isActive)
+        public override bool Update(Database db, DbTransaction transaction)
+        {
+            int result = 0;
+
+            try
+            {
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Update_KPIHospitalNews);
+                db.AddInParameter(dbCommand, "@Id", DbType.Int32, Id);
+                db.AddInParameter(dbCommand, "@Title", DbType.String, Title);
+                db.AddInParameter(dbCommand, "@Description", DbType.String, Description);
+                db.AddInParameter(dbCommand, "@IsActive", DbType.Boolean, IsActive);
+                db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, HospitalId);
+
+                result = db.ExecuteNonQuery(dbCommand, transaction);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result > 0 ? true : false;
+        }
+
+        public List<KPIHospitalNews> Search(Database db, DbTransaction transaction, int newsId, int hospitalId, bool? isActive)
         {
             DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Search_KPIHospitalNews);
 

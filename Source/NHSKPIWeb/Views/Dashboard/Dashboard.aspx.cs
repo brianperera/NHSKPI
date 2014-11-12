@@ -56,14 +56,16 @@ public partial class Views_Dashboard_Dashboard : System.Web.UI.Page
 
     private void LoadKPIHospitalNews()
     {
-        if (Request.UrlReferrer != null && Request.UrlReferrer.ToString().Contains("login"))
-        {
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "tmp", "<script type='text/javascript'>ShowHospitalNewsPopup();</script>", false);   
-        }
-
         NewsService newsService = new NewsService();
-        LstVwKPIHospitalNews.DataSource = newsService.SearchKPIHospitalNews(new KPIHospitalNews(), -1, Master.NHSUser.HospitalId, true);
+        List<KPIHospitalNews> hospitalNew = new List<KPIHospitalNews>();
+        hospitalNew = newsService.SearchKPIHospitalNews(new KPIHospitalNews(), -1, Master.NHSUser.HospitalId, true);
+        LstVwKPIHospitalNews.DataSource = hospitalNew;
         LstVwKPIHospitalNews.DataBind();
+
+        if (hospitalNew.Count > 0 && Request.UrlReferrer != null && Request.UrlReferrer.ToString().Contains("login"))
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "tmp", "<script type='text/javascript'>ShowHospitalNewsPopup();</script>", false);
+        }
     }
 
     #endregion

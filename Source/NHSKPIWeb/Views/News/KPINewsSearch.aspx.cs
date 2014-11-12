@@ -7,48 +7,37 @@ using NHSKPIBusinessControllers;
 using NHSKPIDataService;
 using NHSKPIDataService.Util;
 using System.IO;
+using NHSKPIDataService.Services;
+using NHSKPIDataService.Models;
 
 public partial class Views_News_KPINewsSearch : System.Web.UI.Page
 {
     #region Private Variables
 
-    private HospitalController hospitalController = null;
-    private NHSKPIDataService.Models.Hospital hospital = null;
-    
+    private User nhsUser;
+
     #endregion
 
     #region Public Properties
 
-    public HospitalController HospitalController
+    public User NHSUser
     {
         get
         {
-            if (hospitalController == null)
+            if (Session["NHSUser"] != null)
             {
-                hospitalController = new HospitalController();
+                nhsUser = (User)Session["NHSUser"];
+            }
+            else
+            {
+                Response.Redirect("~/login.aspx");
             }
 
-            return hospitalController;
+            return nhsUser;
         }
         set
         {
-            hospitalController = value;
-        }
-    }
-
-    public NHSKPIDataService.Models.Hospital Hospital
-    {
-        get
-        {
-            if (hospital == null)
-            {
-                hospital = new NHSKPIDataService.Models.Hospital();
-            }
-            return hospital;
-        }
-        set
-        {
-            hospital = value;
+            nhsUser = value;
         }
     }
 
@@ -58,28 +47,29 @@ public partial class Views_News_KPINewsSearch : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        LoadNews();
+    }
+
+    private void LoadNews()
+    {
+        NewsService newsService = new NewsService();
+        List<KPINews> hospitalNews = new List<KPINews>();
+        
+        List<KPIHospitalNews> activeHospitalNews = newsService.SearchKPIHospitalNews(new KPIHospitalNews(), -1, NHSUser.HospitalId, null);
+
+        if (activeHospitalNews != null)
         {
-            LoadSearchResult();
+            hospitalNews.AddRange(activeHospitalNews);
         }
-    }
 
-    #endregion
+        List<KPINews> activeKpiNews = newsService.SearchKPINews(new KPINews(), -1, null);
 
-    #region Search Button Click Event
+        if (activeKpiNews != null)
+        {
+            hospitalNews.AddRange(activeKpiNews);
+        }
 
-    protected void btnSearch_Click(object sender, EventArgs e)
-    {
-        LoadSearchResult();
-    }
-
-    #endregion
-
-    #region Load Search Result
-
-    private void LoadSearchResult()
-    {
-        gvSearchResult.DataSource = HospitalController.SearchHospital(txtHospitalName.Text, txtHospitalCode.Text, chkIsActive.Checked,0).Tables[0];
+        gvSearchResult.DataSource = hospitalNews;
         gvSearchResult.DataBind();
     }
 
