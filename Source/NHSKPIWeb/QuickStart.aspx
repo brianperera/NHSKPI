@@ -48,7 +48,7 @@
             <span>KPI Data Entry Portal</span>
         </div>
         <div class="client_name">
-            <img class="NHS_logo" alt="" src="assets/images/NHSlogo.gif" />
+            <%--<img class="NHS_logo" alt="" src="assets/images/NHSlogo.gif" />--%>
             <asp:Label class="hosName" ID="hosName" runat="server" Text=""></asp:Label>
             <asp:Label class="NHS_name" ID="NHS_name" runat="server" Text=""></asp:Label>
         </div>

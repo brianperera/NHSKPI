@@ -51,7 +51,7 @@
 <span>KPI Data Entry Portal</span>
 </div>
 <div class="client_name">
-<img class="NHS_logo"  alt="" src="../../assets/images/NHSlogo.gif" />
+<%--<img class="NHS_logo"  alt="" src="../../assets/images/NHSlogo.gif" />--%>
 <asp:Label class="hosName" ID="lblHospitalName" runat="server" Text=""></asp:Label>
 <asp:Label class="NHS_name" ID="lblHospitalType" runat="server" Text=""></asp:Label>
 </div>
@@ -303,7 +303,7 @@
     <footer>
 <div class="footer hidden container_96">
 
-                     <img alt="logo" src="../../assets/images/NHSlogo.gif">
+                     <%--<img alt="logo" src="../../assets/images/NHSlogo.gif">--%>
                    <span> Copyright &copy; 2013 by NHS Foundation Trust. All rights reserved. 
                      
                      
