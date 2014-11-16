@@ -105,6 +105,24 @@ namespace NHSKPIDataService.Models
             }
         }
 
+        public int GetID(Database db, DbTransaction transaction)
+        {
+            try
+            {
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Hospital_GetId);
+
+                db.AddInParameter(dbCommand, "@Code", DbType.String, this.HospitalCode);
+                db.AddOutParameter(dbCommand, "@Id", DbType.Int32, 10);
+                db.ExecuteNonQuery(dbCommand, transaction);
+
+                return Convert.ToInt32(db.GetParameterValue(dbCommand, "@Id"));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         #endregion
 
         #region Update

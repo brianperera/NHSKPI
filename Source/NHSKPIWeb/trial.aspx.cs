@@ -106,7 +106,7 @@ public partial class login : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            this.PopulateHospitalList();
+            //this.PopulateHospitalList();
         }
     }
     #endregion
@@ -114,10 +114,11 @@ public partial class login : System.Web.UI.Page
     #region Set Hospital
     private void SetHospital()
     {
-        if (ddlHospitalName.SelectedValue != "Other")
+        if (ddlHospitalName.SelectedHospitalName != "Other")
         {
-            Hospital.HospitalName = ddlHospitalName.SelectedItem.Text;
-            Hospital.HospitalCode = ddlHospitalName.SelectedItem.Value;
+            Hospital.HospitalName = ddlHospitalName.SelectedHospitalName;
+            Hospital.HospitalCode = ddlHospitalName.SelectedHospitalCode;
+            Hospital.Id = HospitalController.GetHospitalIdFromCode(Hospital);
         }
         else
         {
@@ -131,16 +132,16 @@ public partial class login : System.Web.UI.Page
         Hospital.IsActive = true;
     }
 
-    private void PopulateHospitalList()
-    {
-        ddlHospitalName.DataSource = AllHospitals;
-        ddlHospitalName.DataValueField = "Code";
-        ddlHospitalName.DataTextField = "Name";
-        ddlHospitalName.DataBind();
+    //private void PopulateHospitalList()
+    //{
+    //    ddlHospitalName.DataSource = AllHospitals;
+    //    ddlHospitalName.DataValueField = "Code";
+    //    ddlHospitalName.DataTextField = "Name";
+    //    ddlHospitalName.DataBind();
 
-        //Append the Other value to the datasource, this will allow the user to manualy key-in the hospital name
-        ddlHospitalName.Items.Insert(ddlHospitalName.Items.Count, new ListItem("Other"));
-    }
+    //    //Append the Other value to the datasource, this will allow the user to manualy key-in the hospital name
+    //    ddlHospitalName.Items.Insert(ddlHospitalName.Items.Count, new ListItem("Other"));
+    //}
     #endregion
 
     #region Set User
@@ -173,13 +174,20 @@ public partial class login : System.Web.UI.Page
         }
 
         SetHospital();
-        int id = HospitalController.AddHospital(Hospital);
+        //int id = HospitalController.AddHospital(Hospital);
 
-        Hospital.Id = id;
-        Hospital.HospitalCode = id.ToString("0000");
+        //if (id == -1)
+        //{
+        //    string msg = "Error! Hospital not added";
+        //    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + msg + "');", true);
+        //    return;
+        //}
+
+        //Hospital.Id = id;
+        //Hospital.HospitalCode = id.ToString("0000");
         HospitalController.UpdateHospital(Hospital);
 
-        SetUser(id);
+        SetUser(Hospital.Id);
         if (UserController.AddUser(NHSUser) < 0)
         {
             string msg = Constant.MSG_Hospital_Name_Exist.Replace("HOSPITAL_NAME", Hospital.HospitalName);
@@ -198,7 +206,19 @@ public partial class login : System.Web.UI.Page
 
             utilController.SendEmailNotification(emailMessage);
 
-            Response.Redirect("QuickStart.aspx", false);
+            //Login the new user
+            User user = UserController.UserLogin(txtUserName.Text, txtPassword.Text, Hospital.HospitalCode);
+            if (user != null)
+            {
+                Session["NHSUser"] = user;
+                Session["NHSConfiguration"] = UserController.ViewConfiguration();
+                Response.Redirect("QuickStart.aspx", false);
+            }
+            else
+            {
+                string msg = "User login failed";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + msg + "');", true);
+            }
         }
     }
 }

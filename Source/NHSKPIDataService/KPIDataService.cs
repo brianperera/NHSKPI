@@ -55,6 +55,36 @@ namespace NHSKPIDataService
                 }
             }
         }
+
+        public int GetHospitalIdFromCode(Hospital hospital)
+        {
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                int Id = hospital.GetID(db, transaction);
+                transaction.Commit();
+
+                return Id;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+        }
+
         #endregion
 
         #region Update Hospital

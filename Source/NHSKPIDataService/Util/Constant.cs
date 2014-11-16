@@ -23,6 +23,7 @@ namespace NHSKPIDataService.Util
 
         public static readonly string NHS_Database_Connection_Name  = "NHSKPI";
         public static readonly string SP_Hospital_Insert            = "uspHospitalInsert";
+        public static readonly string SP_Hospital_GetId             = "uspHospitalGetId";
         public static readonly string SP_Hospital_Update            = "uspHospitalUpdate";
         public static readonly string SP_Hospital_Search            = "uspHospitalSearch";
         public static readonly string SP_Hospital_ViewAll           = "uspHospitalViewAll";

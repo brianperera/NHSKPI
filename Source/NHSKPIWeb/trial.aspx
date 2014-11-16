@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="trial.aspx.cs" Inherits="login" %>
 
+<%@ Register src="Views/Shared/AutoSelectionDropDown.ascx" tagname="AutoSelectionDropDown" tagprefix="uc1" %>
+
 <!DOCTYPE html>
 <!--[if IE 7]> <html lang="en" class="ie7 no-js"> <![endif]-->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -83,11 +85,16 @@
                 <asp:TextBox ID="txtName" placeholder="Name" runat="server"></asp:TextBox><asp:RequiredFieldValidator
                     ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName"
                     Display="Dynamic"></asp:RequiredFieldValidator>
-                <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True">
+                New
+
+                <uc1:AutoSelectionDropDown ID="ddlHospitalName" runat="server" />
+
+                Old
+               <%-- <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True">
                     <asp:ListItem Selected="True" Text="Select Hospital" Value ="-1"></asp:ListItem>
-                </asp:DropDownList>
-                <asp:CompareValidator ID="cmpHospitalName" runat="server" ControlToValidate="ddlHospitalName"
-                Display="Dynamic" ErrorMessage="*" Operator="NotEqual" ValueToCompare="-1"></asp:CompareValidator>
+                </asp:DropDownList>--%>
+                <%--<asp:CompareValidator ID="cmpHospitalName" runat="server" ControlToValidate="ddlHospitalName"
+                Display="Dynamic" ErrorMessage="*" Operator="NotEqual" ValueToCompare="-1"></asp:CompareValidator>--%>
                 <asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox><%--<asp:RequiredFieldValidator
                     ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtCompanyName"
                     Display="Dynamic"></asp:RequiredFieldValidator>--%>

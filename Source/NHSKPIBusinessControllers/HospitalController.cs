@@ -41,6 +41,11 @@ namespace NHSKPIBusinessControllers
             return NHSService.AddHospital(hospital);
         }
 
+        public int GetHospitalIdFromCode(Hospital hospital)
+        {
+            return NHSService.GetHospitalIdFromCode(hospital);
+        }
+
         #endregion
 
         #region Update Hospital
