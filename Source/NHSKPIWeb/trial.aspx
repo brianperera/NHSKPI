@@ -85,11 +85,7 @@
                 <asp:TextBox ID="txtName" placeholder="Name" runat="server"></asp:TextBox><asp:RequiredFieldValidator
                     ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName"
                     Display="Dynamic"></asp:RequiredFieldValidator>
-                New
-
                 <uc1:AutoSelectionDropDown ID="ddlHospitalName" runat="server" />
-
-                Old
                <%-- <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True">
                     <asp:ListItem Selected="True" Text="Select Hospital" Value ="-1"></asp:ListItem>
                 </asp:DropDownList>--%>

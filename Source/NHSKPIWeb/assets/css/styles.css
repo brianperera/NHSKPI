@@ -1900,3 +1900,19 @@ letter-spacing: 0.02em;
 }
 
 /*News Articles - End*/
+
+/*Auto Complete - Start*/
+
+.AutocompleteControl {
+    position: relative;
+}
+
+.AutocompleteControl input {
+    width:83%;
+}
+
+.AutocompleteControl select {
+    width:8%;    
+}
+
+/*Auto Complete - End*/
