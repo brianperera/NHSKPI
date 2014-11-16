@@ -111,7 +111,7 @@ public partial class login : System.Web.UI.Page
 
     private User LogIn()
     {
-        return UserController.UserLogin(txtUserName.Text, txtPassword.Text, null);        
+        return UserController.UserLogin(txtUserName.Text, txtPassword.Text, Constant.HC);        
     }
 
     #endregion
