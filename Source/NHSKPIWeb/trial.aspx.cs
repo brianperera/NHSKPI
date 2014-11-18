@@ -114,7 +114,7 @@ public partial class login : System.Web.UI.Page
     #region Set Hospital
     private void SetHospital()
     {
-        if (ddlHospitalName.SelectedHospitalName != "Other")
+        if (ddlHospitalName.SelectedHospitalCode != "Other")
         {
             Hospital.HospitalName = ddlHospitalName.SelectedHospitalName;
             Hospital.HospitalCode = ddlHospitalName.SelectedHospitalCode;
@@ -122,7 +122,7 @@ public partial class login : System.Web.UI.Page
         }
         else
         {
-            Hospital.HospitalName = txtCompanyName.Text;
+            Hospital.HospitalName = ddlHospitalName.SelectedHospitalName;
             Hospital.HospitalCode = string.Empty;
         }
 

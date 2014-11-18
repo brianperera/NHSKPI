@@ -61,7 +61,7 @@
                     Make dashboards incredibly easy to produce</h1>
                 <h2>
                     With this free trial you can start collecting all the necessary KPIs instantly.</h2>
-                <ul>
+                <ul class="trial_info_points">
                     <li>Say goodbye to multiple Excel sheets</li>
                     <li>No more waiting and data duplication</li>
                     <li>Centrally located KPIS data</li>
@@ -91,7 +91,7 @@
                 </asp:DropDownList>--%>
                 <%--<asp:CompareValidator ID="cmpHospitalName" runat="server" ControlToValidate="ddlHospitalName"
                 Display="Dynamic" ErrorMessage="*" Operator="NotEqual" ValueToCompare="-1"></asp:CompareValidator>--%>
-                <asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox><%--<asp:RequiredFieldValidator
+                <%--<asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox>--%><%--<asp:RequiredFieldValidator
                     ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtCompanyName"
                     Display="Dynamic"></asp:RequiredFieldValidator>--%>
                 <asp:TextBox ID="txtPhoneName" placeholder="Phone Number" runat="server"></asp:TextBox><asp:RequiredFieldValidator

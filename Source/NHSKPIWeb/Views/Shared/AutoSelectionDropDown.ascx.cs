@@ -21,8 +21,30 @@ public partial class Views_Shared_AutoSelectionDropDown : System.Web.UI.UserCont
 
     private void SetHospital()
     {
-        SelectedHospitalName = ddlHospitalName.SelectedItem.Text;
-        SelectedHospitalCode = ddlHospitalName.SelectedItem.Value;
+        //SelectedHospitalName = ddlHospitalName.SelectedItem.Text;
+        //SelectedHospitalCode = ddlHospitalName.SelectedItem.Value;
+
+        bool isHospitalFound = false;
+
+        foreach (DataRowView item in AllHospitals)
+        {
+            if (item.Row["Name"].ToString() == txbAutoCompleteTextbox.Text)
+            {
+                SelectedHospitalCode = item.Row["Code"].ToString();
+                isHospitalFound = true;
+                break;
+            }
+        }
+
+        // Hospital Code exists
+        if (isHospitalFound)
+        {
+            SelectedHospitalName = txbAutoCompleteTextbox.Text;
+        }
+        else
+        {
+            SelectedHospitalCode = "Other";
+        }
     }
 
     private void PopulateHospitalList()
@@ -33,7 +55,7 @@ public partial class Views_Shared_AutoSelectionDropDown : System.Web.UI.UserCont
         ddlHospitalName.DataBind();
 
         //Append the Other value to the datasource, this will allow the user to manualy key-in the hospital name
-        ddlHospitalName.Items.Insert(ddlHospitalName.Items.Count, new ListItem("Other"));
+        //ddlHospitalName.Items.Insert(ddlHospitalName.Items.Count, new ListItem("Other"));
 
         string autoCompleteHospitalScript;
 
@@ -81,5 +103,10 @@ public partial class Views_Shared_AutoSelectionDropDown : System.Web.UI.UserCont
         {
             return HospitalController.GetAllHospitals();
         }
+    }
+
+    protected void ddlHospitalName_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        txbAutoCompleteTextbox.Text = ddlHospitalName.SelectedItem.Text;
     }
 }

@@ -66,19 +66,19 @@ function EnableWardDataEntryFields() {
 
 function ManageManualHospitalEntryField() {
 
-    $("#ddlHospitalName").change(function () {
+    //$("#ddlHospitalName").change(function () {
 
-        var hospitalDDLSelection = $('#ddlHospitalName :selected').text();
+    //    var hospitalDDLSelection = $('#ddlHospitalName :selected').text();
 
-        if (hospitalDDLSelection == "Other") {
-            $("#txtCompanyName").show();
-        }
-        else {
-            $("#txtCompanyName").hide();
-        }
+    //    if (hospitalDDLSelection == "Other") {
+    //        $("#txtCompanyName").show();
+    //    }
+    //    else {
+    //        $("#txtCompanyName").hide();
+    //    }
 
-        ChangeHopitalDropDownPlaceHolderColor();
-    });
+    //    ChangeHopitalDropDownPlaceHolderColor();
+    //});
 }
 
     function ChangeHopitalDropDownPlaceHolderColor()

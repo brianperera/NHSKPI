@@ -1554,8 +1554,8 @@ table.accessHide { position: absolute; left: -999999px; }
 .trial_wrap h2 {    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:500;margin:0px 0 35px 0;font-size:20px;}
 .trial_info {padding-left:20px; }
 .trial_info h1 {color: #2679B5;}
-.trial ul {margin-left:0;padding-left:30px}
- .trial ul li {padding: 0 0 0 10px;list-style-image:url(../images/trial_tick.png); font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:300;font-size:18px;line-height:32px}
+.trial_info_points {margin-left:0;padding-left:30px !important}
+ .trial_info_points li {padding: 0 0 0 10px;list-style-image:url(../images/trial_tick.png); font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:300;font-size:18px;line-height:32px}
  .trial_details h3 {font-family: "Open Sans",Arial,Helvetica,Sans-Serif;font-weight:700;margin:10px 0 5px 0;font-size:20px;color:#0568b4}
  .trial_details_wrap {padding:10px;text-align:center}
  
@@ -1580,10 +1580,10 @@ table.accessHide { position: absolute; left: -999999px; }
     position:fixed;
 }
 
-#txtCompanyName 
+/*#txtCompanyName 
 {
     display:none;
-}
+}*/
 
 .trial input[type=text]:hover, .trial input[type=password]:hover, .trial textarea:hover
 {
@@ -1916,3 +1916,17 @@ letter-spacing: 0.02em;
 }
 
 /*Auto Complete - End*/
+
+.ui-menu .ui-menu-item:hover {
+    background-image:none !important;
+}
+
+.ui-menu-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style-type: none !important;
+}
+
+.trial ul {
+    padding-left:0px;
+}
