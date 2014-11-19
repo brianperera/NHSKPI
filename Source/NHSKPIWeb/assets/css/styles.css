@@ -1930,3 +1930,11 @@ letter-spacing: 0.02em;
 .trial ul {
     padding-left:0px;
 }
+
+.repeatDeadlineNotificationPanel {
+    margin-bottom:10px;
+}
+
+.repeatPanelControls {
+    margin-right:10px;
+}
