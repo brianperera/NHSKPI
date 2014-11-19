@@ -29,7 +29,7 @@
                 <asp:ListItem Value="1">Email Facilities</asp:ListItem>
                 <asp:ListItem Value="2">Reminders</asp:ListItem>
                 <asp:ListItem Value="3">Download Data Sets</asp:ListItem>
-                <asp:ListItem Value="3">Bench Marking Module</asp:ListItem>
+                <asp:ListItem Value="4">Bench Marking Module</asp:ListItem>
             </asp:CheckBoxList>
             <div class="clear">
             </div>
