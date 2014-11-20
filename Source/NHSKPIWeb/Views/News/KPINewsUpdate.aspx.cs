@@ -235,6 +235,6 @@ public partial class Views_News_KPINewsUpdate : System.Web.UI.Page
 
     protected void ddlNewsType_SelectedIndexChanged(object sender, EventArgs e)
     {
-        targetDeadlineEntryPanel.Visible = string.Equals(HospitalNews, ddlNewsType.SelectedItem.Text) ? true : false;
+        //targetDeadlineEntryPanel.Visible = string.Equals(HospitalNews, ddlNewsType.SelectedItem.Text) ? true : false;
     }
 }

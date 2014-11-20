@@ -271,7 +271,7 @@
 </li>
 
 <li><a href="../KPI/DataExport.aspx"><span>Data Export</span></a></li>
-    
+<li><a href="../Notification/NotificationConfig.aspx"><span>Notifications</span></a></li>
 
 </ul>
 </li>
