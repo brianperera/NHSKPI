@@ -1944,6 +1944,59 @@ namespace NHSKPIDataService
                 { throw ex; }
             }
         }
+
+        public HospitalConfigurations HospitalConfigurationsView(HospitalConfigurations HospitalConfigurations)
+        {
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                HospitalConfigurations configuration = new HospitalConfigurations(HospitalConfigurations);
+
+                configuration.HospitalConfigurationsView(db, transaction);
+
+                transaction.Commit();
+                return configuration;
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException == null)
+                { throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex); }
+                else
+                { throw ex; }
+            }
+        }
+
+
+        public HospitalConfigurations HospitalConfigurationsAdd(HospitalConfigurations hospitalConfigurations)
+        {
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                HospitalConfigurations configuration = new HospitalConfigurations(hospitalConfigurations);
+
+                configuration.HospitalConfigurationsAdd(db, transaction);
+
+                transaction.Commit();
+                return configuration;
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException == null)
+                { throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex); }
+                else
+                { throw ex; }
+            }
+        }
         #endregion 
 
         #region Update Configuration
@@ -1962,6 +2015,35 @@ namespace NHSKPIDataService
                 transaction = connection.BeginTransaction();
 
                 configuration.Update(db, transaction);
+                transaction.Commit();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+        }
+
+        public bool UpdateHospitalConfiguration(HospitalConfigurations configuration)
+        {
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                configuration.HospitalConfigurationsUpdate(db, transaction);
                 transaction.Commit();
 
                 return true;

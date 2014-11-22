@@ -90,6 +90,21 @@ public partial class Views_Shared_MasterPage : System.Web.UI.MasterPage
             }
             SetDashboard();
         }
+
+        //Run the navigation bar rules
+        RunNavigationbarRules();
+    }
+
+    private void RunNavigationbarRules()
+    {
+        if (NHSUser.HospitalId > 0)
+        {
+            HospitalConfigurations hospitalConfigurations = new HospitalConfigurations();
+            hospitalConfigurations.HospitalId = NHSUser.HospitalId;
+            UserController.HospitalConfigurationsView(hospitalConfigurations);
+
+
+        }
     }
 
     #endregion

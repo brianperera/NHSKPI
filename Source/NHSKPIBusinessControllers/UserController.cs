@@ -154,6 +154,11 @@ namespace NHSKPIBusinessControllers
         {
             return NHSService.UpdateConfiguration(configuration);
         }
+
+        public bool UpdateHospitalConfiguration(HospitalConfigurations configuration)
+        {
+            return NHSService.UpdateHospitalConfiguration(configuration);
+        }
         #endregion
 
         #region View Configuration
@@ -161,6 +166,17 @@ namespace NHSKPIBusinessControllers
         {
             return NHSService.ViewConfiguration();
         }
+
+        public HospitalConfigurations HospitalConfigurationsView(HospitalConfigurations HospitalConfigurations)
+        {
+            return NHSService.HospitalConfigurationsView(HospitalConfigurations);
+        }
+
+        public HospitalConfigurations HospitalConfigurationsAdd(HospitalConfigurations hospitalConfigurations)
+        {
+            return NHSService.HospitalConfigurationsAdd(hospitalConfigurations);
+        }
+
         #endregion
 
         #endregion

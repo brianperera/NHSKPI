@@ -26,10 +26,10 @@
                 <asp:ListItem Value="3">Ward And Specialty</asp:ListItem>
             </asp:RadioButtonList>
             <asp:CheckBoxList ID="otherModules" runat="server" RepeatDirection="Horizontal">
-                <asp:ListItem Value="1">Email Facilities</asp:ListItem>
-                <asp:ListItem Value="2">Reminders</asp:ListItem>
-                <asp:ListItem Value="3">Download Data Sets</asp:ListItem>
-                <asp:ListItem Value="4">Bench Marking Module</asp:ListItem>
+                <asp:ListItem Value="EmailFacilities">Email Facilities</asp:ListItem>
+                <asp:ListItem Value="Reminders">Reminders</asp:ListItem>
+                <asp:ListItem Value="DownloadDataSets">Download Data Sets</asp:ListItem>
+                <asp:ListItem Value="BenchMarkingModule">Bench Marking Module</asp:ListItem>
             </asp:CheckBoxList>
             <div class="clear">
             </div>
