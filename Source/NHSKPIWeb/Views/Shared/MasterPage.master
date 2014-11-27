@@ -195,10 +195,10 @@
 
 </ul>
 </li>
-<li id="lnkReports" runat="server" visible="false" ><a class="disabled"  href="#"><span >Reports</span></a>
+<li id="lnkReports" runat="server" visible="false" ><a class="<%= HrefBenchmarkReportDisable %>"  href="#"><span >Reports</span></a>
 <ul>
-<li id="lnkBenchMarkReports" runat="server" visible="false"><a class="disabled"  href="../KPI/BenchMarkReport.aspx"><span>BenchMark Report</span></a></li>
-<li id="lnkBenchMarkDataUpload" runat="server" visible="false"><a class="disabled"  href="../KPI/BenchMarkDataUpload.aspx"><span>Data Upload</span></a></li>
+<li id="lnkBenchMarkReports" runat="server" visible="false"><a class="<%= HrefBenchmarkReportDisable %>"  href="../KPI/BenchMarkReport.aspx"><span>BenchMark Report</span></a></li>
+<li id="lnkBenchMarkDataUpload" runat="server" visible="false"><a class="<%= HrefBenchmarkReportDisable %>"  href="../KPI/BenchMarkDataUpload.aspx"><span>Data Upload</span></a></li>
 
 </ul>
 </li>
@@ -270,8 +270,8 @@
 </ul>
 </li>
 
-<li><a href="../KPI/DataExport.aspx"><span>Data Export</span></a></li>
-<li><a href="../Notification/NotificationConfig.aspx"><span>Notifications</span></a></li>
+<li id="lnkDataExport" runat="server" visible="true"><a id="hrefDataExport" class="<%= HrefDataExportLink  %>" href="../KPI/DataExport.aspx"><span>Data Export</span></a></li>
+<li id="lnkNotificationConfig" runat="server" visible="true"><a id="hrefNotificationConfig" class="<%= HrefNotificationConfigLink  %>" href="../Notification/NotificationConfig.aspx"><span>Notifications</span></a></li>
 
 </ul>
 </li>

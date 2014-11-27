@@ -14,10 +14,27 @@ public partial class Views_Shared_MasterPage : System.Web.UI.MasterPage
     private User nhsUser = null;
     private UserController userController = null;
     private Configuration nhsConfiguration = null;
+    private NHSKPIDataService.Models.HospitalConfigurations hospitalConfigurations = null;
     
     #endregion
 
     #region Properties
+
+    public NHSKPIDataService.Models.HospitalConfigurations HospitalConfigurations
+    {
+        get
+        {
+            if (hospitalConfigurations == null)
+            {
+                hospitalConfigurations = new NHSKPIDataService.Models.HospitalConfigurations();
+            }
+            return hospitalConfigurations;
+        }
+        set
+        {
+            hospitalConfigurations = value;
+        }
+    }
 
     public User NHSUser
     {
@@ -79,9 +96,10 @@ public partial class Views_Shared_MasterPage : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        SetMenuPermission();
+
         if (!IsPostBack)
         {
-            SetMenuPermission();
             lblNHSUser.Text = NHSUser.FirstName + " " + NHSUser.LastName;
             if(NHSUser.HospitalId != 0)
             {
@@ -91,19 +109,15 @@ public partial class Views_Shared_MasterPage : System.Web.UI.MasterPage
             SetDashboard();
         }
 
-        //Run the navigation bar rules
-        RunNavigationbarRules();
+        
     }
 
     private void RunNavigationbarRules()
     {
         if (NHSUser.HospitalId > 0)
         {
-            HospitalConfigurations hospitalConfigurations = new HospitalConfigurations();
-            hospitalConfigurations.HospitalId = NHSUser.HospitalId;
-            UserController.HospitalConfigurationsView(hospitalConfigurations);
-
-
+            HospitalConfigurations.HospitalId = NHSUser.HospitalId;
+            HospitalConfigurations = UserController.HospitalConfigurationsView(HospitalConfigurations);
         }
     }
 
@@ -131,6 +145,9 @@ public partial class Views_Shared_MasterPage : System.Web.UI.MasterPage
 
     private void SetMenuPermission()
     {
+        //Run the navigation bar rules
+        RunNavigationbarRules();
+
         if (NHSUser.RoleId == (int)Structures.Role.SuperUser)
         { 
             lnkHospital.Visible = true;
@@ -153,15 +170,41 @@ public partial class Views_Shared_MasterPage : System.Web.UI.MasterPage
             lnkReports.Visible = true;
             lnkAdmin.Visible = true;
             lnkBenchMarkReports.Visible = true;
+            //lnkDataExport.Visible = true;
+            //lnkNotificationConfig.Visible = true;
         }
         else if (NHSUser.RoleId == (int)Structures.Role.DataEntryOperator)
         {
-            lnkManualData.Visible = true;
-            
+            lnkManualData.Visible = true;   
         }
+
+        //lnkDataExport.Visible = HospitalConfigurations.DownloadDataSets;
+        //lnkNotificationConfig.Visible = HospitalConfigurations.EmailFacilities;
+        //lnkNotificationConfig.Visible = HospitalConfigurations.Reminders;
+        lnkBenchMarkDataUpload.Visible = HospitalConfigurations.BenchMarkingModule;
+
+        if (HospitalConfigurations.DownloadDataSets == false)
+            HrefDataExportLink = "disabled";
+        else
+            HrefDataExportLink = string.Empty;
+
+        if (HospitalConfigurations.EmailFacilities == false && HospitalConfigurations.Reminders == false)
+            HrefNotificationConfigLink = "disabled";
+        else
+            HrefNotificationConfigLink = string.Empty;
+
+        if (HospitalConfigurations.BenchMarkingModule == false)
+            HrefBenchmarkReportDisable = "disabled";
+        else
+            HrefBenchmarkReportDisable = string.Empty;
+        
 
         SetConfiguration();
     }
+
+    public string HrefDataExportLink { get; set; }
+    public string HrefNotificationConfigLink { get; set; }
+    public string HrefBenchmarkReportDisable { get; set; }
 
     #endregion
 
