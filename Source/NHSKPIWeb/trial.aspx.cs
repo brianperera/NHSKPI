@@ -148,7 +148,7 @@ public partial class login : System.Web.UI.Page
     private void SetUser(int hospitalId)
     {
         
-        NHSUser.UserName = txtUserName.Text;
+        NHSUser.UserName = string.Empty;
         NHSUser.Password = txtPassword.Text;
         NHSUser.FirstName = txtName.Text;
         NHSUser.LastName = string.Empty;
@@ -201,13 +201,13 @@ public partial class login : System.Web.UI.Page
             {
                 EmailTo = txtEmailAddress.Text,
                 Subject = "KPI Portal for FREE Trail has been approved.",
-                Body = "Your KPI Portal free trail has been approved. You can use this trail version for 60 days." + "<br><br>URL:" + ConfigurationManager.AppSettings["SiteURL"].ToString() + "<br><br>User Name:" + txtUserName.Text + "<br><br>Password:" + txtPassword.Text + "<br><br>Note: This is a auto generated message. Please do not reply to this email."
+                Body = "Your KPI Portal free trail has been approved. You can use this trail version for 60 days." + "<br><br>URL:" + ConfigurationManager.AppSettings["SiteURL"].ToString() + "<br><br>User Name:" + txtEmailAddress.Text + "<br><br>Password:" + txtPassword.Text + "<br><br>Note: This is a auto generated message. Please do not reply to this email."
             };
 
             utilController.SendEmailNotification(emailMessage);
 
             //Login the new user
-            User user = UserController.UserLogin(txtUserName.Text, txtPassword.Text, Hospital.HospitalCode);
+            User user = UserController.UserLogin(txtEmailAddress.Text, txtPassword.Text, Hospital.HospitalCode);
             if (user != null)
             {
                 Session["NHSUser"] = user;

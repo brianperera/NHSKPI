@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using NHSKPIBusinessControllers;
+using System.Globalization;
 
 public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
 {
@@ -30,7 +31,7 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
     #region Upload CSV
 
     private void UploadCSV()
-    { 
+    {
         DataTable dt = new DataTable();
         dt.TableName = "CSVWardData";
         DataColumn dc;
@@ -103,16 +104,16 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
                         try
                         {
                             dr["WardCode"] = csv[0].Trim() != string.Empty ? csv[0].Trim() : string.Empty;
-                            if (dsInitialData.Tables[0].Select("WardCode = '" + dr["WardCode"].ToString()+"'").Length == 0)
+                            if (dsInitialData.Tables[0].Select("WardCode = '" + dr["WardCode"].ToString() + "'").Length == 0)
                             {
                                 dr["WardCode"] = string.Empty;
-                            }                            
-                            
+                            }
+
                         }
                         catch (Exception e)
                         {
                             dr["WardCode"] = string.Empty;
-                            
+
                         }
                         //KPI No
                         try
@@ -122,12 +123,12 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
                             {
                                 dr["KPINo"] = string.Empty;
                             }
-                            
+
                         }
                         catch (Exception e)
                         {
                             dr["KPINo"] = string.Empty;
-                            
+
                         }
                         //Hospital Id
                         try
@@ -137,7 +138,7 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
                         catch (Exception e)
                         {
                             dr["HospitalId"] = DBNull.Value;
-                            
+
                         }
                         //Target Month
                         try
@@ -148,7 +149,7 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
                         catch (Exception e)
                         {
                             dr["TargetMonth"] = DBNull.Value;
-                            
+
                         }
                         //Numerator
                         try
@@ -158,7 +159,7 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
                         catch (Exception e)
                         {
                             dr["Numerator"] = DBNull.Value;
-                            
+
                         }
                         //Denominator
                         try
@@ -168,7 +169,7 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
                         catch (Exception e)
                         {
                             dr["Denominator"] = DBNull.Value;
-                            
+
                         }
                         //YTD Value
                         try
@@ -178,12 +179,12 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
                         catch (Exception e)
                         {
                             dr["YTDValue"] = DBNull.Value;
-                            
+
                         }
                         #endregion
 
                         dt.Rows.Add(dr);
-                        
+
                     }
 
                     DataRow[] wcRows = dt.Select("WardCode = ''");
@@ -197,7 +198,7 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
                         {
                             lblAddMessage.Text = "WardCode is missing or not exist at row " + (dt.Rows.IndexOf(wcRows[0]) + 1).ToString();
                             lblAddMessage.CssClass = "alert-danger";
-                            
+
                         }
                         else if (knRows.Length > 0)
                         {
@@ -215,11 +216,16 @@ public partial class Views_KPI_WardCSVUpload : System.Web.UI.Page
                             lblAddMessage.CssClass = "alert-danger";
                         }
                     }
-                    else 
+                    else
                     {
                         if (kPIController.UpdateCSVWardData(dt))
                         {
-                            lblAddMessage.Text = "CSV File successfully uploaded";
+                            lblAddMessage.Text = string.Format(CultureInfo.InvariantCulture, 
+                                "{0} is uploaded on {1} at {2} successfully.",
+                                fuFile.PostedFile.FileName,
+                                DateTime.Today.ToString("dd/MM/yy"),
+                                DateTime.Now.ToString("hh:mm"));
+
                             lblAddMessage.CssClass = "alert-success";
                         }
                         else

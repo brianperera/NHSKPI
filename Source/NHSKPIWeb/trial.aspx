@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="trial.aspx.cs" Inherits="login" %>
 
-<%@ Register src="Views/Shared/AutoSelectionDropDown.ascx" tagname="AutoSelectionDropDown" tagprefix="uc1" %>
+<%@ Register Src="Views/Shared/AutoSelectionDropDown.ascx" TagName="AutoSelectionDropDown" TagPrefix="uc1" %>
 
 <!DOCTYPE html>
 <!--[if IE 7]> <html lang="en" class="ie7 no-js"> <![endif]-->
@@ -55,87 +55,84 @@
         <div class="Hgap15">
         </div>
         <div class="full-page-background">
-<div class="grid_19 trial_wrap page-background_wrap">
-            <div class="trial_info">
-                <h1>
-                    Make dashboards incredibly easy to produce</h1>
-                <h2>
-                    With this free trial you can start collecting all the necessary KPIs instantly.</h2>
-                <ul class="trial_info_points">
-                    <li>Say goodbye to multiple Excel sheets</li>
-                    <li>No more waiting and data duplication</li>
-                    <li>Centrally located KPIS data</li>
-                    <li>Easy refresh - Point to Point connection available </li>
-                    <li>Customised data download templates</li>
-                    <li>Automated reminders and escalations </li>
-                    <li>Decentralised data collection</li>
-                </ul>
+            <div class="grid_19 trial_wrap page-background_wrap">
+                <div class="trial_info">
+                    <h1>Make dashboards incredibly easy to produce</h1>
+                    <h2>With this free trial you can start collecting all the necessary KPIs instantly.</h2>
+                    <ul class="trial_info_points">
+                        <li>Say goodbye to multiple Excel sheets</li>
+                        <li>No more waiting and data duplication</li>
+                        <li>Centrally located KPIS data</li>
+                        <li>Easy refresh - Point to Point connection available </li>
+                        <li>Customised data download templates</li>
+                        <li>Automated reminders and escalations </li>
+                        <li>Decentralised data collection</li>
+                    </ul>
+                </div>
+                <div class="img_wrap page-background">
+                    <img alt="" src="assets/images/trial.png" />
+                </div>
             </div>
-            <div class="img_wrap page-background">
-                <img alt="" src="assets/images/trial.png" height:"200px" />
-            </div>
-            </div>
-        <div class="grid_5 trial_details">
-            <form id="Form1" runat="server">
-            <div id="dialog" style="display: none">
-            </div>
-            <div class="trial_details_wrap">
-                <h3>
-                    Try KPI Portal for FREE</h3>
-                <asp:TextBox ID="txtName" placeholder="Name" runat="server"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName"
-                    Display="Dynamic"></asp:RequiredFieldValidator>
-                <uc1:AutoSelectionDropDown ID="ddlHospitalName" runat="server" />
-               <%-- <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True">
+            <div class="grid_5 trial_details">
+                <form id="Form1" runat="server">
+                    <div id="dialog" style="display: none">
+                    </div>
+                    <div class="trial_details_wrap">
+                        <h3>Try KPI Portal for FREE</h3>
+                        <asp:TextBox ID="txtName" placeholder="Name" runat="server"></asp:TextBox><asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName"
+                            Display="Dynamic"></asp:RequiredFieldValidator>
+                        <uc1:AutoSelectionDropDown ID="ddlHospitalName" runat="server" />
+                        <%-- <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True">
                     <asp:ListItem Selected="True" Text="Select Hospital" Value ="-1"></asp:ListItem>
                 </asp:DropDownList>--%>
-                <%--<asp:CompareValidator ID="cmpHospitalName" runat="server" ControlToValidate="ddlHospitalName"
+                        <%--<asp:CompareValidator ID="cmpHospitalName" runat="server" ControlToValidate="ddlHospitalName"
                 Display="Dynamic" ErrorMessage="*" Operator="NotEqual" ValueToCompare="-1"></asp:CompareValidator>--%>
-                <%--<asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox>--%><%--<asp:RequiredFieldValidator
+                        <%--<asp:TextBox ID="txtCompanyName" placeholder="Company Name" runat="server"></asp:TextBox>--%><%--<asp:RequiredFieldValidator
                     ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtCompanyName"
                     Display="Dynamic"></asp:RequiredFieldValidator>--%>
-                <asp:TextBox ID="txtPhoneName" placeholder="Phone Number" runat="server"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="txtPhoneName"
-                    Display="Dynamic"></asp:RequiredFieldValidator>
-                <asp:TextBox ID="txtEmailAddress" placeholder="Email Address" runat="server"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ControlToValidate="txtEmailAddress"
-                    Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator1"
-                        runat="server" ErrorMessage="Invalid" ControlToValidate="txtEmailAddress" Display="Dynamic"
-                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                <asp:TextBox ID="txtUserName" placeholder="User Name" runat="server"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ControlToValidate="txtUserName"
-                    Display="Dynamic"></asp:RequiredFieldValidator>
-                <asp:TextBox ID="txtPassword" placeholder="Password" runat="server" 
-                    TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ControlToValidate="txtPassword"
-                    Display="Dynamic"></asp:RequiredFieldValidator>
-                <asp:TextBox ID="txtRetypePassword" placeholder="Re Type Password" 
-                    runat="server" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" ControlToValidate="txtRetypePassword"
-                    Display="Dynamic"></asp:RequiredFieldValidator><asp:CompareValidator ID="CompareValidator1"
-                        runat="server" ErrorMessage="Invalid" ControlToCompare="txtPassword" ControlToValidate="txtRetypePassword"
-                        Display="Dynamic"></asp:CompareValidator>
-                <asp:Button CssClass="btnTry" ID="btnTrial" runat="server" Text="Proceed" OnClick="btnTrial_Click" />
-                <%--<h4>
+                        <asp:TextBox ID="txtPhoneName" placeholder="Phone Number" runat="server"></asp:TextBox><asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="txtPhoneName"
+                            Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtEmailAddress" placeholder="Email Address" runat="server"></asp:TextBox><asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ControlToValidate="txtEmailAddress"
+                            Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                                runat="server" ErrorMessage="Invalid" ControlToValidate="txtEmailAddress" Display="Dynamic"
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                        <asp:TextBox ID="txtPassword" placeholder="Password" runat="server"
+                            TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ControlToValidate="txtPassword"
+                                Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtRetypePassword" placeholder="Re Type Password"
+                            runat="server" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" ControlToValidate="txtRetypePassword"
+                                Display="Dynamic"></asp:RequiredFieldValidator><asp:CompareValidator ID="CompareValidator1"
+                                    runat="server" ErrorMessage="Invalid" ControlToCompare="txtPassword" ControlToValidate="txtRetypePassword"
+                                    Display="Dynamic"></asp:CompareValidator>
+                        <asp:Button CssClass="btnTry" ID="btnTrial" runat="server" Text="Proceed" OnClick="btnTrial_Click" />
+                        <%--<h4>
                     By clicking “Start Trial” I agree that:</h4>--%>
-                <div class="clear ui-tabs"></div>
-                <div> 
-                    <p class="tncText"><asp:CheckBox ID="cbTCAgreement" runat="server"/> I hereby grant my consent to receive emails, communications, announcements and invitations from KPI Data Entry Portal. You can withdraw your consent at any time.</p>
+                        <div class="clear ui-tabs"></div>
+                        <div>
+                            <p class="tncText">
+                                <asp:CheckBox ID="cbTCAgreement" runat="server" />
+                                I hereby grant my consent to receive emails, communications, announcements and invitations from KPI Data Entry Portal. You can withdraw your consent at any time.
+                            </p>
+                        </div>
+                        <div class="clear ui-tabs"></div>
+                        <p><strong>Inquiries</strong>: <a href="#">inquiries@nhskpi.net</a></p>
+
+                    </div>
+                </form>
+                <div class="trial_details_wrap">
+                    <input type="button" class="btnTry" value="Sign in" onclick="window.location.href = 'login.aspx'">
                 </div>
-                <div class="clear ui-tabs"></div>
-                <p><strong>Inquiries</strong>: <a href="#">inquiries@nhskpi.net</a></p>               
-                    
             </div>
-            </form>
-            <div class="trial_details_wrap">
-                <input type="button" class="btnTry" value="Sign in" onClick="window.location.href = 'login.aspx'">
-            </div>
-        </div>
         </div>
     </div>
     <div class="container_24" id="divMessage" runat="server" visible="false">
-    <asp:Label ID="lblMessage" CssClass="alert-success" runat="server" Text="Your Trail Version Request Successfully Submitted. Administrator will review your request and confirm by email."></asp:Label>
+        <asp:Label ID="lblMessage" CssClass="alert-success" runat="server" Text="Your Trail Version Request Successfully Submitted. Administrator will review your request and confirm by email."></asp:Label>
     </div>
-    
+
 </body>
 </html>

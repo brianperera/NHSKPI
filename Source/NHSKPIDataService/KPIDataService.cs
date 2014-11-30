@@ -1651,7 +1651,7 @@ namespace NHSKPIDataService
 
                 DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_User_Login);
 
-                db.AddInParameter(dbCommand, "@UserName", DbType.String, userName);
+                db.AddInParameter(dbCommand, "@Email", DbType.String, userName);
                 db.AddInParameter(dbCommand, "@Password", DbType.String, password);
                 db.AddInParameter(dbCommand, "@HospitalCode", DbType.String, HospitalCode);
                 db.AddOutParameter(dbCommand, "@IsExist", DbType.Boolean, 1);
