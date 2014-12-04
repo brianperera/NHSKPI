@@ -122,6 +122,9 @@ namespace NHSKPIDataService.Util
         public static readonly string SP_Specialty_Level_BulkKPI_Search = "uspSpecialtyLevelBulkKPISearch";
         public static readonly string SP_Get_Dash_Board_Data = "uspDashBoardView";
         public static readonly string SP_Get_Dash_Board_Specialty_Data = "uspDashBoardSpecialtyView";
+        public static readonly string SP_Get_Email_List = "uspEmailView";
+        public static readonly string SP_Delete_Email = "uspEmailDelete";
+        public static readonly string SP_Insert_Email = "uspEmailInsert";
 
         public static readonly string SP_Set_Update_Department_Head = "uspDepartmentHeadInsertUpdate";
 
