@@ -1264,7 +1264,48 @@ namespace NHSKPIDataService
         }
         #endregion
 
+        #region Incomplete KPI
 
+        /// <summary>
+        /// Gets the incomplete ward KPI.
+        /// </summary>
+        /// <param name="db">The database.</param>
+        /// <param name="transaction">The transaction.</param>
+        /// <param name="hospitalId">The hospital identifier.</param>
+        /// <param name="targetApplyFor">The target apply for.</param>
+        /// <returns></returns>
+        public DataSet GetIncompleteWardKPI(Database db, DbTransaction transaction, int hospitalId, int targetApplyFor)
+        {
+            DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Incomplete_Ward_KPI);
+
+            db.AddInParameter(dbCommand, "@TargetId", DbType.Int32, targetApplyFor);
+            db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
+
+            return db.ExecuteDataSet(dbCommand, transaction);
+
+
+        }
+
+        /// <summary>
+        /// Gets the incomplete speciality KPI.
+        /// </summary>
+        /// <param name="db">The database.</param>
+        /// <param name="transaction">The transaction.</param>
+        /// <param name="hospitalId">The hospital identifier.</param>
+        /// <param name="targetApplyFor">The target apply for.</param>
+        /// <returns></returns>
+        public DataSet GetIncompleteSpecialityKPI(Database db, DbTransaction transaction, int hospitalId, int targetApplyFor)
+        {
+            DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Incomplete_Speciality_KPI);
+
+            db.AddInParameter(dbCommand, "@TargetId", DbType.Int32, targetApplyFor);
+            db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
+
+            return db.ExecuteDataSet(dbCommand, transaction);
+
+
+        }
+        #endregion
 
         #endregion
 

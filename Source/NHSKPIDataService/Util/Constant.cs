@@ -131,6 +131,9 @@ namespace NHSKPIDataService.Util
         public static readonly string SP_Update_KPIHospitalNews = "uspKPIHospitalNewsUpdate";
         public static readonly string SP_Search_KPINews = "uspKPINewsSearch";
         public static readonly string SP_Search_KPIHospitalNews = "uspKPIHospitalNewsSearch";
+
+        public static readonly string SP_Get_Incomplete_Ward_KPI = "GetIncompleteWardKPI";
+        public static readonly string SP_Get_Incomplete_Speciality_KPI = "GetIncompleteSpecialtyKPI";
         #endregion
 
         #region Messages related Constant
