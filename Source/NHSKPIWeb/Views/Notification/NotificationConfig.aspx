@@ -48,8 +48,8 @@
                         <asp:ListItem>29</asp:ListItem>
                         <asp:ListItem>30</asp:ListItem>
                     </asp:DropDownList>
-                    Repeat Monthly
-                    <asp:CheckBox ID="chkRepeatMonthly" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />
+                    <%--Repeat Monthly
+                    <asp:CheckBox ID="chkRepeatMonthly" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />--%>
                 </div>
                 <div class="grid_8">
                     <asp:Label ID="Label1" runat="server" Text="Reminder 2"></asp:Label>
@@ -87,8 +87,8 @@
                         <asp:ListItem>29</asp:ListItem>
                         <asp:ListItem>30</asp:ListItem>
                     </asp:DropDownList>
-                    Repeat Monthly
-                    <asp:CheckBox ID="CheckBox1" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />
+                    <%--Repeat Monthly
+                    <asp:CheckBox ID="CheckBox1" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />--%>
                 </div>
                 <div class="grid_8">
                     <asp:Label ID="Label2" runat="server" Text="Manager Escalation"></asp:Label>
@@ -126,11 +126,31 @@
                         <asp:ListItem>29</asp:ListItem>
                         <asp:ListItem>30</asp:ListItem>
                     </asp:DropDownList>
-                    Repeat Monthly
-                    <asp:CheckBox ID="CheckBox2" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />
+                    <%--Repeat Monthly
+                    <asp:CheckBox ID="CheckBox2" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />--%>
                 </div>
                 <div class="grid_8">
-                    <asp:Button ID="btnSave" runat="server" Text="Save" />
+                    <asp:Label ID="Label4" runat="server" Text="Reminder E-Mail"></asp:Label>
+                </div>
+                <div class="grid_16">
+                    <asp:TextBox ID="txtReminderEmailAddress" placeholder="Reminder E-Mail" runat="server"></asp:TextBox><asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ControlToValidate="txtReminderEmailAddress"
+                            Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                                runat="server" ErrorMessage="Invalid" ControlToValidate="txtReminderEmailAddress" Display="Dynamic"
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                </div>
+                 <div class="grid_8">
+                    <asp:Label ID="Label5" runat="server" Text="Manager Escalation E-Mail"></asp:Label>
+                </div>
+                <div class="grid_16">
+                    <asp:TextBox ID="txtEscalationEmailAddress" placeholder="Manager Escalation E-Mail" runat="server"></asp:TextBox><asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtEscalationEmailAddress"
+                            Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator2"
+                                runat="server" ErrorMessage="Invalid" ControlToValidate="txtEscalationEmailAddress" Display="Dynamic"
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                </div>
+                <div class="grid_8">
+                    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click"/>
                 </div>
             </div>
         </ContentTemplate>

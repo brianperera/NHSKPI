@@ -19,8 +19,4 @@ public partial class Views_Notification_NotificationConfig : System.Web.UI.Page
             
         }
     }
-    protected void btnSave_Click(object sender, EventArgs e)
-    {
-
-    }
 }
