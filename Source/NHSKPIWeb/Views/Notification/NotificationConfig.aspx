@@ -168,7 +168,9 @@
                                 <asp:TextBox ID="txtEmail" CssClass="magin_0" placeholder="Email" runat="server"></asp:TextBox>
                             </span>
                             <div class="paragraph-break">
-                                <asp:ListBox ID="lbEmailList" CssClass="listbox" Height="80" Width="160" runat="server"></asp:ListBox>
+                                <asp:ListBox ID="lbEmailList" CssClass="listbox" Height="80" Width="160" runat="server">
+                                    
+                                </asp:ListBox>
                             </div>
                         </div>
                         <div class="grid_24 error_msg">

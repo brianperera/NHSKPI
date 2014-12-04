@@ -206,10 +206,6 @@ namespace NHSKPIDataService.Services
                 transaction = connection.BeginTransaction();
 
                 DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Email_List);
-
-                db.AddOutParameter(dbCommand, "@Id", DbType.Int32, 1);
-                db.AddOutParameter(dbCommand, "@Email", DbType.String, 200);
-                db.AddOutParameter(dbCommand, "@Description", DbType.String, 200);
                 db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
                 
                 var results = db.ExecuteReader(dbCommand);

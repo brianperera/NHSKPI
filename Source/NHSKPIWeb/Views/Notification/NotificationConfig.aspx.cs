@@ -50,6 +50,8 @@ public partial class Views_Notification_NotificationConfig : System.Web.UI.Page
     {
         //READ
         utilController = new UtilController();
+        lbEmailList.DataTextField = "EmailAddress";
+        lbEmailList.DataValueField = "Id";
         lbEmailList.DataSource = utilController.GetEmailList(NHSUser.HospitalId);
         lbEmailList.DataBind();
     }
@@ -64,6 +66,8 @@ public partial class Views_Notification_NotificationConfig : System.Web.UI.Page
 
         utilController = new UtilController();
         utilController.InsertEmailToBucket(currentEmail);
+
+        LoadHospitalLevelEmailList();
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
