@@ -137,6 +137,10 @@ namespace NHSKPIDataService.Util
 
         public static readonly string SP_Get_Incomplete_Ward_KPI = "GetIncompleteWardKPI";
         public static readonly string SP_Get_Incomplete_Speciality_KPI = "GetIncompleteSpecialtyKPI";
+        public static readonly string SP_Get_EmailNotification = "uspEmailNotificationSelect";
+        public static readonly string SP_Update_EmailNotification = "uspEmailNotificationInsert";
+        public static readonly string SP_Insert_EmailNotification = "uspEmailNotificationInsert";
+        public static readonly string SP_Delete_EmailNotification = "uspEmailNotificationDelete";
         #endregion
 
         #region Messages related Constant
