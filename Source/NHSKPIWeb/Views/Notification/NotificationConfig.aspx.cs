@@ -19,4 +19,5 @@ public partial class Views_Notification_NotificationConfig : System.Web.UI.Page
             
         }
     }
+
 }
