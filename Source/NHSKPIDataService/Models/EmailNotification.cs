@@ -77,7 +77,7 @@ namespace NHSKPIDataService.Models
                 db.AddInParameter(dbCommand, "@Reminder2", DbType.Int32, this.Reminder2);
                 db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.Int32, this.ManagerEscalation);
                 db.AddInParameter(dbCommand, "@ReminderEmail", DbType.String, this.ReminderEmail);
-                db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.String, EscalationEmail);
+                db.AddInParameter(dbCommand, "@ManagerEscalationEmail", DbType.String, EscalationEmail);
                 db.ExecuteNonQuery(dbCommand, transaction);
 
             }
@@ -100,7 +100,7 @@ namespace NHSKPIDataService.Models
                 db.AddInParameter(dbCommand, "@Reminder2", DbType.Int32, this.Reminder2);
                 db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.Int32, this.ManagerEscalation);
                 db.AddInParameter(dbCommand, "@ReminderEmail", DbType.String, this.ReminderEmail);
-                db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.String, EscalationEmail);
+                db.AddInParameter(dbCommand, "@ManagerEscalationEmail", DbType.String, EscalationEmail);
                 db.ExecuteNonQuery(dbCommand, transaction);
 
             }

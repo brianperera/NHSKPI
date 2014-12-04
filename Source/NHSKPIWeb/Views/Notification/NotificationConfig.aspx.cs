@@ -72,6 +72,23 @@ public partial class Views_Notification_NotificationConfig : System.Web.UI.Page
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
+        EmailNotificationService service = new EmailNotificationService();
 
+        int intVal;
+
+        EmailNotification notification = new EmailNotification();
+
+        notification.HospitalId = NHSUser.HospitalId;
+        notification.ReminderEmail = txtReminderEmailAddress.Text;
+        notification.EscalationEmail = txtEscalationEmailAddress.Text;
+
+        if (int.TryParse(ddlReminder1.SelectedValue, out intVal))
+            notification.Reminder1 = intVal;
+        if (int.TryParse(ddlReminder2.SelectedValue, out intVal))
+            notification.Reminder2 = intVal;
+        if (int.TryParse(ddlEscalation.SelectedValue, out intVal))
+            notification.ManagerEscalation = intVal;
+
+        service.InsertEmailNotification(notification);
     }
 }

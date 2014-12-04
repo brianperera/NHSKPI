@@ -16,7 +16,7 @@
                     <asp:Label ID="lblDeadline" runat="server" Text="Reminder 1"></asp:Label>
                 </div>
                 <div class="grid_16">
-                    <asp:DropDownList ID="ddlWorkingDays" Width="50px" CssClass="repeatPanelControls" runat="server">
+                    <asp:DropDownList ID="ddlReminder1" Width="50px" CssClass="repeatPanelControls" runat="server">
                         <asp:ListItem>1</asp:ListItem>
                         <asp:ListItem>2</asp:ListItem>
                         <asp:ListItem>3</asp:ListItem>
@@ -55,7 +55,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Reminder 2"></asp:Label>
                 </div>
                 <div class="grid_16">
-                    <asp:DropDownList ID="DropDownList1" Width="50px" CssClass="repeatPanelControls" runat="server">
+                    <asp:DropDownList ID="ddlReminder2" Width="50px" CssClass="repeatPanelControls" runat="server">
                         <asp:ListItem>1</asp:ListItem>
                         <asp:ListItem>2</asp:ListItem>
                         <asp:ListItem>3</asp:ListItem>
@@ -94,7 +94,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Manager Escalation"></asp:Label>
                 </div>
                 <div class="grid_16">
-                    <asp:DropDownList ID="DropDownList2" Width="50px" CssClass="repeatPanelControls" runat="server">
+                    <asp:DropDownList ID="ddlEscalation" Width="50px" CssClass="repeatPanelControls" runat="server">
                         <asp:ListItem>1</asp:ListItem>
                         <asp:ListItem>2</asp:ListItem>
                         <asp:ListItem>3</asp:ListItem>
