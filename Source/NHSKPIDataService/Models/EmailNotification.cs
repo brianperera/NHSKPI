@@ -14,9 +14,9 @@ namespace NHSKPIDataService.Models
         #region Fields
         private int id;
         private int hospitalId;
-        private DateTime reminder1;
-        private DateTime reminder2;
-        private DateTime managerEscalation;
+        private int reminder1;
+        private int reminder2;
+        private int managerEscalation;
         private string reminderEmail;
         private string escalationEmail;
         #endregion
@@ -34,19 +34,19 @@ namespace NHSKPIDataService.Models
             set { hospitalId = value; }
         }
 
-        public DateTime Reminder1
+        public int Reminder1
         {
             get { return reminder1; }
             set { reminder1 = value; }
         }
 
-        public DateTime Reminder2
+        public int Reminder2
         {
             get { return reminder2; }
             set { reminder2 = value; }
         }
 
-        public DateTime ManagerEscalation
+        public int ManagerEscalation
         {
             get { return managerEscalation; }
             set { managerEscalation = value; }
@@ -72,10 +72,10 @@ namespace NHSKPIDataService.Models
             {
                 DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Insert_EmailNotification);
 
-                db.AddInParameter(dbCommand, "@HospitalId", DbType.Int16, this.HospitalId);
-                db.AddInParameter(dbCommand, "@Reminder1", DbType.Date, this.Reminder1);
-                db.AddInParameter(dbCommand, "@Reminder2", DbType.Date, this.Reminder2);
-                db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.Date, this.ManagerEscalation);
+                db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, this.HospitalId);
+                db.AddInParameter(dbCommand, "@Reminder1", DbType.Int32, this.Reminder1);
+                db.AddInParameter(dbCommand, "@Reminder2", DbType.Int32, this.Reminder2);
+                db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.Int32, this.ManagerEscalation);
                 db.AddInParameter(dbCommand, "@ReminderEmail", DbType.String, this.ReminderEmail);
                 db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.String, EscalationEmail);
                 db.ExecuteNonQuery(dbCommand, transaction);
@@ -95,10 +95,10 @@ namespace NHSKPIDataService.Models
             {
                 DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Update_EmailNotification);
 
-                db.AddInParameter(dbCommand, "@HospitalId", DbType.Int16, this.HospitalId);
-                db.AddInParameter(dbCommand, "@Reminder1", DbType.Date, this.Reminder1);
-                db.AddInParameter(dbCommand, "@Reminder2", DbType.Date, this.Reminder2);
-                db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.Date, this.ManagerEscalation);
+                db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, this.HospitalId);
+                db.AddInParameter(dbCommand, "@Reminder1", DbType.Int32, this.Reminder1);
+                db.AddInParameter(dbCommand, "@Reminder2", DbType.Int32, this.Reminder2);
+                db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.Int32, this.ManagerEscalation);
                 db.AddInParameter(dbCommand, "@ReminderEmail", DbType.String, this.ReminderEmail);
                 db.AddInParameter(dbCommand, "@ManagerEscalation", DbType.String, EscalationEmail);
                 db.ExecuteNonQuery(dbCommand, transaction);
@@ -138,9 +138,7 @@ namespace NHSKPIDataService.Models
 
             EmailNotification item = new EmailNotification();
             item.HospitalId = hospitalId;
-
             int intVal;
-            DateTime dateVal;
 
             if (results != null)
             {
@@ -152,12 +150,12 @@ namespace NHSKPIDataService.Models
                     item.ReminderEmail = results["ReminderEmail"].ToString();
                     item.EscalationEmail = results["ManagerEscalationEmail"].ToString();
 
-                    if (DateTime.TryParse(results["Reminder1"].ToString(), out dateVal))
-                        item.Reminder1 = dateVal;
-                    if (DateTime.TryParse(results["Reminder2"].ToString(), out dateVal))
-                        item.Reminder2 = dateVal;
-                    if (DateTime.TryParse(results["ManagerEscalation"].ToString(), out dateVal))
-                        item.ManagerEscalation = dateVal;
+                    if (int.TryParse(results["Reminder1"].ToString(), out intVal))
+                        item.Reminder1 = intVal;
+                    if (int.TryParse(results["Reminder2"].ToString(), out intVal))
+                        item.Reminder2 = intVal;
+                    if (int.TryParse(results["ManagerEscalation"].ToString(), out intVal))
+                        item.ManagerEscalation = intVal;
                 }
             }
 
@@ -175,7 +173,6 @@ namespace NHSKPIDataService.Models
             List<EmailNotification> list=new List<EmailNotification>();
             EmailNotification item;
             int intVal;
-            DateTime dateVal;
 
             if (results != null)
             {
@@ -192,12 +189,12 @@ namespace NHSKPIDataService.Models
                     item.ReminderEmail = results["ReminderEmail"].ToString();
                     item.EscalationEmail = results["ManagerEscalationEmail"].ToString();
 
-                    if (DateTime.TryParse(results["Reminder1"].ToString(), out dateVal))
-                        item.Reminder1 = dateVal;
-                    if (DateTime.TryParse(results["Reminder2"].ToString(), out dateVal))
-                        item.Reminder2 = dateVal;
-                    if (DateTime.TryParse(results["ManagerEscalation"].ToString(), out dateVal))
-                        item.ManagerEscalation = dateVal;
+                    if (int.TryParse(results["Reminder1"].ToString(), out intVal))
+                        item.Reminder1 = intVal;
+                    if (int.TryParse(results["Reminder2"].ToString(), out intVal))
+                        item.Reminder2 = intVal;
+                    if (int.TryParse(results["ManagerEscalation"].ToString(), out intVal))
+                        item.ManagerEscalation = intVal;
 
                     list.Add(item);
                 }
