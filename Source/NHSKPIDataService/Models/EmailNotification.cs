@@ -11,6 +11,7 @@ namespace NHSKPIDataService.Models
 {
     public class EmailNotification
     {
+        #region Fields
         private int id;
         private int hospitalId;
         private DateTime reminder1;
@@ -18,7 +19,9 @@ namespace NHSKPIDataService.Models
         private DateTime managerEscalation;
         private string reminderEmail;
         private string escalationEmail;
+        #endregion
 
+        #region Properties
         public int Id
         {
             get { return id; }
@@ -59,8 +62,10 @@ namespace NHSKPIDataService.Models
         {
             get { return escalationEmail; }
             set { escalationEmail = value; }
-        }       
+        }
+        #endregion
 
+        #region Add
         public void Add(Database db, DbTransaction transaction)
         {
             try
@@ -81,7 +86,9 @@ namespace NHSKPIDataService.Models
                 throw ex;
             }
         }
+        #endregion
 
+        #region Update
         public void Update(Database db, DbTransaction transaction)
         {
             try
@@ -102,7 +109,9 @@ namespace NHSKPIDataService.Models
                 throw ex;
             }
         }
+        #endregion
 
+        #region Delete
         public void Delete(Database db, DbTransaction transaction)
         {
             try
@@ -118,7 +127,9 @@ namespace NHSKPIDataService.Models
                 throw ex;
             }
         }
+        #endregion
 
+        #region Search
         public EmailNotification Search(Database db, DbTransaction transaction, int hospitalId)
         {
             DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_EmailNotification);
@@ -152,7 +163,9 @@ namespace NHSKPIDataService.Models
 
             return item;
         }
+        #endregion
 
+        #region SearchAll
         public List<EmailNotification> SearchAll(Database db, DbTransaction transaction)
         {
             DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_EmailNotification);
@@ -192,6 +205,7 @@ namespace NHSKPIDataService.Models
 
             return list;
         }
-        
+        #endregion
+
     }
 }
