@@ -21,7 +21,7 @@ public partial class Views_Notification_NotificationConfig : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-
+            LoadEmailConfig();
         }
     }
 
@@ -90,5 +90,20 @@ public partial class Views_Notification_NotificationConfig : System.Web.UI.Page
             notification.ManagerEscalation = intVal;
 
         service.InsertEmailNotification(notification);
+    }
+
+    private void LoadEmailConfig()
+    {
+        EmailNotificationService service = new EmailNotificationService();
+        EmailNotification notification = service.SearchEmailNotification(NHSUser.HospitalId);
+
+        if (notification != null)
+        {
+            txtReminderEmailAddress.Text = notification.ReminderEmail;
+            txtEscalationEmailAddress.Text = notification.EscalationEmail;
+            ddlReminder1.SelectedValue = notification.Reminder1.ToString();
+            ddlReminder2.SelectedValue = notification.Reminder2.ToString();
+            ddlEscalation.SelectedValue = notification.ManagerEscalation.ToString();
+        }
     }
 }

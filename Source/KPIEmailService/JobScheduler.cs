@@ -16,22 +16,22 @@ namespace KPIEmailService
 
             IJobDetail job = JobBuilder.Create<EmailJob>().Build();
 
-            //ITrigger trigger = TriggerBuilder.Create()
-            //    .WithDailyTimeIntervalSchedule
-            //      (s =>
-            //         s.WithIntervalInHours(24)
-            //        .OnEveryDay()
-            //        .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
-            //      )
-            //    .Build();
-
             ITrigger trigger = TriggerBuilder.Create()
-                .WithIdentity("trigger1", "group1")
-                .StartNow()
-                .WithSimpleSchedule(x => x
-                    .WithIntervalInSeconds(60)
-                    .RepeatForever())
+                .WithDailyTimeIntervalSchedule
+                  (s =>
+                     s.WithIntervalInHours(24)
+                    .OnEveryDay()
+                    .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
+                  )
                 .Build();
+
+            //ITrigger trigger = TriggerBuilder.Create()
+            //    .WithIdentity("trigger1", "group1")
+            //    .StartNow()
+            //    .WithSimpleSchedule(x => x
+            //        .WithIntervalInSeconds(60)
+            //        .RepeatForever())
+            //    .Build();
 
             scheduler.ScheduleJob(job, trigger);
         }
