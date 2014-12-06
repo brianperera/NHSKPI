@@ -35,6 +35,9 @@
     <Reference Include="Common.Logging">
       <HintPath>..\ModuleLibrary\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Quartz">
       <HintPath>..\ModuleLibrary\Quartz.dll</HintPath>
     </Reference>
@@ -62,11 +65,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NHSKPIBusinessControllers\NHSKPIBusinessControllers.csproj">
+      <Project>{e7f8a143-2c0d-4107-a97a-7f96b3570dc1}</Project>
+      <Name>NHSKPIBusinessControllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NHSKPIDataService\NHSKPIDataService.csproj">
+      <Project>{6766ab72-e15b-4456-8893-36edc867ddcb}</Project>
+      <Name>NHSKPIDataService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

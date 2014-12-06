@@ -35,7 +35,8 @@ namespace NHSKPIDataService.Services
             }
             catch (Exception ex)
             {
-                transaction.Rollback();
+                if (transaction != null)
+                    transaction.Rollback();
                 throw ex;
             }
             finally
@@ -63,7 +64,8 @@ namespace NHSKPIDataService.Services
             }
             catch (Exception ex)
             {
-                transaction.Rollback();
+                if (transaction != null)
+                    transaction.Rollback();
                 throw ex;
             }
             finally
@@ -76,7 +78,7 @@ namespace NHSKPIDataService.Services
             }
         }
 
-        public EmailNotification SearchEmailNotification(EmailNotification emailNotification, int hospitalId)
+        public EmailNotification SearchEmailNotification(int hospitalId)
         {
             try
             {
@@ -84,7 +86,7 @@ namespace NHSKPIDataService.Services
                 connection = db.CreateConnection();
                 connection.Open();
                 transaction = connection.BeginTransaction();
-
+                EmailNotification emailNotification = new EmailNotification();
                 var result = emailNotification.Search(db, transaction, hospitalId);
 
                 transaction.Commit();
@@ -93,7 +95,8 @@ namespace NHSKPIDataService.Services
             }
             catch (Exception ex)
             {
-                transaction.Rollback();
+                if (transaction != null)
+                    transaction.Rollback();
                 throw ex;
             }
             finally
@@ -106,7 +109,7 @@ namespace NHSKPIDataService.Services
             }
         }
 
-        public List<EmailNotification> SearchAllEmailNotifications(EmailNotification emailNotification)
+        public List<EmailNotification> SearchAllEmailNotifications()
         {
             try
             {
@@ -114,7 +117,7 @@ namespace NHSKPIDataService.Services
                 connection = db.CreateConnection();
                 connection.Open();
                 transaction = connection.BeginTransaction();
-
+                EmailNotification emailNotification = new EmailNotification();
                 var result = emailNotification.SearchAll(db, transaction);
 
                 transaction.Commit();
@@ -123,7 +126,8 @@ namespace NHSKPIDataService.Services
             }
             catch (Exception ex)
             {
-                transaction.Rollback();
+                if (transaction != null)
+                    transaction.Rollback();
                 throw ex;
             }
             finally
@@ -151,7 +155,8 @@ namespace NHSKPIDataService.Services
             }
             catch (Exception ex)
             {
-                transaction.Rollback();
+                if (transaction != null)
+                    transaction.Rollback();
                 throw ex;
             }
             finally
@@ -163,6 +168,7 @@ namespace NHSKPIDataService.Services
                 }
             }
         }
+
         #endregion
     }
 }

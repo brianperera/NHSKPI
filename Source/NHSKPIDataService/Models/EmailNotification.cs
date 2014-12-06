@@ -184,7 +184,7 @@ namespace NHSKPIDataService.Models
                         item.Id = intVal;
 
                     if (int.TryParse(results["HospitalId"].ToString(), out intVal))
-                        item.Id = intVal;
+                        item.HospitalId = intVal;
 
                     item.ReminderEmail = results["ReminderEmail"].ToString();
                     item.EscalationEmail = results["ManagerEscalationEmail"].ToString();

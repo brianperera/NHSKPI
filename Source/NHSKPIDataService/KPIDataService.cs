@@ -1274,16 +1274,43 @@ namespace NHSKPIDataService
         /// <param name="hospitalId">The hospital identifier.</param>
         /// <param name="targetApplyFor">The target apply for.</param>
         /// <returns></returns>
-        public DataSet GetIncompleteWardKPI(Database db, DbTransaction transaction, int hospitalId, int targetApplyFor)
+        public DataSet GetIncompleteWardKPI(int hospitalId, int targetApplyFor)
         {
-            DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Incomplete_Ward_KPI);
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
 
-            db.AddInParameter(dbCommand, "@TargetId", DbType.Int32, targetApplyFor);
-            db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Incomplete_Ward_KPI);
 
-            return db.ExecuteDataSet(dbCommand, transaction);
+                db.AddInParameter(dbCommand, "@TargetId", DbType.Int32, targetApplyFor);
+                db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
 
+                DataSet dsWardData = db.ExecuteDataSet(dbCommand);
 
+                transaction.Commit();
+
+                return dsWardData;
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                if (ex.InnerException == null)
+                { throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex); }
+                else
+                { throw ex; }
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
         }
 
         /// <summary>
@@ -1294,14 +1321,43 @@ namespace NHSKPIDataService
         /// <param name="hospitalId">The hospital identifier.</param>
         /// <param name="targetApplyFor">The target apply for.</param>
         /// <returns></returns>
-        public DataSet GetIncompleteSpecialityKPI(Database db, DbTransaction transaction, int hospitalId, int targetApplyFor)
+        public DataSet GetIncompleteSpecialityKPI(int hospitalId, int targetApplyFor)
         {
-            DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Incomplete_Speciality_KPI);
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
 
-            db.AddInParameter(dbCommand, "@TargetId", DbType.Int32, targetApplyFor);
-            db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Incomplete_Speciality_KPI);
 
-            return db.ExecuteDataSet(dbCommand, transaction);
+                db.AddInParameter(dbCommand, "@TargetId", DbType.Int32, targetApplyFor);
+                db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
+
+                DataSet dsWardData = db.ExecuteDataSet(dbCommand);
+
+                transaction.Commit();
+
+                return dsWardData;
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                if (ex.InnerException == null)
+                { throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex); }
+                else
+                { throw ex; }
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
 
 
         }

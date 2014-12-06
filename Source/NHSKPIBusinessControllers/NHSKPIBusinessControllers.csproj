@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommentController.cs" />
+    <Compile Include="EmailNotificationController.cs" />
     <Compile Include="HospitalController.cs" />
     <Compile Include="KPIController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
