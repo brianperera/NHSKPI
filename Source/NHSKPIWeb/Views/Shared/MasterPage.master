@@ -199,6 +199,7 @@
 <ul>
 <li id="lnkBenchMarkReports" runat="server" visible="false"><a class="<%= HrefBenchmarkReportDisable %>"  href="../KPI/BenchMarkReport.aspx"><span>BenchMark Report</span></a></li>
 <li id="lnkBenchMarkDataUpload" runat="server" visible="false"><a class="<%= HrefBenchmarkReportDisable %>"  href="../KPI/BenchMarkDataUpload.aspx"><span>Data Upload</span></a></li>
+<li id="lnkKpiReportDashboard" runat="server" visible="true"><a href="../Dashboard/ReportDashboard.aspx"><span>Report Dashboard</span></a></li>
 
 </ul>
 </li>

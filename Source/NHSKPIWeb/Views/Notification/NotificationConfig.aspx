@@ -134,7 +134,7 @@
                 </div>
                 <div class="grid_16">
                     <asp:TextBox ID="txtReminderEmailAddress" placeholder="Reminder E-Mail" runat="server"></asp:TextBox><asp:RequiredFieldValidator
-                        ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ControlToValidate="txtReminderEmailAddress"
+                        ID="RequiredFieldValidator4" ValidationGroup="ReminderGroup" runat="server" ErrorMessage="*" ControlToValidate="txtReminderEmailAddress"
                         Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator1"
                             runat="server" ErrorMessage="Invalid" ControlToValidate="txtReminderEmailAddress" Display="Dynamic"
                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="grid_16">
                     <asp:TextBox ID="txtEscalationEmailAddress" placeholder="Manager Escalation E-Mail" runat="server"></asp:TextBox><asp:RequiredFieldValidator
-                        ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtEscalationEmailAddress"
+                        ID="RequiredFieldValidator1" ValidationGroup="ReminderGroup" runat="server" ErrorMessage="*" ControlToValidate="txtEscalationEmailAddress"
                         Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator2"
                             runat="server" ErrorMessage="Invalid" ControlToValidate="txtEscalationEmailAddress" Display="Dynamic"
                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
@@ -154,8 +154,8 @@
                 </div>
             </div>
 
-
-            <div class="page-header position-relative">
+            <div class="clear"></div>
+            <div class="page-header position-relative verticle-gap">
                 <h1>Setup Email Bucket for Hospital (Dashboard Emails)
                 </h1>
             </div>
@@ -167,6 +167,9 @@
                             <span>
                                 <asp:TextBox ID="txtEmail" CssClass="magin_0" placeholder="Email" runat="server"></asp:TextBox>
                             </span>
+                            <span>
+                                <asp:Button ID="btnAddEmail" CssClass="file-uploaded-button" runat="server" Text="Add" OnClick="btnAddEmail_Click" />
+                            </span>
                             <div class="paragraph-break">
                                 <asp:ListBox ID="lbEmailList" CssClass="listbox" Height="80" Width="160" runat="server">
                                     
@@ -175,9 +178,6 @@
                         </div>
                         <div class="grid_24 error_msg">
                             <asp:Label ID="lblAddEmailMessage" runat="server" Text=""></asp:Label>
-                        </div>
-                        <div class="field-control-last">
-                            <asp:Button ID="btnAddEmail" CssClass="file-uploaded-button" runat="server" Text="Add" OnClick="btnAddEmail_Click" />
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
