@@ -53,12 +53,12 @@ public partial class QuickStart : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        UpdateKPIGroupResult();
         UpdateUserList();
 
         if (!IsPostBack)
         {
             LoadUserInitialData();
+            UpdateKPIGroupResult();
         }
     }
 
@@ -206,6 +206,11 @@ public partial class QuickStart : System.Web.UI.Page
         }
     }
 
+    protected void btnRemoveKpiGroup_Click(object sender, EventArgs e)
+    {
+        lbKpiGroups.Items.Remove(lbKpiGroups.SelectedItem);
+    }
+
     #endregion
 
     #region Private methods
@@ -240,6 +245,5 @@ public partial class QuickStart : System.Web.UI.Page
 
     }
 
-    #endregion
-    
+    #endregion    
 }

@@ -147,12 +147,15 @@
                                             <div class="paragraph-break">
                                                 <asp:ListBox ID="lbKpiGroups" CssClass="listbox" Height="80" Width="160" runat="server"></asp:ListBox>
                                             </div>
+                                            <div class="field-control-last">
+                                                <asp:Button ID="btnRemoveKpiGroup" CssClass="file-uploaded-button" runat="server" Text="Remove" OnClick="btnRemoveKpiGroup_Click"/>
+                                            </div>
                                         </div>
                                         <div class="grid_24 error_msg">
                                             <asp:Label ID="lblAddKpiGroupMessage" runat="server" Text=""></asp:Label>
                                         </div>
                                         <div class="field-control-last">
-                                            <asp:Button ID="btnAddKpiGroup" CssClass="file-uploaded-button" runat="server" Text="Add" OnClick="btnAddKpiGroup_Click" />
+                                            <asp:Button ID="btnAddKpiGroup" CssClass="file-uploaded-button" runat="server" Text="Add" OnClick="btnAddKpiGroup_Click" />                                            
                                         </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
