@@ -205,7 +205,7 @@ namespace NHSKPIDataService.Util
 
          public static readonly string MSG_Configuration_Success_Update = "Configurations Successfully updated";
          public static readonly string MSG_Dialog_Bullet_Points = "<span class='ui-icon ui-icon-circle-check' style='float:left; margin:0 7px 50px 0;'></span>";
-         public static readonly string MSG_Hospital_Name_Exist = "This hospital has alreasy registerd with NHSKPI.<BR><BR>(1) If you are not the system administrator for HOSPITAL_NAME, please neter your email so we can send you who to contact in order to create you an account.<BR><BR>(2) If you the system administrator and forgotton your credentials please press \"Resend Credentilas\" button to receive the login details again.<BR><BR>(3) If you need to create a new account due any other reason please contact us via email and will be in touch with you within 24 hours of your request.";
+         public static readonly string MSG_Hospital_Name_Exist = "This hospital has already registerd with NHSKPI.<BR><BR>(1) If you are not the system administrator for HOSPITAL_NAME, please enter your email so we can send you who to contact in order to create you an account.<BR><BR>(2) If you are the system administrator and forgotton your credentials please press \"Resend Credentilas\" button to receive the login details again.<BR><BR>(3) If you need to create a new account due to any other reason please contact us via email and will be in touch with you within 24 hours of your request.";
 
          public static readonly string EmailFacilities = "EmailFacilities";
          public static readonly string Reminders = "Reminders";

@@ -293,7 +293,7 @@
                                         <div class="small-column-right-2">
                                             <asp:GridView ID="UserListGridView" runat="server" AutoGenerateColumns="False" AllowPaging="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowDataBound="UserListGridView_RowDataBound" PageSize="4">
                                                 <Columns>
-                                                    <asp:BoundField DataField="UserName" HeaderText="Username" />
+                                                    <asp:BoundField DataField="Email" HeaderText="Email" />
                                                     <asp:BoundField DataField="FirstName" HeaderText="First Name" />
                                                     <asp:BoundField DataField="LastName" HeaderText="Last Name" />
                                                     <asp:BoundField DataField="RoleId" HeaderText="Role" />

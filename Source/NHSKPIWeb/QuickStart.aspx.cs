@@ -53,13 +53,12 @@ public partial class QuickStart : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        LoadUserInitialData();
         UpdateKPIGroupResult();
         UpdateUserList();
 
         if (!IsPostBack)
         {
-
+            LoadUserInitialData();
         }
     }
 
@@ -172,7 +171,7 @@ public partial class QuickStart : System.Web.UI.Page
 
         if (defaultUserRoleId == 0)
         {
-            lbAddUserMessage.Text = "User Roole not selected";
+            lbAddUserMessage.Text = "User Role not selected";
             lbAddUserMessage.CssClass = "alert-danger";
             return;
         }
