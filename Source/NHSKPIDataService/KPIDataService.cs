@@ -342,7 +342,7 @@ namespace NHSKPIDataService
                      connection.Dispose();
                  }
              }
-         }
+         }       
 
          #endregion
 
@@ -643,7 +643,47 @@ namespace NHSKPIDataService
               }
           }
         #endregion
-                
+
+        #region Get Ward Data
+        /// <summary>
+        /// Get Ward Data
+        /// </summary>
+        /// <param name="hospitalId"></param>
+        /// <returns>hospital dataset</returns>
+        public DataSet GetWardData(int hospitalId)
+        {
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Ward_Data);
+
+                db.AddInParameter(dbCommand, "@HospId", DbType.String, hospitalId.ToString());
+
+                DataSet dsWardData = db.ExecuteDataSet(dbCommand, transaction);
+                transaction.Commit();
+
+                return dsWardData;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+        }
+        #endregion
+        
         #endregion
 
         #region KPI Services
@@ -1412,6 +1452,45 @@ namespace NHSKPIDataService
         }
         #endregion
 
+        #region Get Specialty Data
+        /// <summary>
+        /// Get Specialt yData
+        /// </summary>
+        /// <param name="hospitalId"></param>
+        /// <returns>Specialty dataset</returns>
+        public DataSet GetSpecialtyData(int hospitalId)
+        {
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Specialty_Data);
+
+                db.AddInParameter(dbCommand, "@HospId", DbType.String, hospitalId.ToString());
+
+                DataSet dsSpecialtyData = db.ExecuteDataSet(dbCommand, transaction);
+                transaction.Commit();
+
+                return dsSpecialtyData;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+        }
+        #endregion
 
         #endregion
 

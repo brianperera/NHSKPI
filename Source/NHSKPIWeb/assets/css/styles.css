@@ -516,8 +516,7 @@ select
     background: #FFF;
     margin: 5px 0;
     padding: 0;
-	height: 18px;
-}
+	}
 input[type=checkbox]
 {
     vertical-align: middle;
@@ -551,7 +550,6 @@ label, span
     display: inline-block;
     text-align: left;
     font-weight: 700;
-    height: 17px;
     margin: 2px 0;
     padding: 2px 1px;
 }

@@ -85,5 +85,12 @@ namespace NHSKPIBusinessControllers
        }
        #endregion
 
+       #region Get Specialty Data
+       public DataSet GetSpecialtyData(int hospitalId)
+       {
+           return NHSService.GetSpecialtyData(hospitalId);
+       }
+       #endregion
+
    }
 }

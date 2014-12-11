@@ -7,6 +7,7 @@ using NHSKPIBusinessControllers;
 using NHSKPIDataService;
 using NHSKPIDataService.Util;
 using NHSKPIDataService.Models;
+using System.Data;
 
 public partial class Views_KPI_DataExport : System.Web.UI.Page
 {
@@ -16,10 +17,12 @@ public partial class Views_KPI_DataExport : System.Web.UI.Page
     private NHSKPIDataService.Models.KPI kpi = null;
     private int kpiId;
     private User nhsUser = null;
+    private static DataSet ds = null;
 
     #endregion
 
     #region Public Properties
+
 
     public KPIController KPIController
     {
@@ -101,9 +104,120 @@ public partial class Views_KPI_DataExport : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            
+            CheckBox_SelectAll.Checked = true;
+            SetCheckBoxList();
+        } 
+    }
+
+    #endregion   
+    
+    protected void Export_Data_Button_Click(object sender, EventArgs e)
+    {
+        DataTable table = ds.Tables[0];
+        string attachment = string.Empty;
+
+        if (DataType_DropDownList.SelectedIndex == 0)
+        {
+            attachment = "attachment; filename=Ward_Data.xls";
+        }
+        else if (DataType_DropDownList.SelectedIndex == 1)
+        {
+            attachment = "attachment; filename=Specialty_Data.xls";
+        }
+
+        Response.ClearContent();
+        Response.AddHeader("content-disposition", attachment);
+        Response.ContentType = "application/vnd.ms-excel";
+        string tab = string.Empty;
+
+        foreach (DataColumn column in table.Columns)
+        {
+
+            if (ColumnList_CheckBoxList.Items.FindByValue(column.ColumnName)!=null && 
+                ColumnList_CheckBoxList.Items.FindByValue(column.ColumnName).Selected)
+            {
+                Response.Write(tab + column.ColumnName);
+                tab = "\t";
+            }
+        }
+
+        Response.Write("\n");
+
+        foreach (DataRow row in table.Rows)
+        {
+            tab = string.Empty;
+            for (int i = 0; i < table.Columns.Count; i++)
+            {
+                if (ColumnList_CheckBoxList.Items.Count>i && 
+                    ColumnList_CheckBoxList.Items[i].Selected)
+                {
+                    Response.Write(tab + row[i].ToString());
+                    tab = "\t";
+                }
+            }
+            Response.Write("\n");
+        }
+
+        Response.End();
+    }
+
+    protected void DataType_DropDownList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        SetCheckBoxList();
+    }
+
+    private void SetCheckBoxList()
+    {  
+        if (DataType_DropDownList.SelectedIndex == 0)
+        {
+            ds = new WardController().GetWardData(NHSUser.HospitalId);
+            ColumnList_CheckBoxList.Items.Clear();
+            ColumnList_CheckBoxList.DataSource = ds.Tables[0].Columns;
+            ColumnList_CheckBoxList.DataBind();
+            Export_Data_Button.Text = "Export Ward Data";
+        }
+        else
+        {
+            ds = new SpecialtyController().GetSpecialtyData(NHSUser.HospitalId);
+            ColumnList_CheckBoxList.Items.Clear();
+            ColumnList_CheckBoxList.DataSource = ds.Tables[0].Columns;
+            ColumnList_CheckBoxList.DataBind();
+            Export_Data_Button.Text = "Export Specialty Data";
+        }
+        SetSelectionOfCheckBoxList();
+    }
+
+    private void SetSelectionOfCheckBoxList()
+    {
+        foreach (ListItem checkBox in ColumnList_CheckBoxList.Items)
+        {
+            checkBox.Selected = CheckBox_SelectAll.Checked;
+        }
+        HandleNoSelection();
+    }
+
+    protected void CheckBox_SelectAll_CheckedChanged(object sender, EventArgs e)
+    {
+        SetSelectionOfCheckBoxList();
+    }
+
+    protected void ColumnList_CheckBoxList_CheckedChanged(object sender, EventArgs e)
+    {
+        HandleNoSelection();
+    }
+
+    private void HandleNoSelection()
+    {
+        ListItem item = ColumnList_CheckBoxList.SelectedItem;
+        if (item == null)
+        {
+            Export_Data_Button.Enabled = false;
+            Message_Label.Text = "Please select one or more checkboxes to export data";
+        }
+        else
+        {
+            Export_Data_Button.Enabled = true;
+            Message_Label.Text = string.Empty;
         }
     }
-    #endregion   
-   
 }

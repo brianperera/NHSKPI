@@ -184,7 +184,7 @@ public partial class Views_Shared_MasterPage : System.Web.UI.MasterPage
         lnkBenchMarkDataUpload.Visible = HospitalConfigurations.BenchMarkingModule;
 
         if (HospitalConfigurations.DownloadDataSets == false)
-            HrefDataExportLink = "disabled";
+            HrefDataExportLink = "enalbed";
         else
             HrefDataExportLink = string.Empty;
 

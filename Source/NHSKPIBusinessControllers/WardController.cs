@@ -155,5 +155,12 @@ namespace NHSKPIBusinessControllers
         }
         #endregion
 
+        #region Get Ward Data
+        public DataSet GetWardData(int hospitalId)
+        {
+            return NHSService.GetWardData(hospitalId);
+        }
+        #endregion
+
     }
 }

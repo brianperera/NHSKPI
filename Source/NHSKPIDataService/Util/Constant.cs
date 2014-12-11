@@ -64,6 +64,8 @@ namespace NHSKPIDataService.Util
         public static readonly string SP_User_Search                = "uspUserSearch";
         public static readonly string SP_User_Login                 = "uspUserLogin";
         public static readonly string SP_User_Initial_Data          = "uspGetUserInitialData";
+        public static readonly string SP_Get_Ward_Data              = "uspGetWardData";
+        public static readonly string SP_Get_Specialty_Data         = "uspGetSpecialtyData";
 
         public static readonly string SP_KPIWardMonthlyTarget_Insert        = "uspKPIWardMonthlyTargetInsert";
         public static readonly string SP_Ward_KPI_Target_View               = "uspKPIWardMonthlyTargetView";
