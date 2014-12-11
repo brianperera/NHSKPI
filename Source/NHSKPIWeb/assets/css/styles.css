@@ -1944,3 +1944,7 @@ letter-spacing: 0.02em;
 .moduleConfiguration td {
     width:160px;
 }
+
+.verticle-gap {
+    margin-top:50px;
+}

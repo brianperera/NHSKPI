@@ -68,7 +68,7 @@ namespace NHSKPIBusinessControllers
             { 
                 //Send Email
                 utilController = new UtilController();
-                Email emailMessage = new NHSKPIDataService.Models.Email
+                EmailMessage emailMessage = new NHSKPIDataService.Models.EmailMessage
                 {
                     EmailTo = user.Email,
                     Subject = "Added to KPI Portal",

@@ -5,11 +5,19 @@ using System.Text;
 
 namespace NHSKPIDataService.Models
 {
-    public class Email
+    public class EmailMessage
     {
         public string EmailTo { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
+    }
+
+    public class Email
+    {
+        public int Id { get; set; }
+        public string EmailAddress { get; set; }
+        public string Description { get; set; }
+        public int HospitalId { get; set; }
     }
 
     public class EmailConfigurations

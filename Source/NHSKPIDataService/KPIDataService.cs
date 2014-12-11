@@ -1304,7 +1304,104 @@ namespace NHSKPIDataService
         }
         #endregion
 
+        #region Incomplete KPI
 
+        /// <summary>
+        /// Gets the incomplete ward KPI.
+        /// </summary>
+        /// <param name="db">The database.</param>
+        /// <param name="transaction">The transaction.</param>
+        /// <param name="hospitalId">The hospital identifier.</param>
+        /// <param name="targetApplyFor">The target apply for.</param>
+        /// <returns></returns>
+        public DataSet GetIncompleteWardKPI(int hospitalId, int targetApplyFor)
+        {
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Incomplete_Ward_KPI);
+
+                db.AddInParameter(dbCommand, "@TargetId", DbType.Int32, targetApplyFor);
+                db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
+
+                DataSet dsWardData = db.ExecuteDataSet(dbCommand);
+
+                transaction.Commit();
+
+                return dsWardData;
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                if (ex.InnerException == null)
+                { throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex); }
+                else
+                { throw ex; }
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the incomplete speciality KPI.
+        /// </summary>
+        /// <param name="db">The database.</param>
+        /// <param name="transaction">The transaction.</param>
+        /// <param name="hospitalId">The hospital identifier.</param>
+        /// <param name="targetApplyFor">The target apply for.</param>
+        /// <returns></returns>
+        public DataSet GetIncompleteSpecialityKPI(int hospitalId, int targetApplyFor)
+        {
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Get_Incomplete_Speciality_KPI);
+
+                db.AddInParameter(dbCommand, "@TargetId", DbType.Int32, targetApplyFor);
+                db.AddInParameter(dbCommand, "@HospitalId", DbType.Int32, hospitalId);
+
+                DataSet dsWardData = db.ExecuteDataSet(dbCommand);
+
+                transaction.Commit();
+
+                return dsWardData;
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                if (ex.InnerException == null)
+                { throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex); }
+                else
+                { throw ex; }
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+
+
+        }
+        #endregion
 
         #endregion
 

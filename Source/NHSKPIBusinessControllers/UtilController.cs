@@ -96,7 +96,7 @@ namespace NHSKPIBusinessControllers
 
         #region Send Email Notification
 
-        public void SendEmailNotification(Email email)
+        public void SendEmailNotification(EmailMessage email)
         {
             // Command line argument must the the SMTP host.
 
@@ -126,6 +126,44 @@ namespace NHSKPIBusinessControllers
             mailMessage.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
             client.Send(mailMessage);
+        }
+
+        public List<Email> GetEmailList(int hospitalId)
+        {
+            try
+            {
+                return UtilService.GetEmailList(hospitalId);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException == null)
+                {
+                    throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex);
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public bool InsertEmailToBucket(Email email)
+        {
+            try
+            {
+                return UtilService.InsertEmailToBucket(email);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException == null)
+                {
+                    throw new Exception("Stack Trace:" + ex.StackTrace + "Message:" + ex.Message, ex);
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
         }
 
         #endregion

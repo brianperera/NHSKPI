@@ -16,7 +16,7 @@
                     <asp:Label ID="lblDeadline" runat="server" Text="Reminder 1"></asp:Label>
                 </div>
                 <div class="grid_16">
-                    <asp:DropDownList ID="ddlWorkingDays" Width="50px" CssClass="repeatPanelControls" runat="server">
+                    <asp:DropDownList ID="ddlReminder1" Width="50px" CssClass="repeatPanelControls" runat="server">
                         <asp:ListItem>1</asp:ListItem>
                         <asp:ListItem>2</asp:ListItem>
                         <asp:ListItem>3</asp:ListItem>
@@ -48,14 +48,14 @@
                         <asp:ListItem>29</asp:ListItem>
                         <asp:ListItem>30</asp:ListItem>
                     </asp:DropDownList>
-                    Repeat Monthly
-                    <asp:CheckBox ID="chkRepeatMonthly" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />
+                    <%--Repeat Monthly
+                    <asp:CheckBox ID="chkRepeatMonthly" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />--%>
                 </div>
                 <div class="grid_8">
                     <asp:Label ID="Label1" runat="server" Text="Reminder 2"></asp:Label>
                 </div>
                 <div class="grid_16">
-                    <asp:DropDownList ID="DropDownList1" Width="50px" CssClass="repeatPanelControls" runat="server">
+                    <asp:DropDownList ID="ddlReminder2" Width="50px" CssClass="repeatPanelControls" runat="server">
                         <asp:ListItem>1</asp:ListItem>
                         <asp:ListItem>2</asp:ListItem>
                         <asp:ListItem>3</asp:ListItem>
@@ -87,14 +87,14 @@
                         <asp:ListItem>29</asp:ListItem>
                         <asp:ListItem>30</asp:ListItem>
                     </asp:DropDownList>
-                    Repeat Monthly
-                    <asp:CheckBox ID="CheckBox1" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />
+                    <%--Repeat Monthly
+                    <asp:CheckBox ID="CheckBox1" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />--%>
                 </div>
                 <div class="grid_8">
                     <asp:Label ID="Label2" runat="server" Text="Manager Escalation"></asp:Label>
                 </div>
                 <div class="grid_16">
-                    <asp:DropDownList ID="DropDownList2" Width="50px" CssClass="repeatPanelControls" runat="server">
+                    <asp:DropDownList ID="ddlEscalation" Width="50px" CssClass="repeatPanelControls" runat="server">
                         <asp:ListItem>1</asp:ListItem>
                         <asp:ListItem>2</asp:ListItem>
                         <asp:ListItem>3</asp:ListItem>
@@ -126,13 +126,64 @@
                         <asp:ListItem>29</asp:ListItem>
                         <asp:ListItem>30</asp:ListItem>
                     </asp:DropDownList>
-                    Repeat Monthly
-                    <asp:CheckBox ID="CheckBox2" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />
+                    <%--Repeat Monthly
+                    <asp:CheckBox ID="CheckBox2" runat="server" CssClass="repeatDealineCheckbox" Checked="True" />--%>
                 </div>
                 <div class="grid_8">
-                    <asp:Button ID="btnSave" runat="server" Text="Save" />
+                    <asp:Label ID="Label4" runat="server" Text="Reminder E-Mail"></asp:Label>
+                </div>
+                <div class="grid_16">
+                    <asp:TextBox ID="txtReminderEmailAddress" placeholder="Reminder E-Mail" runat="server"></asp:TextBox><asp:RequiredFieldValidator
+                        ID="RequiredFieldValidator4" ValidationGroup="ReminderGroup" runat="server" ErrorMessage="*" ControlToValidate="txtReminderEmailAddress"
+                        Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                            runat="server" ErrorMessage="Invalid" ControlToValidate="txtReminderEmailAddress" Display="Dynamic"
+                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                </div>
+                <div class="grid_8">
+                    <asp:Label ID="Label5" runat="server" Text="Manager Escalation E-Mail"></asp:Label>
+                </div>
+                <div class="grid_16">
+                    <asp:TextBox ID="txtEscalationEmailAddress" placeholder="Manager Escalation E-Mail" runat="server"></asp:TextBox><asp:RequiredFieldValidator
+                        ID="RequiredFieldValidator1" ValidationGroup="ReminderGroup" runat="server" ErrorMessage="*" ControlToValidate="txtEscalationEmailAddress"
+                        Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator2"
+                            runat="server" ErrorMessage="Invalid" ControlToValidate="txtEscalationEmailAddress" Display="Dynamic"
+                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                </div>
+                <div class="grid_8">
+                    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
                 </div>
             </div>
+
+            <div class="clear"></div>
+            <div class="page-header position-relative verticle-gap">
+                <h1>Setup Email Bucket for Hospital (Dashboard Emails)
+                </h1>
+            </div>
+            <div class="grid_16">
+
+                <asp:UpdatePanel runat="server" ID="UpdatePanelKPIGroups">
+                    <ContentTemplate>
+                        <div class="field-control-middle">
+                            <span>
+                                <asp:TextBox ID="txtEmail" CssClass="magin_0" placeholder="Email" runat="server"></asp:TextBox>
+                            </span>
+                            <span>
+                                <asp:Button ID="btnAddEmail" CssClass="file-uploaded-button" runat="server" Text="Add" OnClick="btnAddEmail_Click" />
+                            </span>
+                            <div class="paragraph-break">
+                                <asp:ListBox ID="lbEmailList" CssClass="listbox" Height="80" Width="160" runat="server">
+                                    
+                                </asp:ListBox>
+                            </div>
+                        </div>
+                        <div class="grid_24 error_msg">
+                            <asp:Label ID="lblAddEmailMessage" runat="server" Text=""></asp:Label>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+
+            </div>
+
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

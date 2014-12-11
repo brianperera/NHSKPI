@@ -197,7 +197,7 @@ public partial class login : System.Web.UI.Page
         {
             utilController = new UtilController();
 
-            Email emailMessage = new NHSKPIDataService.Models.Email
+            EmailMessage emailMessage = new NHSKPIDataService.Models.EmailMessage
             {
                 EmailTo = txtEmailAddress.Text,
                 Subject = "KPI Portal for FREE Trail has been approved.",
