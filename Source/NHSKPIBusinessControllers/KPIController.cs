@@ -629,6 +629,15 @@ namespace NHSKPIBusinessControllers
         } 
         #endregion
 
+        #region Remove KPI Group
+
+        public bool RemoveKPIGroup(int id)
+        {
+            return NHSService.RemoveKPIGroup(id);
+        }
+
+        #endregion
+
         #region Add KPI
         /// <summary>
         /// Add KPI

@@ -83,7 +83,8 @@ namespace NHSKPIDataService.Models
 
                 DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_Set_Update_Department_Head);
 
-                db.AddInParameter(dbCommand, "@Id", DbType.Int32, 0);
+                db.AddOutParameter(dbCommand, "@Id", DbType.Int32, 5);
+                //db.AddInParameter(dbCommand, "@Id", DbType.Int32, 0);
                 db.AddInParameter(dbCommand, "@Name", DbType.String, departmentHead.Name);
                 db.AddInParameter(dbCommand, "@JobTile", DbType.String, departmentHead.JobTitle);
                 db.AddInParameter(dbCommand, "@MobileNo", DbType.String, departmentHead.MobileNo);

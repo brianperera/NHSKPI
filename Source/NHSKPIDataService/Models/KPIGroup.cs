@@ -154,5 +154,18 @@ namespace NHSKPIDataService.Models
 
         }
         #endregion
+
+        #region Delete
+
+        public int Delete(Database db, DbTransaction transaction)
+        {
+            DbCommand dbCommand = db.GetStoredProcCommand(Constant.SP_KPI_Group_Delete);
+
+            db.AddInParameter(dbCommand, "@KPIGropuId", DbType.Int32, this.id);
+
+            return db.ExecuteNonQuery(dbCommand);
+        }
+
+        #endregion
     }
 }

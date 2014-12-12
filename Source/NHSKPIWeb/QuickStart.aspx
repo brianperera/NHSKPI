@@ -54,8 +54,6 @@
         </div>
     </div>
     <div class="container_24">
-
-
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <div class="wizard-container" id="divBody">

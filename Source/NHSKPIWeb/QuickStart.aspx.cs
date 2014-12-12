@@ -115,6 +115,7 @@ public partial class QuickStart : System.Web.UI.Page
                 lblAddKpiGroupMessage.Text = Constant.MSG_KpiGroup_Success_Add;
                 lblAddKpiGroupMessage.CssClass = "alert-success";
                 UpdateKPIGroupResult();
+                txtKpiGroupName.Text = string.Empty;
             }
         }
         else
@@ -143,11 +144,22 @@ public partial class QuickStart : System.Web.UI.Page
         {
             lbAddUpdateManagerDetailsMessage.Text = "Department Head's details successfully added";
             lbAddUpdateManagerDetailsMessage.CssClass = "alert-success";
+
+            // Send an email to dep head
+            UtilController utilController = new UtilController();
+            EmailMessage emailMessage = new NHSKPIDataService.Models.EmailMessage
+            {
+                EmailTo = txbManagerEmail.Text,
+                Subject = "You've been added as a department head",
+                Body = "This is a notification"
+            };
+
+            utilController.SendEmailNotification(emailMessage);
         }
         else
         {
             lbAddUpdateManagerDetailsMessage.Text = "Error occured, record not added";
-            lbAddUpdateManagerDetailsMessage.CssClass = "alert-danger";
+            lbAddUpdateManagerDetailsMessage.CssClass = "alert-danger";            
         }
     }
 
@@ -208,7 +220,21 @@ public partial class QuickStart : System.Web.UI.Page
 
     protected void btnRemoveKpiGroup_Click(object sender, EventArgs e)
     {
-        lbKpiGroups.Items.Remove(lbKpiGroups.SelectedItem);
+        kPIController = new KPIController();
+
+        if (kPIController.RemoveKPIGroup(int.Parse(lbKpiGroups.SelectedValue)))
+        {
+            lblAddKpiGroupMessage.Text = Constant.MSG_KpiGroup_Success_Remove;
+            lblAddKpiGroupMessage.CssClass = "alert-success";
+            UpdateKPIGroupResult();          
+        }
+        else
+        {
+            lblAddKpiGroupMessage.Text = Constant.MSG_KpiGroup_Failure_Remove;
+            lblAddKpiGroupMessage.CssClass = "alert-danger";
+        }
+
+        txtKpiGroupName.Text = string.Empty;
     }
 
     #endregion
@@ -227,6 +253,7 @@ public partial class QuickStart : System.Web.UI.Page
         KPIController kpiController = new KPIController();
         lbKpiGroups.DataSource = kpiController.SearchKPIGroup(string.Empty, true).Tables[0];
         lbKpiGroups.DataTextField = "KPIGroupName";
+        lbKpiGroups.DataValueField = "Id";
         lbKpiGroups.DataBind();
     }
 

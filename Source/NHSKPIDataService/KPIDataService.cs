@@ -875,6 +875,44 @@ namespace NHSKPIDataService
 
         #endregion
 
+        #region Delete KPI Group
+
+        public bool RemoveKPIGroup(int id)
+        {
+            try
+            {
+                Database db = DatabaseFactory.CreateDatabase(Constant.NHS_Database_Connection_Name);
+                connection = db.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction();
+
+                KPIGroup kpiGroup = new KPIGroup();
+                kpiGroup.Id = id;
+
+                int affectedRowCount = kpiGroup.Delete(db, transaction);
+                transaction.Commit();  
+              
+                if (affectedRowCount > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+        }
+
+        #endregion
         #region Add KPI
         /// <summary>
         /// This function will add the KPI to data base.

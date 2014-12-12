@@ -43,6 +43,7 @@ namespace NHSKPIDataService.Util
         public static readonly string SP_KPI_Group_Update           = "uspKPIGroupUpdate";
         public static readonly string SP_KPI_Group_Search           = "uspKPIGroupSearch";
         public static readonly string SP_KPI_Group_View             = "uspKPIGroupView";
+        public static readonly string SP_KPI_Group_Delete           = "uspKPIGroupDelete";
         public static readonly string SP_KPI_Insert                 = "uspKPIInsert";
         public static readonly string SP_KPI_Update                 = "uspKPIUpdate";
         public static readonly string SP_KPI_Search                 = "uspKPISearch";
@@ -154,6 +155,8 @@ namespace NHSKPIDataService.Util
         public static readonly string MSG_Ward_Success_Update               = "Ward details successfully updated";
         public static readonly string MSG_KpiGroup_Success_Add              = "KPI group details successfully added";
         public static readonly string MSG_KpiGroup_Success_Update           = "KPI group details successfully updated ";
+        public static readonly string MSG_KpiGroup_Success_Remove           = "KPI group details successfully removed ";
+        public static readonly string MSG_KpiGroup_Failure_Remove           = "Could not remove KPI gropu details ";
          public static readonly string MSG_Ward_KPI_Target_Success_Add      = "Ward KPI Target successfully added";
          public static readonly string MSG_Ward_KPI_Target_Fail_Add         = "Could not add ward KPI target";
          public static readonly string MSG_Ward_KPI_Target_Already_Exist    = "Target has been already set for selected KPI";
