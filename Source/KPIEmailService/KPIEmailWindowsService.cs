@@ -18,7 +18,7 @@ namespace KPIEmailService
         /// </summary>
         public KPIEmailWindowsService()
         {
-            ServiceName = "ContentSharingWindowsService";
+            ServiceName = "KPIEmailWindowsService";
         }
 
         /// <summary>
