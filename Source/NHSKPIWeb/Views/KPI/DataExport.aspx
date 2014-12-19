@@ -10,11 +10,12 @@
         <asp:ListItem>Ward Data</asp:ListItem>
         <asp:ListItem>Specility Data</asp:ListItem>
     </asp:DropDownList>
-    <asp:CheckBox ID="CheckBox_SelectAll" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox_SelectAll_CheckedChanged" Text="Select All" />
     <br />
    
+    <asp:CheckBox ID="CheckBox_SelectAll" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox_SelectAll_CheckedChanged" Text="Select All" Font-Bold="True" Font-Size="Small" />
+   
     <br />
-    <asp:CheckBoxList ID="ColumnList_CheckBoxList" runat="server" RepeatColumns="1" AutoPostBack="True" OnSelectedIndexChanged="ColumnList_CheckBoxList_CheckedChanged">
+    <asp:CheckBoxList ID="ColumnList_CheckBoxList" runat="server" RepeatColumns="4" AutoPostBack="True" OnSelectedIndexChanged="ColumnList_CheckBoxList_CheckedChanged">
     </asp:CheckBoxList>
    
     <br />
