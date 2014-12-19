@@ -36,8 +36,8 @@
     <script src="assets/scripts/jquery-1.10.2.min.js"></script>
     <script src="assets/scripts/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/scripts/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="assets/scripts/modernizr-2.6.2.min.js"></script>
-    <script src="assets/scripts/jquery.cookie-1.3.1.js"></script>
+    <%--<script src="assets/scripts/modernizr-2.6.2.min.js"></script>
+    <script src="assets/scripts/jquery.cookie-1.3.1.js"></script>--%>
     <script src="assets/scripts/jquery.steps.min.js"></script>
 
 </head>
