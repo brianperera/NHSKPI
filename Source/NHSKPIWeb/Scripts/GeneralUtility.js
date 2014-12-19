@@ -3,11 +3,10 @@
     ManageManualHospitalEntryField();
     ChangeHopitalDropDownPlaceHolderColor();
 
-
     var isPostBackObject = document.getElementById('isPostBack');
 
     if (isPostBackObject != null) {
-        
+
     }
     else {
         $(".ward-bulk-upload").hide();
@@ -28,8 +27,7 @@
 
 });
 
-function DisableWardDataEntryFields()
-{
+function DisableWardDataEntryFields() {
     //Ward Page
     $("#ctl00_Contentbody_txtWardCode").attr("disabled", "disabled");
     $("#ctl00_Contentbody_txtWardName").attr("disabled", "disabled");
@@ -37,7 +35,7 @@ function DisableWardDataEntryFields()
     $("#ctl00_Contentbody_chkIsActive").attr("disabled", "disabled");
     $("#ctl00_Contentbody_btnSave").hide();
     $("#ctl00_Contentbody_btnUpdate").hide();
-    
+
     //Specialty Page
     $("#ctl00_Contentbody_ddlSpecialtyGroup").attr("disabled", "disabled");
     $("#ctl00_Contentbody_txtSpecialtyCode").attr("disabled", "disabled");
@@ -81,29 +79,32 @@ function ManageManualHospitalEntryField() {
     //});
 }
 
-    function ChangeHopitalDropDownPlaceHolderColor()
-    {
-        var hospitalDDLSelection = $('#ddlHospitalName :selected').text();
+function ChangeHopitalDropDownPlaceHolderColor() {
+    var hospitalDDLSelection = $('#ddlHospitalName :selected').text();
 
-        if (hospitalDDLSelection == "Select Hospital" || hospitalDDLSelection == "Other") {
-            $("#ddlHospitalName").css('color', '#AAA9A9');
-        }
-        else {
-            $("#ddlHospitalName").css('color', 'black');
-        }
+    if (hospitalDDLSelection == "Select Hospital" || hospitalDDLSelection == "Other") {
+        $("#ddlHospitalName").css('color', '#AAA9A9');
     }
+    else {
+        $("#ddlHospitalName").css('color', 'black');
+    }
+}
 
-    function ShowPopup(message) {
-        $(function () {
-            $("#dialog").html(message);
-            $("#dialog").dialog({
-                title: "Information",
-                buttons: {
-                    Close: function () {
-                        $(this).dialog('close');
-                    }
-                },
-                modal: true
-            });
+function ShowPopup(message) {
+    $(function () {
+        $("#dialog").html(message);
+        $("#dialog").dialog({
+            title: "Information",
+            width: 400,
+            buttons: {
+                Close: function () {
+                    $(this).dialog('close');
+                }
+            },
+            modal: true
         });
-    }
+        var xSpan = $(".ui-icon-closethick");
+        xSpan.removeAttr('class');
+        xSpan.text("X");
+    });
+}
