@@ -25,6 +25,23 @@
         }
     });
 
+    $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
+
+    if (!$.browser.chrome) {
+        $('[placeholder]').focus(function () {
+            var input = $(this);
+            if (input.val() == input.attr('placeholder')) {
+                input.val('');
+                input.removeClass('placeholder');
+            }
+        }).blur(function () {
+            var input = $(this);
+            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                input.addClass('placeholder');
+                input.val(input.attr('placeholder'));
+            }
+        }).blur();
+    }
 });
 
 function DisableWardDataEntryFields() {
@@ -103,6 +120,8 @@ function ShowPopup(message) {
             },
             modal: true
         });
+
+        // Fix for replacing modal popup title bar close button
         var xSpan = $(".ui-icon-closethick");
         xSpan.removeAttr('class');
         xSpan.text("X");

@@ -1,0 +1,17 @@
+﻿.trial_details_wrap input[type=text], input[type=password] {
+    width: 150px;
+    margin-right: 5px;
+}
+
+.AutocompleteControl input {
+    margin-left: 0px;
+    width: 65% !important;
+}
+
+.trial_wrap {
+    width: 75% !important;
+}
+
+.trial_details {
+    width: 22% !important;
+}

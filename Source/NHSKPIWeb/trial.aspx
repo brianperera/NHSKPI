@@ -27,8 +27,7 @@
     <!--[if lt IE 9]>
       <script src="assets/plugins/html5shiv.js"></script>
       <script src="assets/plugins/respond.min.js"></script>
-    <![endif]-->
-
+    <![endif]-->    
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/css/redmond/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"
         type="text/css" />
@@ -36,8 +35,9 @@
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css" />
     <!--[if IE 7]>
-  <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
-<![endif]-->
+        <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+        <link rel="stylesheet" href="assets/css/ie7.css">
+    <![endif]-->   
 </head>
 <body class="trial" id="">
     <div class="nav_bar">

@@ -1811,7 +1811,7 @@ table.accessHide {
 }
 
 .trial .full-page-background {
-    position: fixed;
+    /*position: fixed;*/
 }
 
 /*#txtCompanyName 
@@ -2303,4 +2303,10 @@ h4.inqu {
     color: gray;
     font-family: Calibri;
     font-size: 14px;
+}
+
+.placeholder
+{
+  color: gray !important;
+  vertical-align: central !important;
 }
