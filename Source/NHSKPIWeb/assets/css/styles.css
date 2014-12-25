@@ -2305,8 +2305,11 @@ h4.inqu {
     font-size: 14px;
 }
 
-.placeholder
-{
-  color: gray !important;
-  vertical-align: central !important;
+.placeholder {
+    color: gray !important;
+    vertical-align: central !important;
+}
+
+.realInput {
+    display: none !important;
 }

@@ -100,11 +100,16 @@
                                 runat="server" ErrorMessage="Invalid" ControlToValidate="txtEmailAddress" Display="Dynamic"
                                 ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         <asp:TextBox ID="txtPassword" placeholder="Password" runat="server"
-                            TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator
+                            TextMode="Password"></asp:TextBox><asp:TextBox ID="txtFakePassword" placeholder="Password" runat="server"
+                            TextMode="SingleLine"></asp:TextBox>
+                        <asp:RequiredFieldValidator
                                 ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ControlToValidate="txtPassword"
                                 Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="txtRetypePassword" placeholder="Re Type Password"
-                            runat="server" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator
+                            runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtFakeRePassword" placeholder="Re Type Password"
+                            runat="server" TextMode="SingleLine"></asp:TextBox>
+                        <asp:RequiredFieldValidator
                                 ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" ControlToValidate="txtRetypePassword"
                                 Display="Dynamic"></asp:RequiredFieldValidator><asp:CompareValidator ID="CompareValidator1"
                                     runat="server" ErrorMessage="Invalid" ControlToCompare="txtPassword" ControlToValidate="txtRetypePassword"

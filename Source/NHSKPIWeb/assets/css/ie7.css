@@ -15,3 +15,7 @@
 .trial_details {
     width: 22% !important;
 }
+
+input, select {
+    line-height: 25px;
+}

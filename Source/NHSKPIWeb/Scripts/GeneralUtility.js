@@ -1,5 +1,8 @@
 ﻿$(document).ready(function () {
 
+    $("#txtPassword").hide();
+    $("#txtRetypePassword").hide();
+
     ManageManualHospitalEntryField();
     ChangeHopitalDropDownPlaceHolderColor();
 
@@ -25,23 +28,58 @@
         }
     });
 
-    $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
+    //$.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
 
-    if (!$.browser.chrome) {
-        $('[placeholder]').focus(function () {
-            var input = $(this);
-            if (input.val() == input.attr('placeholder')) {
-                input.val('');
-                input.removeClass('placeholder');
-            }
-        }).blur(function () {
-            var input = $(this);
-            if (input.val() == '' || input.val() == input.attr('placeholder')) {
-                input.addClass('placeholder');
-                input.val(input.attr('placeholder'));
-            }
-        }).blur();
-    }
+    $('[placeholder]').focus(function () {
+        var input = $(this);
+        if (input.val() == input.attr('placeholder') && input.attr('type') != 'password') {
+            input.val('');
+            input.removeClass('placeholder');
+        }
+    }).blur(function () {
+        var input = $(this);
+        if ((input.val() == '' || input.val() == input.attr('placeholder')) && input.attr('type') != 'password') {
+            input.addClass('placeholder');
+            input.val(input.attr('placeholder'));
+        }
+    }).blur();
+
+    $("#txtFakePassword").focus(function () {
+        $(this).hide();
+        var realInput = $("#txtPassword");
+        realInput.show();
+        realInput.focus();
+    });
+
+    $("#txtPassword").blur(function () {
+        var realInput = $(this);
+        if (realInput.val() == '') {
+            realInput.hide();
+            var fakeInput = $("#txtFakePassword");
+            fakeInput.show();
+            fakeInput.addClass('placeholder');
+            //fakeInput.val(fakeInput.attr('placeholder'));
+        }
+    });
+
+    $("#txtFakeRePassword").focus(function () {
+        $(this).hide();
+        var realInput = $("#txtRetypePassword");
+        realInput.show();
+        realInput.focus();
+    });
+
+    $("#txtRetypePassword").blur(function () {
+        var realInput = $(this);
+        if (realInput.val() == '') {
+            realInput.hide();
+            var fakeInput = $("#txtFakeRePassword");
+            fakeInput.show();
+            fakeInput.addClass('placeholder');
+            //fakeInput.val(fakeInput.attr('placeholder'));
+        }       
+    });
+
 });
 
 function DisableWardDataEntryFields() {
