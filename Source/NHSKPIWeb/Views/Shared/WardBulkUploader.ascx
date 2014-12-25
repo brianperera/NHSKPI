@@ -7,6 +7,6 @@
 </div>
 <div class="field-control-last">
     <asp:Button ID="btnUploadWardFile" CssClass="file-uploaded-button" runat="server" Text="Upload" OnClick="btnUploadWardFile_Click" />
-    <asp:RegularExpressionValidator ID="fuWardDataUploadRegularExpressionValidator" ControlToValidate="fuWardDataUpload"
-        runat="server" ErrorMessage="Only CSV files are allowed" ValidationExpression="(.*?)\.(csv|CSV)$"></asp:RegularExpressionValidator>
+    <%--<asp:RegularExpressionValidator ID="fuWardDataUploadRegularExpressionValidator" ControlToValidate="fuWardDataUpload"
+        runat="server" ErrorMessage="Only CSV files are allowed" ValidationExpression="(.*?)\.(csv|CSV)$"></asp:RegularExpressionValidator>--%>
 </div>
