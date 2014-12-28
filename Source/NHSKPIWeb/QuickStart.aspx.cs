@@ -151,7 +151,7 @@ public partial class QuickStart : System.Web.UI.Page
             {
                 EmailTo = txbManagerEmail.Text,
                 Subject = "You've been added as a department head",
-                Body = "This is a notification"
+                Body = ConfigurationManager.AppSettings["DepartmentHeadEmailBodyText"].ToString()
             };
 
             utilController.SendEmailNotification(emailMessage);

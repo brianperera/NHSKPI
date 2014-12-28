@@ -178,9 +178,8 @@
                                 consistency and to avoid duplication. If you want to see the list 
                                 of KPIs please click <u>here</u>. We have add all the possible KPIs that 
                                 many hospitals have been using at the moment. However If you are 
-                                required to add new KPIs to the system, please <u>contact us</u> and 
-                                follow the instructions in the pop up box. If the new KPI is 
-                                approved by the NHS KPI team they will be added to the list 
+                                required to add new KPIs to the system, please send us a email to helpdesk@nhskpi.net. 
+                                If the new KPI is approved by the NHS KPI team they will be added to the list 
                                 within 24 hours and you will be notified accordingly.
 
                                 </p>

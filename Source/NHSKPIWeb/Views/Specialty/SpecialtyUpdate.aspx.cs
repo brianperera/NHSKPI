@@ -123,7 +123,8 @@ public partial class Views_Specialty_Specialty : System.Web.UI.Page
         txtSpecialtyCode.Text = Specialty.SpecialtyCode;
         txtNationalSpecialtyCode.Text = Specialty.NationalCode;
         txtNationalSpecialty.Text = Specialty.NationalSpecialty;
-        ddlSpecialtyGroup.Items.FindByValue(Specialty.GroupId.ToString()).Selected = true;
+        if (ddlSpecialtyGroup.Items.FindByValue(Specialty.GroupId.ToString()) != null)
+            ddlSpecialtyGroup.Items.FindByValue(Specialty.GroupId.ToString()).Selected = true;
 
     }
     #endregion
