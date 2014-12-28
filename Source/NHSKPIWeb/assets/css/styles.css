@@ -2166,7 +2166,7 @@ h4.inqu {
 
 /*Auto Complete - Start*/
 
-.AutocompleteControl {
+/*.AutocompleteControl {
     position: relative;
 }
 
@@ -2176,7 +2176,7 @@ h4.inqu {
 
     .AutocompleteControl select {
         width: 8%;
-    }
+    }*/
 
 /*Auto Complete - End*/
 

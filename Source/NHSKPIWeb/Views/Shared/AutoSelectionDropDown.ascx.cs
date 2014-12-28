@@ -49,10 +49,10 @@ public partial class Views_Shared_AutoSelectionDropDown : System.Web.UI.UserCont
 
     private void PopulateHospitalList()
     {
-        ddlHospitalName.DataSource = AllHospitals;
-        ddlHospitalName.DataValueField = "Code";
-        ddlHospitalName.DataTextField = "Name";
-        ddlHospitalName.DataBind();
+        //ddlHospitalName.DataSource = AllHospitals;
+        //ddlHospitalName.DataValueField = "Code";
+        //ddlHospitalName.DataTextField = "Name";
+        //ddlHospitalName.DataBind();
 
         //Append the Other value to the datasource, this will allow the user to manualy key-in the hospital name
         //ddlHospitalName.Items.Insert(ddlHospitalName.Items.Count, new ListItem("Other"));
@@ -72,6 +72,8 @@ public partial class Views_Shared_AutoSelectionDropDown : System.Web.UI.UserCont
             autoCompleteHospitalScript += string.Format("\"{0}\",", hospital[1]);
             i++;
         }
+
+        autoCompleteHospitalScript = autoCompleteHospitalScript.Remove(autoCompleteHospitalScript.Length - 1);
 
         autoCompleteHospitalScript += "]; $(\"#ddlHospitalName_txbAutoCompleteTextbox\").autocomplete({ source: availableTags }); });";
         autoCompleteHospitalScript += "\n\n </script>";
@@ -107,6 +109,6 @@ public partial class Views_Shared_AutoSelectionDropDown : System.Web.UI.UserCont
 
     protected void ddlHospitalName_SelectedIndexChanged(object sender, EventArgs e)
     {
-        txbAutoCompleteTextbox.Text = ddlHospitalName.SelectedItem.Text;
+        //txbAutoCompleteTextbox.Text = ddlHospitalName.SelectedItem.Text;
     }
 }

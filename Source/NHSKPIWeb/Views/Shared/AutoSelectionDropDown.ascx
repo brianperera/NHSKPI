@@ -3,8 +3,9 @@
     
 </script>
 <div class="AutocompleteControl">
+    <%--<label for="ddlHospitalName_txbAutoCompleteTextbox">Tags: </label>--%>
     <asp:TextBox ID="txbAutoCompleteTextbox" placeholder="Hospital" runat="server"></asp:TextBox>
-    <asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ddlHospitalName_SelectedIndexChanged">
-    </asp:DropDownList>
+    <%--<asp:DropDownList ID="ddlHospitalName" placeholder="Company Name" runat="server" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ddlHospitalName_SelectedIndexChanged">
+    </asp:DropDownList>--%>
 </div>
 <div style="visibility: hidden" id="AutoCompleteValues" runat="server"></div>
