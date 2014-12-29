@@ -106,6 +106,7 @@ public partial class Views_KPI_DataExport : System.Web.UI.Page
         {
             CheckBox_SelectAll.Checked = true;
             SetCheckBoxList();
+            PopulateYearDropDownList();
         } 
     }
 
@@ -145,6 +146,13 @@ public partial class Views_KPI_DataExport : System.Web.UI.Page
 
         foreach (DataRow row in table.Rows)
         {
+            if (row[3] == null)
+                continue;
+
+            DateTime rowDate = (DateTime)row[3];
+            if (!rowDate.Year.ToString().Equals(Year_DropDownList.SelectedValue.ToString()))
+                continue;
+
             tab = string.Empty;
             for (int i = 0; i < table.Columns.Count; i++)
             {
@@ -164,6 +172,7 @@ public partial class Views_KPI_DataExport : System.Web.UI.Page
     protected void DataType_DropDownList_SelectedIndexChanged(object sender, EventArgs e)
     {
         SetCheckBoxList();
+        PopulateYearDropDownList();
     }
 
     private void SetCheckBoxList()
@@ -174,7 +183,7 @@ public partial class Views_KPI_DataExport : System.Web.UI.Page
             ColumnList_CheckBoxList.Items.Clear();
             ColumnList_CheckBoxList.DataSource = ds.Tables[0].Columns;
             ColumnList_CheckBoxList.DataBind();
-            Export_Data_Button.Text = "Export Ward Data";
+            
         }
         else
         {
@@ -194,6 +203,32 @@ public partial class Views_KPI_DataExport : System.Web.UI.Page
             checkBox.Selected = CheckBox_SelectAll.Checked;
         }
         HandleNoSelection();
+    }
+
+    private void PopulateYearDropDownList()
+    {
+        Year_DropDownList.Items.Clear();
+        List<int> yearList = new List<int>();
+        foreach (DataRow row in ds.Tables[0].Rows)
+        {
+            if (row[3] == null)
+                continue;
+
+            if (!yearList.Contains(((System.DateTime)row[3]).Year))
+            {
+                yearList.Add(((System.DateTime)row[3]).Year);
+            }
+        }
+        if (yearList.Count > 0)
+        {
+            Year_DropDownList.DataSource = yearList;
+            Year_DropDownList.DataBind();
+        }
+        else
+        {
+            Year_DropDownList.Items.Add("No Data");
+        }
+        Year_DropDownList.SelectedIndex = 0;
     }
 
     protected void CheckBox_SelectAll_CheckedChanged(object sender, EventArgs e)

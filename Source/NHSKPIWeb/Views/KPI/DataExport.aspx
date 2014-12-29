@@ -6,20 +6,25 @@
    
 &nbsp;
     &nbsp;&nbsp;<br />
-    <asp:DropDownList ID="DataType_DropDownList" runat="server" AutoPostBack="True" Height="20px" OnSelectedIndexChanged="DataType_DropDownList_SelectedIndexChanged" Width="246px">
+    <asp:DropDownList ID="DataType_DropDownList" runat="server" AutoPostBack="True" Height="20px" OnSelectedIndexChanged="DataType_DropDownList_SelectedIndexChanged" Width="150px">
         <asp:ListItem>Ward Data</asp:ListItem>
         <asp:ListItem>Specility Data</asp:ListItem>
     </asp:DropDownList>
+    <asp:DropDownList ID="Year_DropDownList" runat="server" Height="20px" Width="150px">
+    </asp:DropDownList>
+    <br />
     <br />
    
     <asp:CheckBox ID="CheckBox_SelectAll" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox_SelectAll_CheckedChanged" Text="Select All" Font-Bold="True" Font-Size="Small" />
+   
+    <asp:Button ID="Export_Data_Button" runat="server" Text="Export  Data" OnClick="Export_Data_Button_Click" />
+    <br />
    
     <br />
     <asp:CheckBoxList ID="ColumnList_CheckBoxList" runat="server" RepeatColumns="4" AutoPostBack="True" OnSelectedIndexChanged="ColumnList_CheckBoxList_CheckedChanged">
     </asp:CheckBoxList>
    
     <br />
-    <asp:Button ID="Export_Data_Button" runat="server" Text="Export  Data" OnClick="Export_Data_Button_Click" />
 &nbsp;<br />
     <asp:Label ID="Message_Label" runat="server" ForeColor="#CC0000" Height="19px" Text="Label" Width="164px"></asp:Label>
    
